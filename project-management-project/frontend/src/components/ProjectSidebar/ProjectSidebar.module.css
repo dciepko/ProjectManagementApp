@@ -1,0 +1,26 @@
+.aside {
+  height: 100%;
+  background-color: lightgray;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.h2 {
+  margin: 15px 0;
+  font-size: 20px;
+}
+
+.ul {
+  height: 30%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button {
+  margin: 10px 0;
+  padding: 8px;
+  width: 100%;
+}

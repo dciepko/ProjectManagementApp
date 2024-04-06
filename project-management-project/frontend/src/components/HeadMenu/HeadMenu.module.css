@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  background-color: lightgray;
+  height: 10vh;
+}
+
+.h1 {
+  font-size: 32px;
+  padding: 0.5em;
+}
+
+.menu {
+  width: 50%;
+  height: 100%;
+}
+
+.ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  padding: 10px;
+  font-size: 1em;
+  margin: 10px;
+}
