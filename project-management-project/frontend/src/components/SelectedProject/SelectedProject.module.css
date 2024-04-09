@@ -13,6 +13,24 @@
   padding-left: 10px;
 }
 
+.unwrapButton {
+  float: right;
+  margin-right: 30px;
+  padding: 5px;
+}
+
+.optionButtonsContainer {
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.optionButton {
+  padding: 5px 10px;
+}
+
 .tableContainer {
   display: flex;
   flex-direction: row;
