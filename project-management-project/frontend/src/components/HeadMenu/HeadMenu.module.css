@@ -2,6 +2,7 @@
   display: flex;
   background-color: lightgray;
   height: 10vh;
+  align-items: center;
 }
 
 .h1 {
@@ -26,4 +27,26 @@
   padding: 10px;
   font-size: 1em;
   margin: 10px;
+}
+
+.toTheRight {
+  width: 50%;
+}
+
+.searchBar {
+  padding: 10px 15px;
+  margin-right: 50px;
+  height: 60%;
+  font-size: 1em;
+  color: rgb(223, 219, 219);
+  float: right;
+}
+
+.avatarImage {
+  display: inline;
+  float: right;
+  background-color: white;
+  padding: 15px;
+  border-radius: 100px;
+  margin-right: 10px;
 }

@@ -6,9 +6,19 @@
   flex-direction: column;
 }
 
+.asideHeader {
+  display: flex;
+  align-items: center;
+}
+
 .h2 {
   margin: 15px 0;
   font-size: 20px;
+}
+
+.wrapButton {
+  margin-right: auto;
+  padding: 2px;
 }
 
 .ul {

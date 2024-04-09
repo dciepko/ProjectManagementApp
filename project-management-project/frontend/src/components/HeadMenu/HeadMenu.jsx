@@ -20,6 +20,14 @@ export default function HeadMenu() {
           </li>
         </ul>
       </menu>
+      <span className={classes.toTheRight}>
+        <div className={classes.avatarImage}>A</div>
+        <input
+          className={classes.searchBar}
+          type="text"
+          placeholder="Wyszukaj"
+        />
+      </span>
     </header>
   );
 }

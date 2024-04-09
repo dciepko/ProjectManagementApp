@@ -3,7 +3,11 @@ import classes from "./ProjectSidebar.module.css";
 export default function ProjectsSidebar({ projectList, handleClick }) {
   return (
     <aside className={classes.aside}>
-      <h2 className={classes.h2}>Twoje Projekty</h2>
+      <header className={classes.asideHeader}>
+        <h2 className={classes.h2}>Twoje Projekty</h2>
+        <button className={classes.wrapButton}>&lt;</button>
+      </header>
+
       <ul className={classes.ul}>
         {projectList.map((project) => {
           return (
