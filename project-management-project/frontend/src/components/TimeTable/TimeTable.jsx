@@ -6,8 +6,9 @@ export default function TimeTable({ title, tasks }) {
       <h3>{title}</h3>
       <ul>
         {tasks.map((task) => {
-          return <p className={classes.pTask}>{task}</p>;
+          return <button className={classes.pTask}>{task}</button>;
         })}
+        <button className={classes.addTaskButton}>+</button>
       </ul>
     </section>
   );

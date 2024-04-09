@@ -18,6 +18,7 @@ export default function SelectedProject({ currentProject }) {
         <TimeTable title={"Do zrobienia"} tasks={currentProject.tasks} />
         <TimeTable title={"W trakcie"} tasks={[]} />
         <TimeTable title={"Zrobione"} tasks={[]} />
+        <button className={classes.addTableButton}>+</button>
       </div>
     </div>
   );
