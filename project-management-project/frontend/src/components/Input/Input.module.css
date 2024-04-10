@@ -1,0 +1,10 @@
+.inputSection {
+  margin: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField {
+  margin-top: 5px;
+  padding: 8px;
+}
