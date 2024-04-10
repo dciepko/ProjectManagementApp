@@ -2,19 +2,26 @@ import classes from "./Login.module.css";
 
 import Input from "../Input/Input";
 import { useInput } from "../../hooks/useInput";
+import {
+  hasMinLength,
+  isEmail,
+  isNotEmpty,
+} from "../../util/validationFunctions";
 
 export default function Login() {
   const {
     value: emailValue,
     handleInputChange: handleEmailChange,
     handleInputBlur: handleEmailBlur,
-  } = useInput("");
+    hasError: emailHasError,
+  } = useInput("", (value) => isEmail(value) && isNotEmpty(value));
 
   const {
     value: passwordValue,
     handleInputChange: handlePasswordChange,
     handleInputBlur: handlePasswordBlur,
-  } = useInput("");
+    hasError: passwordHasError,
+  } = useInput("", (value) => isNotEmpty(value) && hasMinLength(value, 6));
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -33,6 +40,7 @@ export default function Login() {
           onBlur={handleEmailBlur}
           onChange={handleEmailChange}
           value={emailValue}
+          error={emailHasError && "Wprowadź poprawny adres email"}
         />
         <Input
           label="Password"
@@ -42,6 +50,7 @@ export default function Login() {
           onBlur={handlePasswordBlur}
           onChange={handlePasswordChange}
           value={passwordValue}
+          error={passwordHasError && "Wprowadź poprawne hasło"}
         />
         <div>
           <button className={classes.formButton}>Reset</button>

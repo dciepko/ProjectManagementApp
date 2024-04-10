@@ -8,3 +8,9 @@
   margin-top: 5px;
   padding: 8px;
 }
+
+.errorContainer {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
