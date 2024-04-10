@@ -1,4 +1,4 @@
-import classes from "./TimeTable.module.css";
+import classes from "./StatusTable.module.css";
 
 export default function TimeTable({ title, tasks }) {
   return (

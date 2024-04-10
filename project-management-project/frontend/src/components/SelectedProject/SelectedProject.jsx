@@ -1,4 +1,4 @@
-import TimeTable from "../TimeTable/TimeTable";
+import StatusTable from "../StatusTable/StatusTable";
 import classes from "./SelectedProject.module.css";
 
 export default function SelectedProject({ currentProject }) {
@@ -15,9 +15,9 @@ export default function SelectedProject({ currentProject }) {
         </section>
       </header>
       <div className={classes.tableContainer}>
-        <TimeTable title={"Do zrobienia"} tasks={currentProject.tasks} />
-        <TimeTable title={"W trakcie"} tasks={[]} />
-        <TimeTable title={"Zrobione"} tasks={[]} />
+        <StatusTable title={"Do zrobienia"} tasks={currentProject.tasks} />
+        <StatusTable title={"W trakcie"} tasks={[]} />
+        <StatusTable title={"Zrobione"} tasks={[]} />
         <button className={classes.addTableButton}>+</button>
       </div>
     </div>
