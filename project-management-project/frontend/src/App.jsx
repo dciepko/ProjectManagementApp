@@ -1,5 +1,11 @@
+import Login from "./components/Login/Login";
+
 function App() {
-  return <div>Nasz projekt</div>;
+  return (
+    <main>
+      <Login />
+    </main>
+  );
 }
 
 export default App;
