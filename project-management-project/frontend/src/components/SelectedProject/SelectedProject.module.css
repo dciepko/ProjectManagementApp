@@ -1,43 +1,65 @@
 .container {
   width: 100%;
   height: 100%;
+  border-top:grey solid 1px;
+  border-left:grey solid 1px;
 }
 
 .header {
-  background-color: lightblue;
+  background-color: #EBEDFA;
   width: 100%;
   padding: 15px 0;
+  border-bottom:grey solid 1px;
 }
 
 .h1 {
   padding-left: 10px;
+  font-size: 36px;
 }
 
 .unwrapButton {
   float: right;
   margin-right: 30px;
   padding: 5px;
+  border: none;
+  background: none;
 }
 
 .optionButtonsContainer {
   margin-left: 10px;
   margin-top: 10px;
-  width: 25%;
+  width: 15%;
   display: flex;
   justify-content: space-between;
 }
 
+.selectButton {
+background-color: #FF910A;
+border-radius: 15px;
+font-size: 20px;
+border: none;
+
+}
+
+
 .optionButton {
   padding: 5px 10px;
+  background: none;
+  border: none;
+}
+
+.optionButton:hover{
+  cursor:pointer;
 }
 
 .tableContainer {
   display: flex;
   flex-direction: row;
+ 
 }
 
 .addTableButton {
-  background-color: rgb(214, 214, 214);
+  background-color: #4F40CE;
   width: 20%;
   margin: 30px;
   padding: 20px 0;
@@ -46,8 +68,9 @@
   text-align: center;
   height: 50%;
   border: none;
+  color: #EBEDFA;
 }
 
 .addTableButton:hover {
-  background-color: rgb(144, 140, 140);
+  background-color: #4135ac;
 }
