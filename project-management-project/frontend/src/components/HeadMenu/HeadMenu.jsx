@@ -21,7 +21,8 @@ export default function HeadMenu() {
         </ul>
       </menu>
       <span className={classes.toTheRight}>
-        <div className={classes.avatarImage}>A</div>
+        <button className={classes.avatarImage}>A</button>
+        <button className={classes.notificationImage}>B</button>
         <input
           className={classes.searchBar}
           type="text"
