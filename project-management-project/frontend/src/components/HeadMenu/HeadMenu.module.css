@@ -48,6 +48,7 @@ main-hover: #4135ac;
 
 .button:hover {
   background-color: #4135ac;
+  cursor: pointer;
 }
 
 .toTheRight {
@@ -84,8 +85,10 @@ main-hover: #4135ac;
 
 .notificationImage:hover {
   background-color: lightgray;
+  cursor: pointer;
 }
 
 .avatarImage:hover {
   background-color: lightgray;
+  cursor: pointer;
 }
