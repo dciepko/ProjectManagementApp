@@ -4,7 +4,7 @@ import Signup from "./components/Signup/Signup";
 function App() {
   return (
     <main>
-      <Login />
+      <Signup />
     </main>
   );
 }
