@@ -1,27 +1,36 @@
 .section {
-  background-color: aquamarine;
+  background-color: #4F40CE;
+  color: #EBEDFA;
   height: auto;
+  font-size: 24px;
   width: 20%;
   margin: 30px;
-  padding: 15px 15px 80px 15px;
-  border-radius: 10px;
+  padding: 30px 15px 80px 15px;
+  border-radius: 15px;
+  
+}
+.h3 {
+  font-weight: 400;
 }
 
 .pTask {
-  background-color: aliceblue;
+  background-color: #EBEDFA;
+  font-size: 16px;
   margin: 8px 0;
-  padding: 10px 5px;
+  padding: 15px 5px;
   width: 100%;
   text-align: left;
   border: none;
+  border-radius: 15px;
 }
 
 .addTaskButton {
-  background-color: aliceblue;
+  background-color: #EBEDFA;
   margin: 8px 0;
-  padding: 10px 5px;
+  padding: 15px 5px;
   width: 100%;
   text-align: center;
   border: none;
-  font-size: 1.5rem;
+  border-radius: 15px;
+  font-size: 1.8rem;
 }
