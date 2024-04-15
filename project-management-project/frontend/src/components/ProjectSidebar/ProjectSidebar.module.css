@@ -1,6 +1,7 @@
 .aside {
   height: 100%;
-  background-color: lightgray;
+  width: 12%;
+  background-color: #bec9ff;
   padding: 10px;
   display: flex;
   flex-direction: column;
