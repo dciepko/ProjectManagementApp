@@ -3,6 +3,7 @@ import HeadMenu from "./components/HeadMenu/HeadMenu.jsx";
 import ProjectsSidebar from "./components/ProjectSidebar/ProjectsSidebar.jsx";
 import { PROJECTS } from "./projects.js";
 import SelectedProject from "./components/SelectedProject/SelectedProject.jsx";
+import AddingProject from "./components/AddingProject/AddingProject.jsx";
 
 function App() {
   const [currentProjects, setCurrentProjects] = useState(PROJECTS);

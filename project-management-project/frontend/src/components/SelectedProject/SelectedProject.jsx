@@ -11,22 +11,34 @@ export default function SelectedProject({ currentProject }) {
     <div className={classes.container}>
       <header className={classes.header}>
         <h1 className={classes.h1}>{currentProject.title}</h1>
-        <button className={classes.unwrapButton}><img src={wrap} alt="wrap header" /></button>
+        <button className={classes.unwrapButton}>
+          <img src={wrap} alt="wrap header" />
+        </button>
         <section className={classes.optionButtonsContainer}>
           <select className={classes.selectButton}>
-            <option  value="classic">Tablica</option>
-            <option  value="wide">Podłużny</option>
-            <option  value="table">Tabela</option>
-            </select>
-          <button className={classes.optionButton}><img src={filters} alt="filter button" /></button>
-          <button className={classes.optionButton}><img src={group} alt="group button" /></button>
-          <button className={classes.optionButton}><img src={plus} alt="add button" /></button>
+            <option value="classic">Tablica</option>
+            <option value="wide">Podłużny</option>
+            <option value="table">Tabela</option>
+          </select>
+          <button className={classes.optionButton}>
+            <img src={filters} alt="filter button" />
+          </button>
+          <button className={classes.optionButton}>
+            <img src={group} alt="group button" />
+          </button>
+          <button className={classes.optionButton}>
+            <img src={plus} alt="add button" />
+          </button>
         </section>
       </header>
       <div className={classes.tableContainer}>
-        <StatusTable title={"Do zrobienia"} tasks={currentProject.tasks} />
-        <StatusTable title={"W trakcie"} tasks={[]} />
-        <StatusTable title={"Zrobione"} tasks={[]} />
+        <StatusTable
+          key={"todo"}
+          title={"Do zrobienia"}
+          tasks={currentProject.tasks}
+        />
+        <StatusTable key={"wtrakcie"} title={"W trakcie"} tasks={[]} />
+        <StatusTable key={"done"} title={"Zrobione"} tasks={[]} />
         <button className={classes.addTableButton}>+</button>
       </div>
     </div>
