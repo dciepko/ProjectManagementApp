@@ -1,20 +1,19 @@
 .section {
-  background-color: #4F40CE;
-  color: #EBEDFA;
+  background-color: #4f40ce;
+  color: #ebedfa;
   height: auto;
   font-size: 24px;
   width: 20%;
   margin: 30px;
   padding: 30px 15px 80px 15px;
   border-radius: 15px;
-  
 }
 .h3 {
   font-weight: 400;
 }
 
 .pTask {
-  background-color: #EBEDFA;
+  background-color: #ebedfa;
   font-size: 16px;
   margin: 8px 0;
   padding: 15px 5px;
@@ -25,7 +24,7 @@
 }
 
 .addTaskButton {
-  background-color: #EBEDFA;
+  background-color: #ebedfa;
   margin: 8px 0;
   padding: 15px 5px;
   width: 100%;
@@ -33,4 +32,9 @@
   border: none;
   border-radius: 15px;
   font-size: 1.8rem;
+}
+
+.addTaskButton:hover {
+  background-color: lightgray;
+  cursor: pointer;
 }
