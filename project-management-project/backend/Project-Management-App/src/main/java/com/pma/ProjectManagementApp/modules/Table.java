@@ -1,11 +1,10 @@
 package com.pma.ProjectManagementApp.modules;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,4 +15,10 @@ public class Table {
     private Integer tableID;
     private String tableName;
     private String tableColor;
+
+    @OneToMany(mappedBy = "table")
+    private List<Project> projects;
+
+    @OneToMany(mappedBy = "tableA")
+    private List<Activity> activitiesTab;
 }
