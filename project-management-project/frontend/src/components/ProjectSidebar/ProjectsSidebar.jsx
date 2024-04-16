@@ -2,7 +2,7 @@ import classes from "./ProjectSidebar.module.css";
 
 import wrapButton from "../../assets/wrap-right-button.png";
 import AddingProject from "../AddingProject/AddingProject";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function ProjectsSidebar({ projectList, handleClick }) {
   const modal = useRef();

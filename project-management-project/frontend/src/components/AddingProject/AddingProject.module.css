@@ -7,12 +7,15 @@
   transform: translate(-50%, -50%);
   border: none;
   border-radius: 15px;
-  padding: 4rem;
+  padding: 4rem 5rem;
   background-color: #ebedfa;
+}
+
+.modalContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: right;
 }
 
 .addingModal[open] {
@@ -29,15 +32,20 @@
   width: 80%;
 }
 
-.inputContainer {
+.form {
   width: 80%;
+  height: 100%;
+}
+
+.inputContainer {
+  width: 100%;
 }
 
 .buttonContainer {
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: right;
-  margin-top: 2rem;
+  margin-top: 2em;
 }
 
 .cancelButton {
@@ -47,6 +55,12 @@
   border-radius: 15px;
   padding: 5px 15px;
   border: none;
+  margin-right: 20px;
+}
+
+.cancelButton:hover {
+  background-color: lightgray;
+  cursor: pointer;
 }
 
 .createButton {
@@ -55,4 +69,9 @@
   font-size: 24px;
   border-radius: 15px;
   padding: 5px 15px;
+}
+
+.createButton:hover {
+  background-color: #4135ac;
+  cursor: pointer;
 }
