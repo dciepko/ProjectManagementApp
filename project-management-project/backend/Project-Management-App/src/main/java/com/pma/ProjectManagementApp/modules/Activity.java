@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 public class Activity {
@@ -22,7 +23,7 @@ public class Activity {
 
     @ManyToOne
     @JoinColumn(name = "tableID")
-    private Table tableA;
+    private StatusTable tableA;
 
     @ManyToOne
     @JoinColumn(name = "labelID")
@@ -30,7 +31,7 @@ public class Activity {
 
     @ManyToOne
     @JoinColumn(name = "statusID")
-    private Label activitiesStatus;
+    private Status activitiesStatus;
 
     @ManyToMany
     @JoinTable(
@@ -45,4 +46,7 @@ public class Activity {
 
     @OneToMany(mappedBy = "activityC")
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "activity")
+    private List<Attachement> attachements;
 }

@@ -19,6 +19,6 @@ public class Status {
     @OneToMany(mappedBy = "status")
     private List<Project> projects;
 
-    @OneToMany(mappedBy = "") // jeden status moze miec wiele aktywnosci ale jedna aktywnosc moze miec jeden status NWM
-    private List<Activity> activitiesStatus;
+    @OneToMany(mappedBy = "activitiesStatus")
+    private List<Activity> activities;
 }

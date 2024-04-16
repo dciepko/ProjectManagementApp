@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Table {
+public class StatusTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tableID;

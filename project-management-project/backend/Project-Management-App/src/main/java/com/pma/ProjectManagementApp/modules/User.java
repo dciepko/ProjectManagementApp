@@ -1,6 +1,5 @@
 package com.pma.ProjectManagementApp.modules;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,14 +17,12 @@ public class User {
     private String userNickname;
     private String userEmail;
     private String userPassword;
-    private String workingHours; //NWM CZY STRING
+    private String workingHours;
     private Boolean isOwner;
 
     @OneToMany(mappedBy = "userA")
     private List<Avatar> avatars;
-    @OneToMany(mappedBy = "userTeam")
-    private List<Team> teams;
-    @OneToMany(mappedBy = "userCom") //Ale nwm bo jeden uz moze miec wiele kom ale jeden kom moze miec jednego uz
+    @OneToMany(mappedBy = "userCom")
     private List<Comment> comments;
     @OneToMany(mappedBy = "userAtt")
     private List<Attachement> attachements;
@@ -39,4 +36,9 @@ public class User {
     @JoinTable(name = "user_activity", joinColumns = {@JoinColumn(name = "userID")},
             inverseJoinColumns ={@JoinColumn(name = "activityID")})
     private List<Activity> activitiesUser;
+
+    @ManyToMany
+    @JoinTable(name = "user_team", joinColumns = {@JoinColumn(name = "userID")},
+            inverseJoinColumns ={@JoinColumn(name = "teamID")})
+    private List<Team> teams;
 }

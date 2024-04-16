@@ -1,6 +1,5 @@
 package com.pma.ProjectManagementApp.modules;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,16 +16,19 @@ public class Project {
     private Integer projectID;
     private String projectName;
     private String projectDescription;
-    private Date startDate; //TU TEZ NWM JESZCZE
+    private Date startDate;
     private Date endDate;
+    private Integer ownerID;
 
     @ManyToMany(mappedBy = "projectsU")
     private List<User> users;
-    @ManyToMany(mappedBy = "projectsTeam")
-    private List<Team> teams;
 
     @ManyToMany(mappedBy = "projectsA")
     private List<Activity> activitiesPr;
+
+    @ManyToOne
+    @JoinColumn(name = "teamID")
+    private Team team;
 
     @ManyToOne
     @JoinColumn(name = "statusID")
@@ -34,5 +36,5 @@ public class Project {
 
     @ManyToOne
     @JoinColumn(name = "tableID")
-    private Table table;
+    private StatusTable table;
 }

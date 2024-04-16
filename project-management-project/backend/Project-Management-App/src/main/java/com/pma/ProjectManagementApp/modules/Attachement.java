@@ -18,7 +18,11 @@ public class Attachement {
     private String attachementUrl;
     private String attachementType;
 
-    @ManyToOne //Też nmw bo jeden uz moze miec wiele zal ale na odwrót?
+    @ManyToOne
     @JoinColumn(name = "userID")
     private User userAtt;
+
+    @ManyToOne
+    @JoinColumn(name = "activityID")
+    private Activity activity;
 }

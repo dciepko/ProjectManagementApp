@@ -15,12 +15,9 @@ public class Team {
     private Integer teamID;
     private String teamName;
 
-    @ManyToOne
-    @JoinColumn(name = "userID")
-    private User userTeam;
+    @ManyToMany(mappedBy = "teams")
+    private List<User> usersTeam;
 
-    @ManyToMany
-    @JoinTable(name = "team_project", joinColumns = {@JoinColumn(name = "teamID")},
-            inverseJoinColumns ={@JoinColumn(name = "projectID")})
+    @OneToMany(mappedBy = "team")
     private List<Project> projectsTeam;
 }

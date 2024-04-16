@@ -1,4 +1,4 @@
 package com.pma.ProjectManagementApp.repos;
 
-public interface TableRepo {
+public interface StatusTableRepo {
 }

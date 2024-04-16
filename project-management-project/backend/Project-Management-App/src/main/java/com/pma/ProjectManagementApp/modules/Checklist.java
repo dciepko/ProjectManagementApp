@@ -17,4 +17,7 @@ public class Checklist {
 
     @OneToMany(mappedBy = "checklist")
     private List<ChecklistElement> checklistElements;
+
+    @OneToOne(mappedBy = "checklist")
+    private Task task;
 }
