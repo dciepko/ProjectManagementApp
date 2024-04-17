@@ -4,14 +4,17 @@ import lupa from "../../assets/find-icon.svg";
 import wrap from "../../assets/wrap-down-button.png";
 
 import DropIndicator from "../DropIndicator/DropIndicator";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import TaskModal from "../TaskModal/TaskModal";
 
 export default function Activity({ id, task, handleDragStart }) {
   const [viewType, setViewType] = useState("wrapped");
   const [progress, setProgress] = useState(0);
 
-  function updateProgress() {
-    let checked = 0;
+  const modal = useRef();
+
+  function handleOpenModal() {
+    modal.current.open();
   }
 
   function handleWrapButton() {
@@ -25,6 +28,7 @@ export default function Activity({ id, task, handleDragStart }) {
   return (
     <>
       {/* <DropIndicator table={id} beforeId={task.id} /> */}
+      <TaskModal ref={modal} task={task} checklist={task.checklist} />
       {viewType === "wrapped" && (
         <div
           draggable
@@ -38,7 +42,9 @@ export default function Activity({ id, task, handleDragStart }) {
             )}
           </div>
           <div className={classes.buttonContainer}>
-            <button className={classes.button}>O</button>
+            <button className={classes.button} onClick={handleOpenModal}>
+              O
+            </button>
             {task.type === "task" && (
               <button className={classes.button} onClick={handleWrapButton}>
                 <img src={wrap} alt="wrap button" />
@@ -68,8 +74,7 @@ export default function Activity({ id, task, handleDragStart }) {
                       <input
                         type="checkbox"
                         id={element.name}
-                        name="scales"
-                        onClick={() => handleCheckboxClick(element.id)}
+                        name="subtasks"
                       />
                       <label htmlFor={element.name}>{element.name}</label>
                     </div>
@@ -79,7 +84,9 @@ export default function Activity({ id, task, handleDragStart }) {
             )}
           </div>
           <div className={classes.buttonContainer}>
-            <button className={classes.button}>O</button>
+            <button className={classes.button} onClick={handleOpenModal}>
+              O
+            </button>
             <button className={classes.button} onClick={handleWrapButton}>
               <img src={wrap} alt="wrap button" />
             </button>
