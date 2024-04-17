@@ -12,17 +12,6 @@
   font-weight: 400;
 }
 
-.pTask {
-  background-color: #ebedfa;
-  font-size: 16px;
-  margin: 8px 0;
-  padding: 15px 5px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  border-radius: 15px;
-}
-
 .addTaskButton {
   background-color: #ebedfa;
   margin: 8px 0;

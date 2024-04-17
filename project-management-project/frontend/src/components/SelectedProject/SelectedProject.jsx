@@ -35,10 +35,21 @@ export default function SelectedProject({ currentProject }) {
         <StatusTable
           key={"todo"}
           title={"Do zrobienia"}
+          id={"todo"}
           tasks={currentProject.tasks}
         />
-        <StatusTable key={"wtrakcie"} title={"W trakcie"} tasks={[]} />
-        <StatusTable key={"done"} title={"Zrobione"} tasks={[]} />
+        <StatusTable
+          key={"doing"}
+          title={"W trakcie"}
+          id={"doing"}
+          tasks={currentProject.tasks}
+        />
+        <StatusTable
+          key={"done"}
+          title={"Zrobione"}
+          id={"done"}
+          tasks={currentProject.tasks}
+        />
         <button className={classes.addTableButton}>+</button>
       </div>
     </div>
