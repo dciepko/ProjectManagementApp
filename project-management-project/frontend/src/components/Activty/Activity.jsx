@@ -9,7 +9,7 @@ export default function Activity({ id, task, handleDragStart }) {
       <div
         draggable
         className={classes.activityContainer}
-        onDragStart={(event) => handleDragStart(event)}
+        onDragStart={(event) => handleDragStart(event, task)}
       >
         {task.title}
       </div>

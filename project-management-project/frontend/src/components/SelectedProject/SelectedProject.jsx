@@ -5,8 +5,16 @@ import filters from "../../assets/filters-icon.png";
 import group from "../../assets/group-icon.png";
 import plus from "../../assets/plus-icon.png";
 import wrap from "../../assets/wrap-down-button.png";
+import { useState } from "react";
 
 export default function SelectedProject({ currentProject }) {
+  const [activities, setActivities] = useState(currentProject.tasks);
+
+  function activitiesListChange(activities) {
+    setActivities(activities);
+    console.log("Reexecute");
+  }
+
   return (
     <div className={classes.container}>
       <header className={classes.header}>
@@ -31,27 +39,33 @@ export default function SelectedProject({ currentProject }) {
           </button>
         </section>
       </header>
+
       <div className={classes.tableContainer}>
         <StatusTable
           key={"todo"}
           title={"Do zrobienia"}
           id={"todo"}
-          tasks={currentProject.tasks}
+          tasks={activities}
+          onReload={activitiesListChange}
         />
         <StatusTable
           key={"doing"}
           title={"W trakcie"}
           id={"doing"}
-          tasks={currentProject.tasks}
+          tasks={activities}
+          onReload={activitiesListChange}
         />
         <StatusTable
           key={"done"}
           title={"Zrobione"}
           id={"done"}
-          tasks={currentProject.tasks}
+          tasks={activities}
+          onReload={activitiesListChange}
         />
         <button className={classes.addTableButton}>+</button>
       </div>
     </div>
   );
 }
+
+//obrzydliwy jest ten reload ale zmienie go jak dodam reduxa
