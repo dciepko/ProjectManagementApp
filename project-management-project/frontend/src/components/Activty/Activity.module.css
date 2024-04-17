@@ -1,6 +1,7 @@
 .activityContainer {
+  height: 4.5em;
   background-color: #ebedfa;
-  font-size: 16px;
+  font-size: 0.8em;
   margin: 8px 0;
   padding: 15px 5px;
   width: 100%;
@@ -9,8 +10,25 @@
   border-radius: 15px;
   cursor: grab;
   color: black;
+  display: flex;
+  justify-content: space-between;
 }
 
 .activityContainer:hover {
   background-color: lightgray;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  margin: 5px;
+  background: none;
+  border: none;
+}
+
+.button:hover {
+  cursor: pointer;
 }
