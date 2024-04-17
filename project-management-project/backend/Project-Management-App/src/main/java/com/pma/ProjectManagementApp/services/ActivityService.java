@@ -16,7 +16,7 @@ public class ActivityService {
         return activityRepo.findAll();
     }
 
-    public void deleteAutor(Integer id)
+    public void deleteActivity(Integer id)
     {
         if(!activityRepo.findById(id).isEmpty()){
             activityRepo.deleteById(id);
