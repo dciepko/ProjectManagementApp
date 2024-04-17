@@ -1,4 +1,9 @@
 package com.pma.ProjectManagementApp.repos;
 
-public interface ActivityRepo {
+import com.pma.ProjectManagementApp.modules.Activity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ActivityRepo extends JpaRepository<Activity, Integer> {
 }
