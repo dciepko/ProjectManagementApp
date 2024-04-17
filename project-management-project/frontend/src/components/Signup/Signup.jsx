@@ -6,10 +6,10 @@ import {
 import Input from "../Input/Input";
 
 import { useInput } from "../../hooks/useInput";
-
+import screen from "../../assets/login-screen2.jpg";
 import classes from "./Signup.module.css";
 
-import screen from "../../assets/login-screen2.jpg";
+
 
 export default function Signup() {
   const {
