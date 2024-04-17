@@ -8,12 +8,24 @@ import { useState } from "react";
 
 export default function Activity({ id, task, handleDragStart }) {
   const [viewType, setViewType] = useState("wrapped");
-  console.log(task.type);
+  const [progress, setProgress] = useState(0);
+
+  function updateProgress() {
+    let checked = 0;
+  }
+
+  function handleWrapButton() {
+    {
+      viewType === "wrapped"
+        ? setViewType("unwrapped")
+        : setViewType("wrapped");
+    }
+  }
 
   return (
     <>
       {/* <DropIndicator table={id} beforeId={task.id} /> */}
-      {/* {viewType === "wrapped" && (
+      {viewType === "wrapped" && (
         <div
           draggable
           className={classes.activityContainer}
@@ -21,34 +33,59 @@ export default function Activity({ id, task, handleDragStart }) {
         >
           <div>
             <p>{task.title}</p>
-            {task.type == "task" && <progress max={100} value={70} />}
+            {task.type == "task" && (
+              <progress max={task.checklist.length} value={progress} />
+            )}
           </div>
           <div className={classes.buttonContainer}>
             <button className={classes.button}>O</button>
-            <button className={classes.button}>
+            {task.type === "task" && (
+              <button className={classes.button} onClick={handleWrapButton}>
+                <img src={wrap} alt="wrap button" />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {viewType === "unwrapped" && (
+        <div
+          draggable
+          className={classes.activityContainer}
+          onDragStart={(event) => handleDragStart(event, task)}
+        >
+          <div>
+            <p>{task.title}</p>
+            {task.type == "task" && (
+              <progress max={task.checklist.length} value={progress} />
+            )}
+            {task.type == "task" && (
+              <div>
+                {task.checklist.map((element) => {
+                  return (
+                    <div key={element.id}>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        id={element.name}
+                        name="scales"
+                        onClick={() => handleCheckboxClick(element.id)}
+                      />
+                      <label htmlFor={element.name}>{element.name}</label>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          <div className={classes.buttonContainer}>
+            <button className={classes.button}>O</button>
+            <button className={classes.button} onClick={handleWrapButton}>
               <img src={wrap} alt="wrap button" />
             </button>
           </div>
         </div>
-      )} */}
-
-      <div
-        draggable
-        className={classes.activityContainer}
-        onDragStart={(event) => handleDragStart(event, task)}
-      >
-        <div>
-          <p>{task.title}</p>
-          {task.type == "task" && <progress max={100} value={70} />}
-          {task.type == "task" && <div>{task.checklist}</div>}
-        </div>
-        <div className={classes.buttonContainer}>
-          <button className={classes.button}>O</button>
-          <button className={classes.button}>
-            <img src={wrap} alt="wrap button" />
-          </button>
-        </div>
-      </div>
+      )}
     </>
   );
 }
