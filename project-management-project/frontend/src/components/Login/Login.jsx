@@ -1,12 +1,19 @@
-import classes from "./Login.module.css";
 
-import Input from "../Input/Input";
-import { useInput } from "../../hooks/useInput";
 import {
   hasMinLength,
   isEmail,
   isNotEmpty,
 } from "../../util/validationFunctions";
+
+import Input from "../Input/Input";
+
+import { useInput } from "../../hooks/useInput";
+
+import classes from "./Login.module.css";
+
+import screen from "../../assets/login-screen2.jpg";
+
+
 
 export default function Login() {
   const {
@@ -29,6 +36,8 @@ export default function Login() {
   }
 
   return (
+    <>
+    <div className={classes.imgContainer}></div>
     <form onSubmit={handleSubmit} className={classes.formContainer}>
       <h2 className={classes.h2}>Zaloguj się</h2>
       <div className={classes.inputsContainer}>
@@ -41,9 +50,10 @@ export default function Login() {
           onChange={handleEmailChange}
           value={emailValue}
           error={emailHasError && "Wprowadź poprawny adres email"}
+          placeholder="Wprowadź swój adres email"
         />
         <Input
-          label="Password"
+          label="Hasło"
           id="password"
           type="password"
           name="password"
@@ -51,12 +61,20 @@ export default function Login() {
           onChange={handlePasswordChange}
           value={passwordValue}
           error={passwordHasError && "Wprowadź poprawne hasło"}
+          placeholder="Wprowadź swoje hasło"
         />
-        <div>
-          <button className={classes.formButton}>Reset</button>
-          <button className={classes.formButton}>Zaloguj</button>
+        
+        
+        <div className={classes.buttonsContainer}>
+          <button className={classes.loginButton}>Zaloguj się</button>
+          
+        </div>
+        <div className={classes.buttonWithText}>
+          <span className={classes.textBesideButton}>Nie masz konta?</span>
+          <button className={classes.registerButton}>Zarejestruj się!</button>
         </div>
       </div>
     </form>
+    </>
   );
 }

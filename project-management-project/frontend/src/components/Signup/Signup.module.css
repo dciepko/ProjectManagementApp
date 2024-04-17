@@ -39,6 +39,7 @@
   border-radius: 15px;
   background-color: #4f40ce;
   color: white;
+  border: none;
 }
 
 .registerButton:hover {
