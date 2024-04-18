@@ -25,6 +25,13 @@ export default function Activity({ id, task, handleDragStart }) {
     }
   }
 
+  function handleCheckboxChange() {
+    const checkedCount = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    ).length;
+    setProgress(checkedCount);
+  }
+
   return (
     <>
       {/* <DropIndicator table={id} beforeId={task.id} /> */}
@@ -75,6 +82,7 @@ export default function Activity({ id, task, handleDragStart }) {
                         type="checkbox"
                         id={element.name}
                         name="subtasks"
+                        onChange={handleCheckboxChange}
                       />
                       <label htmlFor={element.name}>{element.name}</label>
                     </div>
@@ -96,3 +104,5 @@ export default function Activity({ id, task, handleDragStart }) {
     </>
   );
 }
+
+//chyba najlepiej bedzie zrobic z elementu osobny komponent i zarzadzac jego stanem status
