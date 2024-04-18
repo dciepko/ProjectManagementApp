@@ -1,7 +1,8 @@
 import classes from "./Activity.module.css";
 
 import lupa from "../../assets/find-icon.svg";
-import wrap from "../../assets/wrap-down-button.png";
+import wrapDown from "../../assets/wrap-down-button.png";
+import wrapUp from "../../assets/wrap-up-button.png";
 
 import DropIndicator from "../DropIndicator/DropIndicator";
 import { useRef, useState } from "react";
@@ -54,7 +55,7 @@ export default function Activity({ id, task, handleDragStart }) {
             </button>
             {task.type === "task" && (
               <button className={classes.button} onClick={handleWrapButton}>
-                <img src={wrap} alt="wrap button" />
+                <img src={wrapDown} alt="wrap button" />
               </button>
             )}
           </div>
@@ -76,15 +77,19 @@ export default function Activity({ id, task, handleDragStart }) {
               <div>
                 {task.checklist.map((element) => {
                   return (
-                    <div key={element.id}>
+                    <div
+                      className={classes.singleInputContainer}
+                      key={element.id}
+                    >
                       {" "}
                       <input
+                        className={classes.checkbox}
                         type="checkbox"
-                        id={element.name}
+                        id={element.id}
                         name="subtasks"
                         onChange={handleCheckboxChange}
                       />
-                      <label htmlFor={element.name}>{element.name}</label>
+                      <label htmlFor={element.id}>{element.name}</label>
                     </div>
                   );
                 })}
@@ -96,7 +101,7 @@ export default function Activity({ id, task, handleDragStart }) {
               O
             </button>
             <button className={classes.button} onClick={handleWrapButton}>
-              <img src={wrap} alt="wrap button" />
+              <img src={wrapUp} alt="wrap button" />
             </button>
           </div>
         </div>

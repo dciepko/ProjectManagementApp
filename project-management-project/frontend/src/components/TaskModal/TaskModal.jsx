@@ -23,19 +23,28 @@ const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
     <dialog ref={dialog} className={classes.addingModal}>
       <div className={classes.modalContainer}>
         <h2 className={classes.h2}>{task.title}</h2>
-        <div>...</div>
+        <div className={classes.informationContainer}>...</div>
         <div>
           {checklist &&
             checklist.map((element) => {
               return (
-                <div key={element.id}>
-                  <input type="checkbox" id={element.name} name="subtasks" />
-                  <label htmlFor={element.name}>{element.name}</label>
+                <div key={element.id} className={classes.singleInputContainer}>
+                  <input
+                    className={classes.checkbox}
+                    type="checkbox"
+                    id={element.id}
+                    name="subtasks"
+                  />
+                  <label htmlFor={element.id}>{element.name}</label>
                 </div>
               );
             })}
         </div>
-        <button onClick={handleCloseButton}>Zamknij</button>
+        <div className={classes.buttonContainer}>
+          <button className={classes.closeButton} onClick={handleCloseButton}>
+            Zamknij
+          </button>
+        </div>
       </div>
     </dialog>,
     document.getElementById("modal")

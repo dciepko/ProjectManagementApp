@@ -32,3 +32,12 @@
 .button:hover {
   cursor: pointer;
 }
+
+.singleInputContainer {
+  margin-top: 5px;
+}
+
+.checkbox {
+  margin: 5px;
+  padding: 5px;
+}
