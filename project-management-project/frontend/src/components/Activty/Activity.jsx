@@ -1,6 +1,6 @@
 import classes from "./Activity.module.css";
 
-import lupa from "../../assets/find-icon.svg";
+import info from "../../assets/info-circle-icon.png";
 import wrapDown from "../../assets/wrap-down-button.png";
 import wrapUp from "../../assets/wrap-up-button.png";
 
@@ -51,7 +51,7 @@ export default function Activity({ id, task, handleDragStart }) {
           </div>
           <div className={classes.buttonContainer}>
             <button className={classes.button} onClick={handleOpenModal}>
-              O
+              <img src={info} alt="" />
             </button>
             {task.type === "task" && (
               <button className={classes.button} onClick={handleWrapButton}>
@@ -98,7 +98,7 @@ export default function Activity({ id, task, handleDragStart }) {
           </div>
           <div className={classes.buttonContainer}>
             <button className={classes.button} onClick={handleOpenModal}>
-              O
+              <img src={info} alt="" />
             </button>
             <button className={classes.button} onClick={handleWrapButton}>
               <img src={wrapUp} alt="wrap button" />
