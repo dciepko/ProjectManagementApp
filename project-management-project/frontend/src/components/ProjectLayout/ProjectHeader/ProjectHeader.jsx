@@ -5,7 +5,11 @@ import group from "../../../assets/group-icon.png";
 import plus from "../../../assets/plus-icon.png";
 import wrap from "../../../assets/wrap-down-button.png";
 
-export default function ProjectHeader({ currentProject }) {
+export default function ProjectHeader({
+  currentProject,
+  selectedOption,
+  onSelectChange,
+}) {
   return (
     <header className={classes.header}>
       <h1 className={classes.h1}>{currentProject.title}</h1>
@@ -13,10 +17,14 @@ export default function ProjectHeader({ currentProject }) {
         <img src={wrap} alt="wrap header" />
       </button>
       <section className={classes.optionButtonsContainer}>
-        <select className={classes.selectButton}>
-          <option value="classic">Tablica</option>
-          <option value="wide">Podłużny</option>
-          <option value="table">Tabela</option>
+        <select
+          value={selectedOption}
+          onChange={onSelectChange}
+          className={classes.selectButton}
+        >
+          <option value="table">Tablica</option>
+          <option value="long">Podłużny</option>
+          <option value="group">Grupowanie</option>
         </select>
         <button className={classes.optionButton}>
           <img src={filters} alt="filter button" />
