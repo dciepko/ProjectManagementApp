@@ -1,7 +1,7 @@
 import classes from "./ProjectSidebar.module.css";
 
 import wrapButton from "../../assets/wrap-right-button.png";
-import AddingProject from "../AddingProject/AddingProject";
+import AddingProject from "../Modals/AddingProject/AddingProject";
 import { useRef, useState } from "react";
 
 export default function ProjectsSidebar({ projectList, handleClick }) {
