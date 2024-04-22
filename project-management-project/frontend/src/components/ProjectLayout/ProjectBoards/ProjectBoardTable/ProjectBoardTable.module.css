@@ -1,0 +1,22 @@
+.tableContainer {
+  display: flex;
+  flex-direction: row;
+  height: 70vh;
+}
+
+.addTableButton {
+  background-color: #4f40ce;
+  width: 20%;
+  margin: 30px;
+  padding: 20px 0;
+  border-radius: 10px;
+  font-size: 5rem;
+  text-align: center;
+  height: 50%;
+  border: none;
+  color: #ebedfa;
+}
+
+.addTableButton:hover {
+  background-color: #4135ac;
+}
