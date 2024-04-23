@@ -5,3 +5,7 @@ INSERT INTO user (userid, user_name, user_surename, user_nickname, user_email, u
 INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES(1, 'meeting1', 'meeting', 1, 1, '21.03.2024', 1, 1, 1);
 INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES(2, 'task1', 'task', 1, 1, '22.03.2024', 2, 2, 2);
 INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES(3, 'milestone1', 'milestone', 1, 1, '23.03.2024', 3, 3, 3);
+
+INSERT INTO attachement (attachementid, attachement_name, attachement_type, attachement_url, date, activityid, userid) VALUES(1, 'zalacznik1', 'link', 'example.com', '21.03.2024', 1, 1);
+INSERT INTO attachement (attachementid, attachement_name, attachement_type, attachement_url, date, activityid, userid) VALUES(1, 'zalacznik2', 'link', 'example.com', '22.03.2024', 2, 2);
+INSERT INTO attachement (attachementid, attachement_name, attachement_type, attachement_url, date, activityid, userid) VALUES(1, 'zalacznik3', 'link', 'example.com', '23.03.2024', 3, 3);
