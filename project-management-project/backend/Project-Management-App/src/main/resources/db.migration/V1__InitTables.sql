@@ -13,3 +13,7 @@ INSERT INTO attachement (attachementid, attachement_name, attachement_type, atta
 INSERT INTO avatar (avatarid, avatar_url, userid) VALUES (1, "exampleurl.com", 1);
 INSERT INTO avatar (avatarid, avatar_url, userid) VALUES (2, "exampleurl.com", 2);
 INSERT INTO avatar (avatarid, avatar_url, userid) VALUES (3, "exampleurl.com", 3);
+
+INSERT INTO checklist (checklistid, is_done) VALUES (1, FALSE);
+INSERT INTO checklist (checklistid, is_done) VALUES (2, FALSE);
+INSERT INTO checklist (checklistid, is_done) VALUES (3, FALSE);
