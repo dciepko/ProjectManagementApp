@@ -25,3 +25,7 @@ INSERT INTO checklist_element (checklist_elementid, element_name, is_done, check
 INSERT INTO comment (commentid, comment, comment_date, activityid, userid) VALUES (1, 'komentarz 1', 21.03.2023, 1);
 INSERT INTO comment (commentid, comment, comment_date, activityid, userid) VALUES (1, 'komentarz 2', 22.03.2023, 2);
 INSERT INTO comment (commentid, comment, comment_date, activityid, userid) VALUES (1, 'komentarz 3', 23.03.2023, 3);
+
+INSERT INTO label (labelid, label_color) VALUES(1, 'green');
+INSERT INTO label (labelid, label_color) VALUES(2, 'blue');
+INSERT INTO label (labelid, label_color) VALUES(3, 'pink');
