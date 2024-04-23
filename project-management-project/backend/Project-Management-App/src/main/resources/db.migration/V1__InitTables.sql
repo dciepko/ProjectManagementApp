@@ -1,0 +1,3 @@
+INSERT INTO User (userID, userName, userSurename, userNickname, userEmail, userPassword, workingHours, isOwner) VALUES (1, 'Marianna', 'Nowakowska', 'Mariankan', 'marianna@example.com', 'password123', '10-18', FALSE);
+INSERT INTO User (userID, userName, userSurename, userNickname, userEmail, userPassword, workingHours, isOwner) VALUES (2, 'Franciszek', 'Adamski', 'Adams', 'adams@example.com', 'password123', '8-16', FALSE);
+INSERT INTO User (userID, userName, userSurename, userNickname, userEmail, userPassword, workingHours, isOwner) VALUES (3, 'Gabriel', 'Wilk', 'Wilkor', 'gwilk@example.com', 'password123', '6-16', FALSE);
