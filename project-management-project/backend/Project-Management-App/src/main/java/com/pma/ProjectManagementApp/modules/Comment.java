@@ -14,7 +14,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentID;
     private String comment;
-    private Date commentDate; //CZY DATE?
+    private Date commentDate;
 
     @ManyToOne
     @JoinColumn(name = "userID")
