@@ -17,3 +17,8 @@ INSERT INTO avatar (avatarid, avatar_url, userid) VALUES (3, "exampleurl.com", 3
 INSERT INTO checklist (checklistid, is_done) VALUES (1, FALSE);
 INSERT INTO checklist (checklistid, is_done) VALUES (2, FALSE);
 INSERT INTO checklist (checklistid, is_done) VALUES (3, FALSE);
+
+INSERT INTO checklist_element (checklist_elementid, element_name, is_done, checklistid) VALUES (1, 'element 1', FALSE, 1);
+INSERT INTO checklist_element (checklist_elementid, element_name, is_done, checklistid) VALUES (2, 'element 2', FALSE, 2);
+INSERT INTO checklist_element (checklist_elementid, element_name, is_done, checklistid) VALUES (3, 'element 3', FALSE, 3);
+
