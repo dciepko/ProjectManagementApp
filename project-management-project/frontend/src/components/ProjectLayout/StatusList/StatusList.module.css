@@ -3,13 +3,48 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   color: white;
-  background-color: red;
-  padding: 20px 0;
-  font-size: 1.5em;
+  background-color: #4F40CE;
+  padding: 20px 10px;
+  font-size: 1.6em;
+  
 }
 
 .activityLine {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: 15px 10px;
+  font-size: 1.3em;
+}
+
+.wrapButton{
+  padding: 0px 113px;
+  background: none;
+  border: none;
+}
+
+.wrapButton:hover {
+  cursor: pointer;
+}
+
+.optionButton {
+  padding: 0px 10px;
+  background: none;
+  border: none;
+}
+
+.optionButton:hover {
+  cursor: pointer;
+}
+
+.avatarImage {
+  display: inline;
+  float: right;
+  border-radius: 10px;
+  margin-right: 255px;
+  border: none;
+}
+
+.avatarImage:hover{
+  cursor: pointer;
 }
