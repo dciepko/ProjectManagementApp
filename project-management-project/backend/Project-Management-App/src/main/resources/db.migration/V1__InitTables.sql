@@ -49,3 +49,7 @@ INSERT INTO status (statusid, status_name) VALUES (3, 'Zakonczone');
 INSERT INTO status_table (tableid, table_color, table_name) VALUES (1, 'yellow', 'table1');
 INSERT INTO status_table (tableid, table_color, table_name) VALUES (2, 'purple', 'table2');
 INSERT INTO status_table (tableid, table_color, table_name) VALUES (3, 'green', 'table3');
+
+INSERT INTO task (taskid, activityid, checklistid) VALUES (1, 1, 1);
+INSERT INTO task (taskid, activityid, checklistid) VALUES (1, 2, 2);
+INSERT INTO task (taskid, activityid, checklistid) VALUES (1, 3, 3);
