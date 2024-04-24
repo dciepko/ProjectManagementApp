@@ -57,3 +57,7 @@ INSERT INTO task (taskid, activityid, checklistid) VALUES (1, 3, 3);
 INSERT INTO team (teamid, team_name) VALUES (1, 'zespol programistyczny');
 INSERT INTO team (teamid, team_name) VALUES (2, 'zespol designu');
 INSERT INTO team (teamid, team_name) VALUES (3, 'zespol managerski');
+
+INSERT INTO activity_project (activityid, projectid) VALUES (1, 1);
+INSERT INTO activity_project (activityid, projectid) VALUES (2, 2);
+INSERT INTO activity_project (activityid, projectid) VALUES (3, 3);
