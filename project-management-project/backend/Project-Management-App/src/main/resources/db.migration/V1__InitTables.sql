@@ -41,3 +41,7 @@ INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(3, '23.03.20
 INSERT INTO project (projectid, end_date, ownerid, project_description, project_name, start_date, statusid, tableid, teamid) VALUES(1, '21.03.2024', 1, 'description 1', 'Projekt1', '20.02.2024', 1, 1, 1);
 INSERT INTO project (projectid, end_date, ownerid, project_description, project_name, start_date, statusid, tableid, teamid) VALUES(2, '22.03.2024', 1, 'description 2', 'Projekt2', '21.02.2024', 2, 2, 2);
 INSERT INTO project (projectid, end_date, ownerid, project_description, project_name, start_date, statusid, tableid, teamid) VALUES(3, '23.03.2024', 1, 'description 3', 'Projekt3', '22.02.2024', 3, 3, 3);
+
+INSERT INTO status (statusid, status_name) VALUES (1, 'Do zrobienia');
+INSERT INTO status (statusid, status_name) VALUES (2, 'W trakcie');
+INSERT INTO status (statusid, status_name) VALUES (3, 'Zakonczone');
