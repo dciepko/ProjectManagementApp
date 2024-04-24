@@ -61,3 +61,7 @@ INSERT INTO team (teamid, team_name) VALUES (3, 'zespol managerski');
 INSERT INTO activity_project (activityid, projectid) VALUES (1, 1);
 INSERT INTO activity_project (activityid, projectid) VALUES (2, 2);
 INSERT INTO activity_project (activityid, projectid) VALUES (3, 3);
+
+INSERT INTO user_activity (userid, activityid) VALUES (1, 1);
+INSERT INTO user_activity (userid, activityid) VALUES (2, 2);
+INSERT INTO user_activity (userid, activityid) VALUES (3, 3);
