@@ -11,7 +11,10 @@ export default function ProjectBoardGroup() {
       </button>
       <button
         className={classes.groupButton}
-        style={{ backgroundColor: "#44BA26" }}
+        style={{
+          backgroundColor: "#44BA26",
+          ":hover": { backgroundColor: "#229804" },
+        }}
       >
         Na ten tydzień
       </button>

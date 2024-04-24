@@ -12,3 +12,8 @@
   border-radius: 15px;
   color: white;
 }
+
+.groupButton:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
