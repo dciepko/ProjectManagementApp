@@ -33,3 +33,7 @@ INSERT INTO label (labelid, label_color) VALUES(3, 'pink');
 INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (1, 20, 1);
 INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (2, 20, 2);
 INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (3, 20, 3);
+
+INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(1, '21.03.2024', 1);
+INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(2, '22.03.2024', 2);
+INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(3, '23.03.2024', 3);
