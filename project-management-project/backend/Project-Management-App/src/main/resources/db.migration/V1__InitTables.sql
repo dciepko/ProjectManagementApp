@@ -65,3 +65,7 @@ INSERT INTO activity_project (activityid, projectid) VALUES (3, 3);
 INSERT INTO user_activity (userid, activityid) VALUES (1, 1);
 INSERT INTO user_activity (userid, activityid) VALUES (2, 2);
 INSERT INTO user_activity (userid, activityid) VALUES (3, 3);
+
+INSERT INTO user_project (userid, projectid) VALUES (1, 1);
+INSERT INTO user_project (userid, projectid) VALUES (2, 2);
+INSERT INTO user_project (userid, projectid) VALUES (3, 3);
