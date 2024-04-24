@@ -53,3 +53,7 @@ INSERT INTO status_table (tableid, table_color, table_name) VALUES (3, 'green', 
 INSERT INTO task (taskid, activityid, checklistid) VALUES (1, 1, 1);
 INSERT INTO task (taskid, activityid, checklistid) VALUES (1, 2, 2);
 INSERT INTO task (taskid, activityid, checklistid) VALUES (1, 3, 3);
+
+INSERT INTO team (teamid, team_name) VALUES (1, 'zespol programistyczny');
+INSERT INTO team (teamid, team_name) VALUES (2, 'zespol designu');
+INSERT INTO team (teamid, team_name) VALUES (3, 'zespol managerski');
