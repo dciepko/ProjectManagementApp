@@ -1,5 +1,5 @@
 INSERT INTO user (userid, user_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner) VALUES (1, 'Marianna', 'Nowakowska', 'Mariankan', 'marianna@example.com', 'password123', '10-18', FALSE);
-INSERT INTO user (userid, user_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner) VALUES (2, 'Franciszek', 'Adamski', 'Adams', 'adams@example.com', 'password123', '8-16', FALSE);
+INSERT INTO user (userid, user_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner) VALUES (2, 'Franciszek', 'Adamski', 'Adams', 'adams@example.com', 'password123', '8-16', TRUE);
 INSERT INTO user (userid, user_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner) VALUES (3, 'Gabriel', 'Wilk', 'Wilkor', 'gwilk@example.com', 'password123', '6-16', FALSE);
 
 INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES (1, 'meeting1', 'meeting', 1, 1, '21.03.2024', 1, 1, 1);
@@ -37,3 +37,7 @@ INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (3, 20, 3);
 INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(1, '21.03.2024', 1);
 INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(2, '22.03.2024', 2);
 INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(3, '23.03.2024', 3);
+
+INSERT INTO project (projectid, end_date, ownerid, project_description, project_name, start_date, statusid, tableid, teamid) VALUES(1, '21.03.2024', 1, 'description 1', 'Projekt1', '20.02.2024', 1, 1, 1);
+INSERT INTO project (projectid, end_date, ownerid, project_description, project_name, start_date, statusid, tableid, teamid) VALUES(2, '22.03.2024', 1, 'description 2', 'Projekt2', '21.02.2024', 2, 2, 2);
+INSERT INTO project (projectid, end_date, ownerid, project_description, project_name, start_date, statusid, tableid, teamid) VALUES(3, '23.03.2024', 1, 'description 3', 'Projekt3', '22.02.2024', 3, 3, 3);
