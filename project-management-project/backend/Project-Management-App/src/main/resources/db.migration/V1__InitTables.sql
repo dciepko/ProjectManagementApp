@@ -45,3 +45,7 @@ INSERT INTO project (projectid, end_date, ownerid, project_description, project_
 INSERT INTO status (statusid, status_name) VALUES (1, 'Do zrobienia');
 INSERT INTO status (statusid, status_name) VALUES (2, 'W trakcie');
 INSERT INTO status (statusid, status_name) VALUES (3, 'Zakonczone');
+
+INSERT INTO status_table (tableid, table_color, table_name) VALUES (1, 'yellow', 'table1');
+INSERT INTO status_table (tableid, table_color, table_name) VALUES (2, 'purple', 'table2');
+INSERT INTO status_table (tableid, table_color, table_name) VALUES (3, 'green', 'table3');
