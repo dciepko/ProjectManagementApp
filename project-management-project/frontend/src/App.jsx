@@ -29,9 +29,12 @@ function App() {
         setError({
           message: error.message || "Nie udało się pobrać użytkowników",
         });
+        setIsFetching(false);
       }
     }
-  });
+    fetchUsers();
+    console.log(users);
+  }, []);
 
   function handleProjectChoose(projectId) {
     setSelectedProject(currentProjects[projectId]);
@@ -46,6 +49,7 @@ function App() {
           handleClick={handleProjectChoose}
         />
         {/* <SelectedProject currentProject={selectedProject} /> */}
+        {users}
       </section>
     </div>
   );
