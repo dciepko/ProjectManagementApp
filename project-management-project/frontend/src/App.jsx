@@ -50,10 +50,10 @@ function App() {
           projectList={currentProjects}
           handleClick={handleProjectChoose}
         />
-        {/* <SelectedProject currentProject={selectedProject} /> */}
-        {users.map((user) => {
+        <SelectedProject currentProject={selectedProject} />
+        {/* {users.map((user) => {
           return <h1>{user.userName}</h1>;
-        })}
+        })} */}
       </section>
     </div>
   );

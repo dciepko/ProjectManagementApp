@@ -2,11 +2,10 @@ import {
   hasMinLength,
   isNotEmpty,
   isEmail,
-} from "../../../util/validationFunctions";
+} from "../../../util/validationFunctions.js";
 import Input from "../Input/Input";
 
-import { useInput } from "../../../hooks/useInput";
-import screen from "../../assets/login-screen2.jpg";
+import { useInput } from "../../../hooks/useInput.js";
 import classes from "./Signup.module.css";
 
 export default function Signup() {
