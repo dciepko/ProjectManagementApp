@@ -22,6 +22,8 @@ function App() {
 
       try {
         const users = await getUsers();
+        console.log("pobiera");
+        console.log(users);
 
         setUsers(users);
         setIsFetching(false);
@@ -30,10 +32,10 @@ function App() {
           message: error.message || "Nie udało się pobrać użytkowników",
         });
         setIsFetching(false);
+        console.log("nie udalo sie");
       }
     }
     fetchUsers();
-    console.log(users);
   }, []);
 
   function handleProjectChoose(projectId) {
@@ -49,7 +51,9 @@ function App() {
           handleClick={handleProjectChoose}
         />
         {/* <SelectedProject currentProject={selectedProject} /> */}
-        {users}
+        {users.map((user) => {
+          return <h1>{user.userName}</h1>;
+        })}
       </section>
     </div>
   );

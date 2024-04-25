@@ -1,5 +1,6 @@
 package com.pma.ProjectManagementApp.modules;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,24 +22,30 @@ public class User {
     private Boolean isOwner;
 
     @OneToMany(mappedBy = "userA")
+    @JsonIgnore
     private List<Avatar> avatars;
     @OneToMany(mappedBy = "userCom")
+    @JsonIgnore
     private List<Comment> comments;
     @OneToMany(mappedBy = "userAtt")
+    @JsonIgnore
     private List<Attachement> attachements;
 
     @ManyToMany
     @JoinTable(name = "user_project", joinColumns = {@JoinColumn(name = "userID")},
             inverseJoinColumns ={@JoinColumn(name = "projectID")})
+    @JsonIgnore
     private List<Project> projectsU;
 
     @ManyToMany
     @JoinTable(name = "user_activity", joinColumns = {@JoinColumn(name = "userID")},
             inverseJoinColumns ={@JoinColumn(name = "activityID")})
+    @JsonIgnore
     private List<Activity> activitiesUser;
 
     @ManyToMany
     @JoinTable(name = "user_team", joinColumns = {@JoinColumn(name = "userID")},
             inverseJoinColumns ={@JoinColumn(name = "teamID")})
+    @JsonIgnore
     private List<Team> teams;
 }
