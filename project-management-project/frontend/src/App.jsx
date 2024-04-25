@@ -1,5 +1,5 @@
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
+import Login from "./components/Logins/Login/Login";
+import Signup from "./components/Logins/Signup/Signup.jsx";
 
 import { useEffect, useState } from "react";
 import HeadMenu from "./components/HeadMenu/HeadMenu.jsx";
