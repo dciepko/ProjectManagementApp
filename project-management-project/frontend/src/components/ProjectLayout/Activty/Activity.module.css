@@ -1,0 +1,43 @@
+.activityContainer {
+  background-color: #ebedfa;
+  font-size: 0.8em;
+  margin: 8px 0;
+  padding: 15px 5px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 15px;
+  cursor: grab;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.activityContainer:hover {
+  background-color: lightgray;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  margin: 5px;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.singleInputContainer {
+  margin-top: 5px;
+}
+
+.checkbox {
+  margin: 5px;
+  padding: 5px;
+}

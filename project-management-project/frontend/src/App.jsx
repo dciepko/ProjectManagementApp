@@ -1,11 +1,31 @@
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 
+import { useState } from "react";
+import HeadMenu from "./components/HeadMenu/HeadMenu.jsx";
+import ProjectsSidebar from "./components/ProjectSidebar/ProjectsSidebar.jsx";
+import { PROJECTS } from "./projects.js";
+import SelectedProject from "./components/ProjectLayout/SelectedProject/SelectedProject.jsx";
+
 function App() {
+  const [currentProjects, setCurrentProjects] = useState(PROJECTS);
+  const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
+
+  function handleProjectChoose(projectId) {
+    setSelectedProject(currentProjects[projectId]);
+  }
+
   return (
-    <main>
-      <Login />
-    </main>
+    <div id="app">
+      <HeadMenu />
+      <section id="workspace">
+        <ProjectsSidebar
+          projectList={currentProjects}
+          handleClick={handleProjectChoose}
+        />
+        <SelectedProject currentProject={selectedProject} />
+      </section>
+    </div>
   );
 }
 

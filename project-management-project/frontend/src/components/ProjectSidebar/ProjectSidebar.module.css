@@ -1,0 +1,60 @@
+/*
+  orange-button: #FF910A;
+*/
+
+.aside {
+  height: 100%;
+  width: 12%;
+  background-color: #bec9ff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.asideHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.h2 {
+  margin: 15px 0;
+  font-size: 30px;
+  width: 90%;
+  font-weight: 500;
+}
+
+.wrapButton {
+  margin-right: auto;
+  padding: 2px;
+  background: none;
+  border: none;
+  float: right;
+}
+
+.wrapButton:hover {
+  cursor: pointer;
+}
+
+.ul {
+  height: 30%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button {
+  margin: 10px 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #ff910a;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+}
+
+.button:hover {
+  background-color: #cc7408;
+  cursor: pointer;
+}
