@@ -8,17 +8,20 @@ import { PROJECTS } from "./projects.js";
 import SelectedProject from "./components/ProjectLayout/SelectedProject/SelectedProject.jsx";
 import { fetchUsers } from "./util/http.js";
 import { useFetch } from "./hooks/useFetch.js";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchOneUser } from "./store/user-slice.js";
 
 function App() {
   const [currentProjects, setCurrentProjects] = useState(PROJECTS);
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
 
-  const {
-    isFetching,
-    error,
-    fetchedData: fetchedUsers,
-    setFetchedData: setFetchedUsers,
-  } = useFetch(fetchUsers, []);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(fetchOneUser());
+  }, []);
 
   function handleProjectChoose(projectId) {
     setSelectedProject(currentProjects[projectId]);
@@ -33,9 +36,7 @@ function App() {
           handleClick={handleProjectChoose}
         />
         {/* <SelectedProject currentProject={selectedProject} /> */}
-        {fetchedUsers.map((user) => {
-          return <h1>{user.userName}</h1>;
-        })}
+        {user.name}
       </section>
     </div>
   );
