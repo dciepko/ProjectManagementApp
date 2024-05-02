@@ -6,22 +6,34 @@ import HeadMenu from "./components/HeadMenu/HeadMenu.jsx";
 import ProjectsSidebar from "./components/ProjectSidebar/ProjectsSidebar.jsx";
 import { PROJECTS } from "./projects.js";
 import SelectedProject from "./components/ProjectLayout/SelectedProject/SelectedProject.jsx";
-import { fetchUsers } from "./util/http.js";
+import { fetchProjects, fetchUsers } from "./util/http.js";
 import { useFetch } from "./hooks/useFetch.js";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchOneUser } from "./store/user-slice.js";
+import { fetchProjectsAction } from "./store/projects-slice.js";
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const projects = useSelector((state) => state.projects.projects);
+
   const [currentProjects, setCurrentProjects] = useState(PROJECTS);
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
 
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  // useEffect(() => {
+  //   dispatch(fetchOneUser());
+  // }, []);
 
-  useEffect(() => {
-    dispatch(fetchOneUser());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchProjectsAction());
+  //   console.log(projects);
+  // }, []);
+
+  // useEffect(() => {
+  //   setCurrentProjects(projects);
+  //   setSelectedProject(projects[0]);
+  // }, [projects]);
 
   function handleProjectChoose(projectId) {
     setSelectedProject(currentProjects[projectId]);
@@ -35,8 +47,8 @@ function App() {
           projectList={currentProjects}
           handleClick={handleProjectChoose}
         />
-        {/* <SelectedProject currentProject={selectedProject} /> */}
-        {user.name}
+        <SelectedProject currentProject={selectedProject} />
+        {/* {user.name} */}
       </section>
     </div>
   );

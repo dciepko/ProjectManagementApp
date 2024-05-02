@@ -12,7 +12,7 @@ export default function ProjectHeader({
 }) {
   return (
     <header className={classes.header}>
-      <h1 className={classes.h1}>{currentProject.title}</h1>
+      <h1 className={classes.h1}>{currentProject.projectName}</h1>
       <button className={classes.unwrapButton}>
         <img src={wrap} alt="wrap header" />
       </button>

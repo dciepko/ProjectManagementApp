@@ -1,5 +1,6 @@
 package com.pma.ProjectManagementApp.modules;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class Checklist {
     @OneToMany(mappedBy = "checklist")
     private List<ChecklistElement> checklistElements;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "checklist")
     private Task task;
 }

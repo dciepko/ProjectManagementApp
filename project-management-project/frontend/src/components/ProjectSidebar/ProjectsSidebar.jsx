@@ -32,7 +32,7 @@ export default function ProjectsSidebar({ projectList, handleClick }) {
                     handleClick(project.id);
                   }}
                 >
-                  {project.title}
+                  {project.projectName}
                 </button>
               </li>
             );

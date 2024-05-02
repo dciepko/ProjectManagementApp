@@ -14,9 +14,9 @@
  INSERT INTO status_table (tableid, table_color, table_name) VALUES (2, 'purple', 'table2');
  INSERT INTO status_table (tableid, table_color, table_name) VALUES (3, 'green', 'table3');
 
- INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES (1, 'meeting1', 'meeting', 1, 1, '2024-03-21', 1, 1, 1);
- INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES (2, 'task1', 'task', 1, 1, '2024-03-21', 2, 2, 2);
- INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES (3, 'milestone1', 'milestone', 1, 1, '2024-03-21', 3, 3, 3);
+ INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES (1, 'task1', 'meeting', 1, 1, '2024-03-21', 1, 1, 1);
+ INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES (2, 'task2', 'task', 1, 1, '2024-03-21', 2, 2, 2);
+ INSERT INTO activity (activityid, activity_description, activity_name, activity_priority, activity_type, due_date, statusid, labelid, tableid) VALUES (3, 'task3', 'milestone', 1, 1, '2024-03-21', 3, 3, 3);
 
  INSERT INTO attachement (attachementid, attachement_name, attachement_type, attachement_url, date, activityid, userid) VALUES (1, 'zalacznik1', 'link', 'example.com', '2024-03-21', 1, 1);
  INSERT INTO attachement (attachementid, attachement_name, attachement_type, attachement_url, date, activityid, userid) VALUES (2, 'zalacznik2', 'link', 'example.com', '2024-03-21', 2, 2);
@@ -38,13 +38,13 @@
  INSERT INTO comment (commentid, comment, comment_date, activityid, userid) VALUES (2, 'komentarz 2', '2024-03-21', 2, 1);
  INSERT INTO comment (commentid, comment, comment_date, activityid, userid) VALUES (3, 'komentarz 3', '2024-03-21', 3, 1);
 
- INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (1, 20, 1);
- INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (2, 20, 2);
- INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (3, 20, 3);
-
- INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(1, '2024-03-21', 1);
- INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(2, '2024-03-21', 2);
- INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(3, '2024-03-21', 3);
+--  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (1, 20, 1);
+--  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (2, 20, 2);
+--  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (3, 20, 3);
+--
+--  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(1, '2024-03-21', 1);
+--  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(2, '2024-03-21', 2);
+--  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(3, '2024-03-21', 3);
 
  INSERT INTO team (teamid, team_name) VALUES (1, 'zespol programistyczny');
  INSERT INTO team (teamid, team_name) VALUES (2, 'zespol designu');

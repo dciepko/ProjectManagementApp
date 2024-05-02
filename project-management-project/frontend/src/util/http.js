@@ -8,3 +8,14 @@ export async function fetchUsers() {
 
   return resData;
 }
+
+export async function fetchProjects() {
+  const response = await fetch("http://localhost:8080/projects");
+  const resData = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Nie udało się załadować projektów");
+  }
+
+  return resData;
+}
