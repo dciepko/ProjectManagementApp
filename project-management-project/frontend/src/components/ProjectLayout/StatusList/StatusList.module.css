@@ -3,22 +3,21 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   color: white;
-  background-color: #4F40CE;
-  padding: 20px 10px;
-  font-size: 1.6em;
-  
+  background-color: #4f40ce;
+  padding: 2rem 1rem;
+  font-size: 2rem;
 }
 
 .activityLine {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding: 15px 10px;
-  font-size: 1.3em;
+  padding: 1.5rem 1rem;
+  font-size: 1.7rem;
 }
 
-.wrapButton{
-  padding: 0px 113px;
+.wrapButton {
+  padding: 0px 11.3rem;
   background: none;
   border: none;
 }
@@ -28,7 +27,7 @@
 }
 
 .optionButton {
-  padding: 0px 10px;
+  padding: 0px 1rem;
   background: none;
   border: none;
 }
@@ -41,10 +40,10 @@
   display: inline;
   float: right;
   border-radius: 10px;
-  margin-right: 255px;
+  margin-right: 25.5rem;
   border: none;
 }
 
-.avatarImage:hover{
+.avatarImage:hover {
   cursor: pointer;
 }

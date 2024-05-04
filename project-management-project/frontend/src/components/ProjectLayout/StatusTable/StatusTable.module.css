@@ -1,10 +1,10 @@
 .section {
   background-color: #4f40ce;
   color: #ebedfa;
-  font-size: 24px;
+  font-size: 2.4rem;
   width: 20%;
-  margin: 30px;
-  padding: 30px 15px 80px 15px;
+  margin: 3rem;
+  padding: 3rem 1.5rem 8rem 1.5rem;
   border-radius: 15px;
   height: 80%;
 }
@@ -13,10 +13,10 @@
   background-color: #4135ac;
   color: #ebedfa;
   height: auto;
-  font-size: 24px;
+  font-size: 2.4rem;
   width: 20%;
-  margin: 30px;
-  padding: 30px 15px 80px 15px;
+  margin: 3rem;
+  padding: 3rem 1.5rem 8rem 1.5rem;
   border-radius: 15px;
 }
 
@@ -26,12 +26,12 @@
 
 .addTaskButton {
   background-color: #ebedfa;
-  margin: 8px 0;
-  padding: 15px 5px;
+  margin: 0.8rem 0;
+  padding: 1.5rem 0.5rem;
   width: 100%;
   text-align: center;
   border: none;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   font-size: 1.8rem;
 }
 

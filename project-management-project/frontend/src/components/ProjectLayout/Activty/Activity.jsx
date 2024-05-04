@@ -43,10 +43,14 @@ export default function Activity({ id, task, handleDragStart }) {
           className={classes.activityContainer}
           onDragStart={(event) => handleDragStart(event, task)}
         >
-          <div>
+          <div className={classes.titleProgress}>
             <p>{task.title}</p>
             {task.type == "task" && (
-              <progress max={task.checklist.length} value={progress} />
+              <progress
+                max={task.checklist.length}
+                value={progress}
+                className={classes.progressBar}
+              />
             )}
           </div>
           <div className={classes.buttonContainer}>
@@ -68,10 +72,14 @@ export default function Activity({ id, task, handleDragStart }) {
           className={classes.activityContainer}
           onDragStart={(event) => handleDragStart(event, task)}
         >
-          <div>
+          <div className={classes.titleProgress}>
             <p>{task.title}</p>
             {task.type == "task" && (
-              <progress max={task.checklist.length} value={progress} />
+              <progress
+                max={task.checklist.length}
+                value={progress}
+                className={classes.progressBar}
+              />
             )}
             {task.type == "task" && (
               <div>

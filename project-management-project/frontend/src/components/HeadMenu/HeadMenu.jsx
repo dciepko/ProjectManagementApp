@@ -11,17 +11,25 @@ export default function HeadMenu() {
       </div>
       <menu className={classes.menu}>
         <ul className={classes.ul}>
-          <li>
-            <button className={classes.button}>Twoja praca</button>
+          <li className={classes.li}>
+            <a href="#" className={classes.button}>
+              Twoja praca
+            </a>
           </li>
-          <li>
-            <button className={classes.button}>Projekty</button>
+          <li className={classes.li}>
+            <a href="#" className={classes.button}>
+              Projekty
+            </a>
           </li>
-          <li>
-            <button className={classes.button}>Zespoły</button>
+          <li className={classes.li}>
+            <a href="#" className={classes.button}>
+              Zespoły
+            </a>
           </li>
-          <li>
-            <button className={classes.button}>Utwórz</button>
+          <li className={classes.li}>
+            <a href="#" className={classes.button}>
+              Utwórz
+            </a>
           </li>
         </ul>
       </menu>
