@@ -1,5 +1,6 @@
 package com.pma.ProjectManagementApp.modules;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,10 +28,12 @@ public class Activity {
 
     @ManyToOne
     @JoinColumn(name = "labelID")
+    @JsonIgnore
     private Label labelA;
 
     @ManyToOne
     @JoinColumn(name = "statusID")
+    @JsonIgnore
     private Status activitiesStatus;
 
     @ManyToMany
@@ -42,11 +45,14 @@ public class Activity {
     private List<Project> projectsA;
 
     @ManyToMany(mappedBy = "activitiesUser")
+    @JsonIgnore
     private List<User> usersActivity;
 
     @OneToMany(mappedBy = "activityC")
+    @JsonIgnore
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "activity")
+    @JsonIgnore
     private List<Attachement> attachements;
 }

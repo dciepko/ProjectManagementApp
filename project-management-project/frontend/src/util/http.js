@@ -19,3 +19,14 @@ export async function fetchProjects() {
 
   return resData;
 }
+
+export async function fetchTasks() {
+  const response = await fetch("http://localhost:8080/tasks");
+  const resData = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Nie udało się załadować tasków");
+  }
+
+  return resData;
+}
