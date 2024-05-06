@@ -1,0 +1,113 @@
+.header {
+  display: flex;
+  background-color: #f0f0f0;
+  height: 10vh;
+  align-items: center;
+}
+
+.logoContainer {
+  width: 11%;
+  display: flex;
+  justify-content: center;
+}
+
+.logoImg {
+  padding: 0.5em;
+}
+
+.menu {
+  width: 35%;
+  height: 100%;
+}
+
+.ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  padding: 15px 20px;
+  font-size: 1.2em;
+  margin: 10px 20px 10px 0;
+  background-color: #4f40ce;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  width: 8vw;
+}
+
+.button:hover {
+  background-color: #4135ac;
+  cursor: pointer;
+}
+
+.main {
+  background-color: beige;
+  width: 100%;
+  height: 90%;
+  position: relative;
+  background: url(../../assets/gridBcg.png);
+  background-color: rgba(146, 146, 146, 0.4);
+}
+
+.middleElement {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  text-align: center;
+}
+
+.h1 {
+  font-size: 4rem;
+  font-weight: 1000;
+}
+
+.h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.joinButton {
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: white;
+  background-color: #ff910a;
+  border-radius: 15px;
+  margin-top: 2rem;
+  display: inline-block;
+}
+
+.stain1 {
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.stain2 {
+  position: absolute;
+  top: 85%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.stain3 {
+  position: absolute;
+  top: 25%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+}
+
+.stain4 {
+  position: absolute;
+  top: 75%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}

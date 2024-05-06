@@ -7,6 +7,7 @@ import ProjectsSidebar from "./components/ProjectSidebar/ProjectsSidebar.jsx";
 import { PROJECTS } from "./projects.js";
 import SelectedProject from "./components/ProjectLayout/SelectedProject/SelectedProject.jsx";
 import { getUsers } from "./util/http.js";
+import Starter from "./components/Starter/Starter.jsx";
 
 function App() {
   const [currentProjects, setCurrentProjects] = useState(PROJECTS);
@@ -44,17 +45,18 @@ function App() {
 
   return (
     <div id="app">
-      <HeadMenu />
+      {/* <HeadMenu />
       <section id="workspace">
         <ProjectsSidebar
           projectList={currentProjects}
           handleClick={handleProjectChoose}
         />
         <SelectedProject currentProject={selectedProject} />
-        {/* {users.map((user) => {
+        {users.map((user) => {
           return <h1>{user.userName}</h1>;
-        })} */}
-      </section>
+        })}
+      </section> */}
+      <Starter />
     </div>
   );
 }
