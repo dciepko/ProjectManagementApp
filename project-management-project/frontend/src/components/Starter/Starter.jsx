@@ -48,7 +48,12 @@ export default function Starter() {
             Dołącz do nas!
           </a>
         </div>
-        <div></div>
+        <div className={classes.videoContainer}>
+          <video className={classes.video} controls>
+            <source src="nazwa_pliku.mp4" type="video/mp4" />
+            Twoja przeglądarka nie obsługuje tagu video.
+          </video>
+        </div>
       </main>
     </>
   );
