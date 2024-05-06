@@ -1,0 +1,60 @@
+/*
+  orange-button: #FF910A;
+*/
+
+.aside {
+  height: 90vh;
+  width: 15%;
+  background-color: #bec9ff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.asideHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.h2 {
+  margin: 1.5rem 0;
+  font-size: 3rem;
+  width: 90%;
+  font-weight: 500;
+}
+
+.wrapButton {
+  margin-right: auto;
+  padding: 0.2rem;
+  background: none;
+  border: none;
+  float: right;
+}
+
+.wrapButton:hover {
+  cursor: pointer;
+}
+
+.ul {
+  height: 30%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  width: 100%;
+  background-color: #ff910a;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.8rem;
+}
+
+.button:hover {
+  background-color: #cc7408;
+  cursor: pointer;
+}

@@ -25,18 +25,25 @@ function App() {
   //   dispatch(fetchOneUser());
   // }, []);
 
-  // useEffect(() => {
-  //   dispatch(fetchProjectsAction());
-  //   console.log(projects);
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchProjectsAction());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   setCurrentProjects(projects);
-  //   setSelectedProject(projects[0]);
-  // }, [projects]);
+  useEffect(() => {
+    if (projects.length > 0) {
+      setCurrentProjects(projects);
+      setSelectedProject(projects[0]);
+    }
+  }, [projects]);
 
   function handleProjectChoose(projectId) {
-    setSelectedProject(currentProjects[projectId]);
+    console.log(projectId);
+    const selectedProject = currentProjects.find(
+      (project) => project.projectID === projectId
+    );
+    if (selectedProject) {
+      setSelectedProject(selectedProject);
+    }
   }
 
   return (

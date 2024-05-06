@@ -1,4 +1,4 @@
-import classes from "./ProjectSidebar.module.css";
+import classes from "./ProjectsSidebar.module.css";
 
 import wrapButton from "../../assets/wrap-right-button.png";
 import AddingProject from "../Modals/AddingProject/AddingProject";
@@ -25,11 +25,11 @@ export default function ProjectsSidebar({ projectList, handleClick }) {
         <ul className={classes.ul}>
           {projectList.map((project) => {
             return (
-              <li key={project.id}>
+              <li key={project.projectID}>
                 <button
                   className={classes.button}
                   onClick={() => {
-                    handleClick(project.id);
+                    handleClick(project.projectID);
                   }}
                 >
                   {project.projectName}

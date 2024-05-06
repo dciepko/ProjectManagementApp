@@ -7,7 +7,7 @@ import classes from "./SelectedProject.module.css";
 import { useState } from "react";
 
 export default function SelectedProject({ currentProject }) {
-  const [activities, setActivities] = useState(currentProject.tasks);
+  //const [activities, setActivities] = useState(currentProject.tasks);
   const [selectedLayout, setSelectedLayout] = useState("table");
 
   function activitiesListChange(activities) {
@@ -25,7 +25,7 @@ export default function SelectedProject({ currentProject }) {
         selectedOption={selectedLayout}
         onSelectChange={handleSelectChange}
       />
-      {selectedLayout === "table" && (
+      {/* {selectedLayout === "table" && (
         <ProjectBoardTable
           activities={activities}
           activitiesListChange={activitiesListChange}
@@ -42,9 +42,7 @@ export default function SelectedProject({ currentProject }) {
           activities={activities}
           activitiesListChange={activitiesListChange}
         />
-      )}
+      )} */}
     </div>
   );
 }
-
-//obrzydliwy jest ten reload ale zmienie go jak dodam reduxa
