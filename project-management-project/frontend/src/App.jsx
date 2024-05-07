@@ -6,7 +6,6 @@ import HeadMenu from "./components/HeadMenu/HeadMenu.jsx";
 import ProjectsSidebar from "./components/ProjectSidebar/ProjectsSidebar.jsx";
 import { PROJECTS } from "./projects.js";
 import SelectedProject from "./components/ProjectLayout/SelectedProject/SelectedProject.jsx";
-import { getUsers } from "./util/http.js";
 import Starter from "./components/Starter/Starter.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import { fetchProjects, fetchUsers } from "./util/http.js";
@@ -52,7 +51,8 @@ function App() {
         {selectedProject && (
           <SelectedProject currentProject={selectedProject} />
         )}
-      </section>
+      </section> */}
+      <Starter />
     </div>
   );
 }
