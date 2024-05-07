@@ -8,31 +8,43 @@ export default function HomePage() {
     <>
       <HeadMenu />
       <main className={classes.main}>
-        <nav>
-          <div>
-            <a href="#">Projekty</a>
-            <a href="#">Strona główna</a>
+        <nav className={classes.nav}>
+          <div className={classes.navUp}>
+            <a href="#" className={classes.navUpButton}>
+              Projekty
+            </a>
+            <a href="#" className={classes.navUpButton}>
+              Strona główna
+            </a>
           </div>
-          <div>
-            <a href="#">Twój profil</a>
-            <a href="#">Twoje zespoły</a>
-            <a href="#">Ustawienia</a>
+          <div className={classes.navDown}>
+            <a href="#" className={classes.navDownButton}>
+              Twój profil
+            </a>
+            <a href="#" className={classes.navDownButton}>
+              Twoje zespoły
+            </a>
+            <a href="#" className={classes.navDownButton}>
+              Ustawienia
+            </a>
           </div>
         </nav>
-        <div>
-          <div>
+        <section className={classes.mainSection}>
+          <div className={classes.centralPart}>
             <h1>Twoje najnowsze powiadomienia:</h1>
             <div>
               <ActivityHomeElement />
+              <ActivityHomeElement />
+              <ActivityHomeElement />
             </div>
           </div>
-          <aside>
+          <aside className={classes.aside}>
             <a href="#">Powiadomienia</a>
             <a href="#">Ten tydzień</a>
             <a href="#">W trakcie</a>
             <a href="#">Meetingi</a>
           </aside>
-        </div>
+        </section>
       </main>
     </>
   );
