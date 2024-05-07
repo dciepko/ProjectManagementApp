@@ -3,10 +3,10 @@ import { fetchTasks } from "../util/http";
 
 const activitySlice = createSlice({
   name: "activities",
-  initialState: { activities: [] },
+  initialState: { activities: [], currentObjectActivities: [] },
   reducers: {
     getActivities(state, action) {
-      state.tasks = action.payload;
+      state.activities = action.payload;
     },
   },
 });

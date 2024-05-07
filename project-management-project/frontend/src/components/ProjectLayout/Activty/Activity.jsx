@@ -44,7 +44,7 @@ export default function Activity({ id, task, handleDragStart }) {
           onDragStart={(event) => handleDragStart(event, task)}
         >
           <div className={classes.titleProgress}>
-            <p>{task.title}</p>
+            <p>{task.activityName}</p>
             {task.type == "task" && (
               <progress
                 max={task.checklist.length}
@@ -73,7 +73,7 @@ export default function Activity({ id, task, handleDragStart }) {
           onDragStart={(event) => handleDragStart(event, task)}
         >
           <div className={classes.titleProgress}>
-            <p>{task.title}</p>
+            <p>{task.activityName}</p>
             {task.type == "task" && (
               <progress
                 max={task.checklist.length}

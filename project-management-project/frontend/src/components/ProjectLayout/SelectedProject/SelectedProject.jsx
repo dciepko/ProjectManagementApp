@@ -16,10 +16,9 @@ export default function SelectedProject({ currentProject }) {
 
   const [activities, setActivities] = useState(currentProjectActivities);
   const [selectedLayout, setSelectedLayout] = useState("table");
-  console.log(currentProjectActivities);
 
   useEffect(() => {
-    console.log(currentProject.projectID);
+    console.log("effect fetchujacy");
     dispatch(fetchCurrentProjectTasks(currentProject.projectID));
   }, [dispatch, currentProject]);
 
