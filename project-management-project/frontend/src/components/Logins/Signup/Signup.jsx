@@ -59,7 +59,7 @@ export default function Signup() {
   }
 
   return (
-    <>
+    <div className={classes.container}>
       <div className={classes.imgContainer}></div>
       <form onSubmit={handleSubmit} className={classes.formContainer}>
         <h2 className={classes.h2}>Zarejestruj się</h2>
@@ -136,6 +136,6 @@ export default function Signup() {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 }

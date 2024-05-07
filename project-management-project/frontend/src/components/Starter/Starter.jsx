@@ -5,6 +5,7 @@ import stain1 from "../../assets/stain1.png";
 import stain2 from "../../assets/stain2.png";
 import stain3 from "../../assets/stain3.png";
 import stain4 from "../../assets/stain4.png";
+import { Link } from "react-router-dom";
 
 export default function Starter() {
   return (
@@ -44,9 +45,9 @@ export default function Starter() {
           <h1 className={classes.h1}>Projekty w twoich rękach!</h1>
           <h3 className={classes.h3}>Twoje cele, nasza pasja.</h3>
           <h3 className={classes.h3}>Wspólnie tworzymy przyszłość!</h3>
-          <a href="#" className={classes.joinButton}>
+          <Link to="/login" className={classes.joinButton}>
             Dołącz do nas!
-          </a>
+          </Link>
         </div>
         <div className={classes.videoContainer}>
           <video className={classes.video} controls>

@@ -12,6 +12,7 @@ import { fetchProjects, fetchUsers } from "./util/http.js";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchProjectsAction } from "./store/projects-slice.js";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,12 @@ function App() {
 
   const [currentProjects, setCurrentProjects] = useState(projects);
   const [selectedProject, setSelectedProject] = useState();
+
+  const router = createBrowserRouter([
+    { path: "/", element: <Starter /> },
+    { path: "/login", element: <Login /> },
+    { path: "/register", element: <Signup /> },
+  ]);
 
   useEffect(() => {
     dispatch(fetchProjectsAction());
@@ -52,7 +59,7 @@ function App() {
           <SelectedProject currentProject={selectedProject} />
         )}
       </section> */}
-      <Starter />
+      <RouterProvider router={router} />
     </div>
   );
 }
