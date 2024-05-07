@@ -31,7 +31,7 @@ export default function HomePage() {
         </nav>
         <section className={classes.mainSection}>
           <div className={classes.centralPart}>
-            <h1>Twoje najnowsze powiadomienia:</h1>
+            <h1 className={classes.h1}>Twoje najnowsze powiadomienia:</h1>
             <div>
               <ActivityHomeElement />
               <ActivityHomeElement />
