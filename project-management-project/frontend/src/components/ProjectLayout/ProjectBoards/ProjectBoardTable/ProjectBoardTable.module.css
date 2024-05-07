@@ -1,7 +1,9 @@
 .tableContainer {
   display: flex;
   flex-direction: row;
-  height: 85vh;
+  height: 83%;
+  background: url(../../../../assets/gridBcg.png);
+  background-size: cover;
 }
 
 .addTableButton {

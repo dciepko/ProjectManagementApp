@@ -20,14 +20,5 @@ body {
 }
 
 #workspace {
-  height: 100%;
   display: flex;
-}
-
-main {
-  height: 90vh;
-  width: 100vw;
-  display: flex;
-  justify-content: right;
-  align-items: center;
 }

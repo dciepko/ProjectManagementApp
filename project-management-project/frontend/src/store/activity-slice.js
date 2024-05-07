@@ -12,7 +12,6 @@ const activitySlice = createSlice({
 });
 
 export const fetchCurrentProjectTasks = (projectId) => async (dispatch) => {
-  console.log(projectId);
   const fetchedTasks = await fetchTasks(projectId);
 
   dispatch(getActivities(fetchedTasks));
