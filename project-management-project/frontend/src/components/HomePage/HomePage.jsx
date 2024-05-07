@@ -39,10 +39,18 @@ export default function HomePage() {
             </div>
           </div>
           <aside className={classes.aside}>
-            <a href="#">Powiadomienia</a>
-            <a href="#">Ten tydzień</a>
-            <a href="#">W trakcie</a>
-            <a href="#">Meetingi</a>
+            <a href="#" className={classes.asideButton}>
+              Powiadomienia
+            </a>
+            <a href="#" className={classes.asideButton}>
+              Ten tydzień
+            </a>
+            <a href="#" className={classes.asideButton}>
+              W trakcie
+            </a>
+            <a href="#" className={classes.asideButton}>
+              Meetingi
+            </a>
           </aside>
         </section>
       </main>
