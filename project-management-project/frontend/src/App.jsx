@@ -25,6 +25,8 @@ function App() {
     { path: "/", element: <Starter /> },
     { path: "/login", element: <Login /> },
     { path: "/register", element: <Signup /> },
+    { path: "/home", element: <HomePage /> },
+    { path: "/projects" },
   ]);
 
   useEffect(() => {

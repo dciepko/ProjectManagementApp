@@ -15,10 +15,18 @@
 }
 
 .formContainer {
-  padding: 1.7rem 5rem;
-  border-radius: 0.5rem;
   width: 45vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+}
+
+.form {
+  border-radius: 0.5rem;
+  padding: 1.7rem;
 }
 
 .h2 {
@@ -60,6 +68,7 @@
   color: #ff910a;
   border: none;
   border-radius: 1.5rem;
+  text-decoration: none;
 }
 
 .cancelButton:hover {
