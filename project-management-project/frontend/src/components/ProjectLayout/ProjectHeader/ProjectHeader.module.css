@@ -1,20 +1,21 @@
 .header {
   background-color: #ebedfa;
   width: 100%;
-  padding: 15px 0;
+  height: 17%;
+  padding: 1.5rem 0;
   border-bottom: grey solid 1px;
 }
 
 .h1 {
-  padding-left: 10px;
-  font-size: 36px;
+  padding-left: 1rem;
+  font-size: 3.6rem;
   font-weight: 500;
 }
 
 .unwrapButton {
   float: right;
-  margin-right: 30px;
-  padding: 5px;
+  margin-right: 3rem;
+  padding: 0.5rem;
   border: none;
   background: none;
 }
@@ -24,8 +25,8 @@
 }
 
 .optionButtonsContainer {
-  margin-left: 10px;
-  margin-top: 10px;
+  margin-left: 1rem;
+  margin-top: 1rem;
   width: 15%;
   display: flex;
   justify-content: space-between;
@@ -34,12 +35,12 @@
 .selectButton {
   background-color: #ff910a;
   border-radius: 15px;
-  font-size: 20px;
+  font-size: 2rem;
   border: none;
 }
 
 .optionButton {
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   background: none;
   border: none;
 }

@@ -3,9 +3,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   color: white;
-  background-color: #4F40CE;
-  padding: 20px 0;
-  font-size: 1.5em;
+  background-color: #4f40ce;
+  padding: 2rem 0;
+  font-size: 2rem;
 }
 
 .activityLine {
@@ -13,4 +13,5 @@
   display: grid;
   background-color: red;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  font-size: 2rem;
 }

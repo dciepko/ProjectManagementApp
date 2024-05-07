@@ -3,10 +3,7 @@ package com.pma.ProjectManagementApp.controllers;
 import com.pma.ProjectManagementApp.modules.Activity;
 import com.pma.ProjectManagementApp.services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +20,10 @@ public class ActivityController {
     @DeleteMapping("/activities")
     public void deleteActivity(@RequestParam Integer id){
         service.deleteActivity(id);
+    }
+
+    @GetMapping("/activities/{projectId}")
+    public List<Activity> getTasksByProjectId(@PathVariable Integer projectId) {
+        return service.getActivityById(projectId);
     }
 }

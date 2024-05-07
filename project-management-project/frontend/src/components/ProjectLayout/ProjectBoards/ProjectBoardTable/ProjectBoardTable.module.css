@@ -1,14 +1,16 @@
 .tableContainer {
   display: flex;
   flex-direction: row;
-  height: 70vh;
+  height: 83%;
+  background: url(../../../../assets/gridBcg.png);
+  background-size: cover;
 }
 
 .addTableButton {
   background-color: #4f40ce;
   width: 20%;
-  margin: 30px;
-  padding: 20px 0;
+  margin: 3rem;
+  padding: 2rem 0;
   border-radius: 10px;
   font-size: 5rem;
   text-align: center;
