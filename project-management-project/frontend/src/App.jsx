@@ -8,6 +8,7 @@ import { PROJECTS } from "./projects.js";
 import SelectedProject from "./components/ProjectLayout/SelectedProject/SelectedProject.jsx";
 import { getUsers } from "./util/http.js";
 import Starter from "./components/Starter/Starter.jsx";
+import HomePage from "./components/HomePage/HomePage.jsx";
 
 function App() {
   const [currentProjects, setCurrentProjects] = useState(PROJECTS);
@@ -56,7 +57,8 @@ function App() {
           return <h1>{user.userName}</h1>;
         })}
       </section> */}
-      <Starter />
+      {/* <Starter /> */}
+      <HomePage/>
     </div>
   );
 }
