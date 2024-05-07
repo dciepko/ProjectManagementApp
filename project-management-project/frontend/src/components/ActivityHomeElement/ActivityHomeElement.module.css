@@ -1,0 +1,41 @@
+.container {
+  border: #000 solid 1px;
+  width: 26rem;
+  height: 11rem;
+  background-color: #4f40ce;
+  border-radius: 1rem;
+}
+
+.mainP {
+  display: block;
+  text-align: left;
+  width: 96%;
+  font-size: 1.3rem;
+  padding-top: 0.7rem;
+}
+
+.mainPart {
+  color: #fff;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.namePart {
+  background-color: #d9d9d9;
+  color: #000;
+  border-radius: 1rem;
+  width: 96%;
+  font-size: 1.8rem;
+  padding: 0.3rem;
+}
+
+.descriptionPart {
+  background-color: #d9d9d9;
+  height: 30%;
+  border-radius: 0 0 1rem 1rem;
+  font-weight: 600;
+  padding: 0.2rem;
+}
