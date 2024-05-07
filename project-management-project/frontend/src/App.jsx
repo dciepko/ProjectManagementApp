@@ -7,23 +7,16 @@ import ProjectsSidebar from "./components/ProjectSidebar/ProjectsSidebar.jsx";
 import { PROJECTS } from "./projects.js";
 import SelectedProject from "./components/ProjectLayout/SelectedProject/SelectedProject.jsx";
 import { fetchProjects, fetchUsers } from "./util/http.js";
-import { useFetch } from "./hooks/useFetch.js";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchOneUser } from "./store/user-slice.js";
 import { fetchProjectsAction } from "./store/projects-slice.js";
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
   const projects = useSelector((state) => state.projects.projects);
 
-  const [currentProjects, setCurrentProjects] = useState(PROJECTS);
-  const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
-
-  // useEffect(() => {
-  //   dispatch(fetchOneUser());
-  // }, []);
+  const [currentProjects, setCurrentProjects] = useState(projects);
+  const [selectedProject, setSelectedProject] = useState();
 
   useEffect(() => {
     dispatch(fetchProjectsAction());
@@ -37,7 +30,6 @@ function App() {
   }, [projects]);
 
   function handleProjectChoose(projectId) {
-    console.log(projectId);
     const selectedProject = currentProjects.find(
       (project) => project.projectID === projectId
     );
@@ -54,8 +46,9 @@ function App() {
           projectList={currentProjects}
           handleClick={handleProjectChoose}
         />
-        <SelectedProject currentProject={selectedProject} />
-        {/* {user.name} */}
+        {selectedProject && (
+          <SelectedProject currentProject={selectedProject} />
+        )}
       </section>
     </div>
   );

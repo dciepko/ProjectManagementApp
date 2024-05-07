@@ -2,7 +2,7 @@ import { activities } from "./activities";
 
 export const PROJECTS = [
   {
-    projectID: 0,
+    projectID: 1,
     projectName: "Projekt 1",
     description: "Oto projekt 1",
     tasks: activities,

@@ -4,11 +4,30 @@ import ProjectBoardGroup from "../ProjectBoards/ProjectBoardGroup/ProjectBoardGr
 import ProjectHeader from "../ProjectHeader/ProjectHeader";
 import classes from "./SelectedProject.module.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCurrentProjectTasks } from "../../../store/activity-slice";
 
 export default function SelectedProject({ currentProject }) {
-  const [activities, setActivities] = useState(currentProject.tasks);
+  const dispatch = useDispatch();
+  const currentProjectActivities = useSelector(
+    (state) => state.activities.activities
+  );
+
+  const [activities, setActivities] = useState(currentProjectActivities);
   const [selectedLayout, setSelectedLayout] = useState("table");
+  console.log(currentProjectActivities);
+
+  useEffect(() => {
+    console.log(currentProject.projectID);
+    dispatch(fetchCurrentProjectTasks(currentProject.projectID));
+  }, [dispatch, currentProject]);
+
+  useEffect(() => {
+    if (currentProjectActivities.length > 0) {
+      setActivities(currentProjectActivities);
+    }
+  }, [currentProjectActivities]);
 
   function activitiesListChange(activities) {
     setActivities(activities);

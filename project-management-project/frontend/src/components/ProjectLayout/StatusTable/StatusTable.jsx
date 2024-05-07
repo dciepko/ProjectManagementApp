@@ -1,9 +1,12 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AddingTask from "../../Modals/AddingTask/AddingTask.jsx";
 import classes from "./StatusTable.module.css";
 import Activity from "../Activty/Activity.jsx";
+import { useDispatch } from "react-redux";
+import { fetchCurrentProjectTasks } from "../../../store/activity-slice.js";
 
 export default function TimeTable({ title, id, tasks, onReload }) {
+  const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
 
   const modal = useRef();
@@ -11,8 +14,6 @@ export default function TimeTable({ title, id, tasks, onReload }) {
   const filteredActivities = tasks.filter((task) => {
     return task.table === id;
   });
-
-  //setActivities(filteredActivities);
 
   function handleDragStart(event, activity) {
     event.dataTransfer.setData("actId", activity.id);

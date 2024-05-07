@@ -20,13 +20,14 @@ export async function fetchProjects() {
   return resData;
 }
 
-export async function fetchTasks() {
-  const response = await fetch("http://localhost:8080/tasks");
+export async function fetchTasks(projectId) {
+  console.log(projectId);
+  const response = await fetch(`http://localhost:8080/activities/1`);
   const resData = await response.json();
 
   if (!response.ok) {
     throw new Error("Nie udało się załadować tasków");
   }
-
+  console.log(resData);
   return resData;
 }

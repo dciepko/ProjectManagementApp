@@ -3,7 +3,7 @@ import { fetchProjects } from "../util/http";
 
 const projectsSlice = createSlice({
   name: "projects",
-  initialState: { projects: [] },
+  initialState: { projects: [], currentProject: {} },
   reducers: {
     getProjects(state, action) {
       state.projects = action.payload;
