@@ -1,5 +1,6 @@
 package com.pma.ProjectManagementApp.controllers;
 
+import com.pma.ProjectManagementApp.models.ActivityDto;
 import com.pma.ProjectManagementApp.modules.Activity;
 import com.pma.ProjectManagementApp.services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class ActivityController {
     private ActivityService service;
 
     @GetMapping("/activities")
-    public List<Activity> getActivities(){
+    public List<ActivityDto> getActivities(){
         return service.getActivity();
     }
 
@@ -23,7 +24,7 @@ public class ActivityController {
     }
 
     @GetMapping("/activities/{projectId}")
-    public List<Activity> getTasksByProjectId(@PathVariable Integer projectId) {
+    public List<ActivityDto> getTasksByProjectId(@PathVariable Integer projectId) {
         return service.getActivityById(projectId);
     }
 }
