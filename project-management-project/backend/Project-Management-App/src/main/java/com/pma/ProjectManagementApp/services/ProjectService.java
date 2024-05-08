@@ -1,19 +1,44 @@
 package com.pma.ProjectManagementApp.services;
 
+import com.pma.ProjectManagementApp.models.ProjectDto;
+import com.pma.ProjectManagementApp.modules.Activity;
 import com.pma.ProjectManagementApp.modules.Project;
+import com.pma.ProjectManagementApp.modules.User;
 import com.pma.ProjectManagementApp.repos.ProjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectService {
     @Autowired
     private ProjectRepo projectRepo;
 
-    public List<Project> getProjects(){
-    return projectRepo.findAll();}
+    public List<ProjectDto> getProjects(){
+        List<Project> projects = projectRepo.findAll();
+        return projects.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    private ProjectDto convertToDto(Project project) {
+        ProjectDto dto = new ProjectDto();
+        dto.setProjectID(project.getProjectID());
+        dto.setProjectName(project.getProjectName());
+        dto.setProjectDescription(project.getProjectDescription());
+        dto.setStartDate(project.getStartDate());
+        dto.setEndDate(project.getEndDate());
+        dto.setOwnerID(project.getOwnerID());
+        // Ustawienie ID użytkowników, ID aktywności, ID zespołu, ID statusu oraz ID tabeli
+        dto.setUserIds(project.getUsers().stream().map(User::getUserID).collect(Collectors.toList()));
+        dto.setActivityIds(project.getActivitiesPr().stream().map(Activity::getActivityID).collect(Collectors.toList()));
+        dto.setTeamId(project.getTeam().getTeamID());
+        dto.setStatusId(project.getStatus().getStatusID());
+        dto.setTableId(project.getTable().getTableID());
+        return dto;
+    }
 
     public Project addProject(Project project){
         Project addedProject = projectRepo.save(project);

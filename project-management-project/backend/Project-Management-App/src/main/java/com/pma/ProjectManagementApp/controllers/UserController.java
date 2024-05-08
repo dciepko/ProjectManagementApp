@@ -1,5 +1,6 @@
 package com.pma.ProjectManagementApp.controllers;
 
+import com.pma.ProjectManagementApp.models.UserDto;
 import com.pma.ProjectManagementApp.modules.User;
 import com.pma.ProjectManagementApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class UserController {
     private UserService service;
 
     @GetMapping("/users")
-    public List<User> getUsers() {
+    public List<UserDto> getUsers() {
         return service.getUsers();
     }
 

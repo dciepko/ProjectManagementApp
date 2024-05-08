@@ -1,5 +1,6 @@
 package com.pma.ProjectManagementApp.controllers;
 
+import com.pma.ProjectManagementApp.models.ProjectDto;
 import com.pma.ProjectManagementApp.modules.Project;
 import com.pma.ProjectManagementApp.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class ProjectController {
     private ProjectService service;
 
     @GetMapping("/projects")
-    public List<Project> getProjects(){
+    public List<ProjectDto> getProjects(){
         return service.getProjects();
     }
 
