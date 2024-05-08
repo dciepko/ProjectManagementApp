@@ -46,13 +46,13 @@
  INSERT INTO comment (commentid, comment, comment_date, activityid, userid) VALUES (2, 'Incorrectly constructed method', '2024-03-21', 1, 1);
  INSERT INTO comment (commentid, comment, comment_date, activityid, userid) VALUES (3, 'Great job!', '2024-03-25', 1, 2);
 
- INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (1, 20, 1);
--- INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (2, 20, 2);
--- INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (3, 20, 3);
-
- INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(1, '2024-03-21', 1);
--- INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(2, '2024-03-21', 2);
--- INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(3, '2024-03-21', 3);
+--  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (1, 20, 1);
+--  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (2, 20, 2);
+--  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (3, 20, 3);
+--
+--  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(1, '2024-03-21', 1);
+--  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(2, '2024-03-21', 2);
+--  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(3, '2024-03-21', 3);
 
  INSERT INTO team (teamid, team_name) VALUES (1, 'Programming team');
  INSERT INTO team (teamid, team_name) VALUES (2, 'Design team');
@@ -69,6 +69,12 @@
  INSERT INTO activity_project (activityid, projectid) VALUES (1, 1);
  INSERT INTO activity_project (activityid, projectid) VALUES (2, 2);
  INSERT INTO activity_project (activityid, projectid) VALUES (3, 3);
+ INSERT INTO activity_project (activityid, projectid) VALUES (4, 1);
+ INSERT INTO activity_project (activityid, projectid) VALUES (5, 2);
+ INSERT INTO activity_project (activityid, projectid) VALUES (6, 3);
+ INSERT INTO activity_project (activityid, projectid) VALUES (7, 1);
+ INSERT INTO activity_project (activityid, projectid) VALUES (8, 2);
+ INSERT INTO activity_project (activityid, projectid) VALUES (9, 3);
 
  INSERT INTO user_activity (userid, activityid) VALUES (1, 1);
  INSERT INTO user_activity (userid, activityid) VALUES (2, 2);

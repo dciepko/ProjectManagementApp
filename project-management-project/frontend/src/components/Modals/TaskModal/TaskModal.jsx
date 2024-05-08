@@ -5,8 +5,6 @@ import { createPortal } from "react-dom";
 const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
   const dialog = useRef();
 
-  console.log(checklist);
-
   useImperativeHandle(ref, () => {
     return {
       open: () => {

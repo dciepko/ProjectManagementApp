@@ -11,21 +11,21 @@ export default function ProjectBoardTable({
       <StatusTable
         key={"todo"}
         title={"Do zrobienia"}
-        id={"todo"}
+        id={1}
         tasks={activities}
         onReload={activitiesListChange}
       />
       <StatusTable
         key={"doing"}
         title={"W trakcie"}
-        id={"doing"}
+        id={2}
         tasks={activities}
         onReload={activitiesListChange}
       />
       <StatusTable
         key={"done"}
         title={"Zrobione"}
-        id={"done"}
+        id={3}
         tasks={activities}
         onReload={activitiesListChange}
       />

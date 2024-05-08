@@ -16,6 +16,9 @@ public class ActivityService {
         return activityRepo.findAll();
     }
 
+    public List<Activity> getActivityById(Integer projectId) {return activityRepo.findByProjectsAProjectID(projectId);
+    }
+
     public void deleteActivity(Integer id)
     {
         if(!activityRepo.findById(id).isEmpty()){

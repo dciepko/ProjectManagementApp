@@ -1,12 +1,12 @@
 .activityContainer {
   background-color: #ebedfa;
-  font-size: 0.8em;
-  margin: 8px 0;
-  padding: 15px 5px;
+  font-size: 2rem;
+  margin: 0.8rem 0;
+  padding: 1.5rem 0.5rem;
   width: 100%;
   text-align: left;
   border: none;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   cursor: grab;
   color: black;
   display: flex;
@@ -17,16 +17,27 @@
   background-color: lightgray;
 }
 
+.titleProgress {
+  width: 80%;
+}
+
 .buttonContainer {
   display: flex;
   flex-direction: column;
+  width: 20%;
 }
 
 .button {
-  margin: 5px;
+  margin: 0.5rem;
   background: none;
   border: none;
-  padding: 5px;
+  padding: 0.5rem;
+  width: 80%;
+  height: 80%;
+}
+
+.progressBar {
+  width: 90%;
 }
 
 .button:hover {
@@ -34,10 +45,10 @@
 }
 
 .singleInputContainer {
-  margin-top: 5px;
+  margin-top: 0.5rem;
 }
 
 .checkbox {
-  margin: 5px;
-  padding: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
 }

@@ -6,41 +6,38 @@ import HeadMenu from "./components/HeadMenu/HeadMenu.jsx";
 import ProjectsSidebar from "./components/ProjectSidebar/ProjectsSidebar.jsx";
 import { PROJECTS } from "./projects.js";
 import SelectedProject from "./components/ProjectLayout/SelectedProject/SelectedProject.jsx";
-import { getUsers } from "./util/http.js";
 import Starter from "./components/Starter/Starter.jsx";
+import HomePage from "./components/HomePage/HomePage.jsx";
+import { fetchProjects, fetchUsers } from "./util/http.js";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchProjectsAction } from "./store/projects-slice.js";
 
 function App() {
-  const [currentProjects, setCurrentProjects] = useState(PROJECTS);
-  const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projects.projects);
 
-  const [isFetching, setIsFetching] = useState(false);
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState();
+  const [currentProjects, setCurrentProjects] = useState(projects);
+  const [selectedProject, setSelectedProject] = useState();
 
   useEffect(() => {
-    async function fetchUsers() {
-      setIsFetching(true);
+    dispatch(fetchProjectsAction());
+  }, [dispatch]);
 
-      try {
-        const users = await getUsers();
-        console.log("pobiera");
-        console.log(users);
-
-        setUsers(users);
-        setIsFetching(false);
-      } catch (error) {
-        setError({
-          message: error.message || "Nie udało się pobrać użytkowników",
-        });
-        setIsFetching(false);
-        console.log("nie udalo sie");
-      }
+  useEffect(() => {
+    if (projects.length > 0) {
+      setCurrentProjects(projects);
+      setSelectedProject(projects[0]);
     }
-    fetchUsers();
-  }, []);
+  }, [projects]);
 
   function handleProjectChoose(projectId) {
-    setSelectedProject(currentProjects[projectId]);
+    const selectedProject = currentProjects.find(
+      (project) => project.projectID === projectId
+    );
+    if (selectedProject) {
+      setSelectedProject(selectedProject);
+    }
   }
 
   return (
@@ -51,10 +48,9 @@ function App() {
           projectList={currentProjects}
           handleClick={handleProjectChoose}
         />
-        <SelectedProject currentProject={selectedProject} />
-        {users.map((user) => {
-          return <h1>{user.userName}</h1>;
-        })}
+        {selectedProject && (
+          <SelectedProject currentProject={selectedProject} />
+        )}
       </section> */}
       <Starter />
     </div>

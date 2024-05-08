@@ -1,8 +1,7 @@
 package com.pma.ProjectManagementApp.modules;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,5 +13,6 @@ public class Task extends Activity{
 
     @OneToOne
     @JoinColumn(name = "chechlistID")
+    @JsonIgnore
     private Checklist checklist;
 }

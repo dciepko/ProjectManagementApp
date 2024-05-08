@@ -1,0 +1,91 @@
+.main {
+  display: flex;
+  height: 90vh;
+}
+
+.nav {
+  width: 20vw;
+  font-size: 2rem;
+}
+
+.navUp {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+  border-bottom: black solid 1px;
+  padding-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.navUpButton {
+  background-color: #ff910a;
+  font-weight: 600;
+  border-radius: 0 1.5rem 1.5rem 0;
+  padding: 0.6rem 3rem 0.6rem 0.6rem;
+  margin-top: 1.5rem;
+  color: black;
+  text-decoration: none;
+}
+
+.navDown {
+  display: flex;
+  flex-direction: column;
+}
+
+.navDownButton {
+  border-radius: 0 1.5rem 1.5rem 0;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  color: black;
+  text-decoration: none;
+}
+
+.mainSection {
+  display: flex;
+  width: 80vw;
+}
+
+.centralPart {
+  width: 75%;
+  padding-top: 6rem;
+  padding-left: 18rem;
+}
+
+.h1 {
+  font-size: 2.1rem;
+}
+
+.aside {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 5rem;
+}
+
+.asideButton {
+  float: right;
+  padding-left: 3rem;
+  background-color: #4f40ce;
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 2.5rem;
+  width: 75%;
+  text-align: left;
+  margin-top: 2rem;
+  border-radius: 1.5rem 0 0 1.5rem;
+}
+
+.asideButton:hover {
+  animation: extendButton 0.3s forwards;
+}
+
+@keyframes extendButton {
+  from {
+    width: 75%;
+  }
+  to {
+    width: 100%;
+  }
+}
