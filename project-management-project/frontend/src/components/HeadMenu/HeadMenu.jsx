@@ -2,14 +2,16 @@ import classes from "./HeadMenu.module.css";
 import logo from "../../assets/logo.png";
 import user from "../../assets/user-placeholder.png";
 import bell from "../../assets/bell-icon.png";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export default function HeadMenu() {
   return (
     <>
       <header className={classes.header}>
         <div className={classes.logoContainer}>
-          <img src={logo} alt="logo" className={classes.logoImg} />
+          <Link to="/home">
+            <img src={logo} alt="logo" className={classes.logoImg} />
+          </Link>
         </div>
         <menu className={classes.menu}>
           <ul className={classes.ul}>
