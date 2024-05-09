@@ -26,7 +26,7 @@ function App() {
     { path: "/login", element: <Login /> },
     { path: "/register", element: <Signup /> },
     { path: "/home", element: <HomePage /> },
-    { path: "/projects" },
+    { path: "/rootHead", element: <HeadMenu /> },
   ]);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div id="app">
-      {/* <HeadMenu />
+      <HeadMenu />
       <section id="workspace">
         <ProjectsSidebar
           projectList={currentProjects}
@@ -60,8 +60,8 @@ function App() {
         {selectedProject && (
           <SelectedProject currentProject={selectedProject} />
         )}
-      </section> */}
-      <RouterProvider router={router} />
+      </section>
+      {/* <RouterProvider router={router} /> */}
     </div>
   );
 }

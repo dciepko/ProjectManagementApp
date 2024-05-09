@@ -1,7 +1,7 @@
 .container {
   border: #000 solid 1px;
-  width: 26rem;
-  height: 11rem;
+  width: 36rem;
+  height: 14rem;
   background-color: #4f40ce;
   border-radius: 1rem;
   margin-top: 1.5rem;
@@ -11,7 +11,7 @@
   display: block;
   text-align: left;
   width: 96%;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   padding-top: 0.7rem;
 }
 
@@ -29,7 +29,7 @@
   color: #000;
   border-radius: 1rem;
   width: 96%;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   padding: 0.3rem;
 }
 
@@ -39,4 +39,5 @@
   border-radius: 0 0 1rem 1rem;
   font-weight: 600;
   padding: 0.2rem;
+  font-size: 1.5rem;
 }

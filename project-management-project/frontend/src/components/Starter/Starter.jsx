@@ -16,13 +16,13 @@ export default function Starter() {
         </div>
         <menu className={classes.menu}>
           <ul className={classes.ul}>
-            <li>
+            <li className={classes.li}>
               <button className={classes.button}>Test Button</button>
             </li>
-            <li>
+            <li className={classes.li}>
               <button className={classes.button}>Test Button</button>
             </li>
-            <li>
+            <li className={classes.li}>
               <button className={classes.button}>Test Button</button>
             </li>
           </ul>
