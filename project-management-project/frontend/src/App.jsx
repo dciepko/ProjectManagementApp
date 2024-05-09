@@ -13,45 +13,52 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchProjectsAction } from "./store/projects-slice.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import WorkspacePage from "./components/Workspace/WorkspacePage.jsx";
 
 function App() {
-  const dispatch = useDispatch();
-  const projects = useSelector((state) => state.projects.projects);
+  // const dispatch = useDispatch();
+  // const projects = useSelector((state) => state.projects.projects);
 
-  const [currentProjects, setCurrentProjects] = useState(projects);
-  const [selectedProject, setSelectedProject] = useState();
+  // const [currentProjects, setCurrentProjects] = useState(projects);
+  // const [selectedProject, setSelectedProject] = useState();
 
   const router = createBrowserRouter([
     { path: "/", element: <Starter /> },
     { path: "/login", element: <Login /> },
     { path: "/register", element: <Signup /> },
-    { path: "/home", element: <HomePage /> },
-    { path: "/rootHead", element: <HeadMenu /> },
+    {
+      path: "/",
+      element: <HeadMenu />,
+      children: [
+        { path: "/home", element: <HomePage /> },
+        { path: "/workspace", element: <WorkspacePage /> },
+      ],
+    },
   ]);
 
-  useEffect(() => {
-    dispatch(fetchProjectsAction());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchProjectsAction());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    if (projects.length > 0) {
-      setCurrentProjects(projects);
-      setSelectedProject(projects[0]);
-    }
-  }, [projects]);
+  // useEffect(() => {
+  //   if (projects.length > 0) {
+  //     setCurrentProjects(projects);
+  //     setSelectedProject(projects[0]);
+  //   }
+  // }, [projects]);
 
-  function handleProjectChoose(projectId) {
-    const selectedProject = currentProjects.find(
-      (project) => project.projectID === projectId
-    );
-    if (selectedProject) {
-      setSelectedProject(selectedProject);
-    }
-  }
+  // function handleProjectChoose(projectId) {
+  //   const selectedProject = currentProjects.find(
+  //     (project) => project.projectID === projectId
+  //   );
+  //   if (selectedProject) {
+  //     setSelectedProject(selectedProject);
+  //   }
+  // }
 
   return (
     <div id="app">
-      <HeadMenu />
+      {/* <HeadMenu />
       <section id="workspace">
         <ProjectsSidebar
           projectList={currentProjects}
@@ -60,8 +67,8 @@ function App() {
         {selectedProject && (
           <SelectedProject currentProject={selectedProject} />
         )}
-      </section>
-      {/* <RouterProvider router={router} /> */}
+      </section> */}
+      <RouterProvider router={router} />
     </div>
   );
 }
