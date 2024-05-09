@@ -1,26 +1,41 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #f0f0f0;
+}
+
 .imgContainer {
-  background-image: url("../../assets/login-screen2.jpg");
+  background-image: url("../../../assets/login-screen2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;
-  border-radius: 0 45px 45px 0;
+  border-radius: 0 4.5rem 4.5rem 0;
 }
 
 .formContainer {
-  padding: 1.7em 5em;
-  border-radius: 5px;
   width: 45vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+}
+
+.form {
+  border-radius: 0.5rem;
+  padding: 1.7rem;
 }
 
 .h2 {
-  font-size: 3.5em;
+  font-size: 3.5rem;
   font-weight: 700;
 }
 
 .inputsContainer {
-  margin: 2em 0;
+  margin: 2rem 0;
   display: flex;
   flex-direction: column;
 }
@@ -32,11 +47,11 @@
 }
 
 .registerButton {
-  padding: 8px 10px;
-  margin-top: 50px;
-  margin: 50px 10px 0 10px;
-  font-size: 20px;
-  border-radius: 15px;
+  padding: 0.8rem 1rem;
+  margin-top: 5rem;
+  margin: 5rem 1rem 0 1rem;
+  font-size: 2rem;
+  border-radius: 1.5rem;
   background-color: #4f40ce;
   color: white;
   border: none;
@@ -47,12 +62,13 @@
 }
 
 .cancelButton {
-  padding: 8px 10px;
-  margin: 20px 10px 0 10px;
-  font-size: 20px;
+  padding: 0.8rem 1rem;
+  margin: 2rem 1rem 0 1rem;
+  font-size: 2rem;
   color: #ff910a;
   border: none;
-  border-radius: 15px;
+  border-radius: 1.5rem;
+  text-decoration: none;
 }
 
 .cancelButton:hover {

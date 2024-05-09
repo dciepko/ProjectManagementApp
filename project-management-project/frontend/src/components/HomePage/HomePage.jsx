@@ -2,17 +2,17 @@ import classes from "./HomePage.module.css";
 
 import ActivityHomeElement from "../ActivityHomeElement/ActivityHomeElement";
 import HeadMenu from "../HeadMenu/HeadMenu";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
     <>
-      <HeadMenu />
       <main className={classes.main}>
         <nav className={classes.nav}>
           <div className={classes.navUp}>
-            <a href="#" className={classes.navUpButton}>
+            <Link to="/workspace" className={classes.navUpButton}>
               Projekty
-            </a>
+            </Link>
             <a href="#" className={classes.navUpButton}>
               Strona główna
             </a>

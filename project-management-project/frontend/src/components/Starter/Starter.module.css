@@ -1,23 +1,23 @@
 .header {
   display: flex;
-  background-color: #f0f0f0;
-  height: 10vh;
   align-items: center;
-  border-bottom: #242424 solid 1px;
+  background-color: #bec9ff;
+  height: 10vh;
+  width: 100%;
 }
 
 .logoContainer {
-  width: 11%;
+  width: 13%;
   display: flex;
   justify-content: center;
 }
 
 .logoImg {
-  padding: 0.5em;
+  padding: 0.5rem;
 }
 
 .menu {
-  width: 35%;
+  width: 45%;
   height: 100%;
 }
 
@@ -25,19 +25,26 @@
   height: 100%;
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
+.li {
+  width: 20%;
+}
+
 .button {
-  padding: 15px 20px;
-  font-size: 1.2em;
-  margin: 10px 20px 10px 0;
+  padding: 1.5rem 2rem;
+  font-size: 2rem;
+  margin: 1rem 2rem 1rem 0;
   background-color: #4f40ce;
   color: white;
   border: none;
   border-radius: 15px;
-  width: 8vw;
+  text-decoration: none;
+  display: block;
+  width: auto;
+  text-align: center;
 }
 
 .button:hover {
@@ -63,24 +70,24 @@
 }
 
 .h1 {
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: 1000;
 }
 
 .h3 {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .joinButton {
-  padding: 1rem 2rem;
-  font-size: 1.8rem;
+  padding: 2.5rem 5rem;
+  font-size: 2.5rem;
   text-decoration: none;
   color: white;
   background-color: #ff910a;
   border-radius: 15px;
-  margin-top: rem;
+  margin-top: 3rem;
   display: inline-block;
 }
 
@@ -93,7 +100,6 @@
   border-radius: 10rem;
   transition: all 0.2s;
   position: relative;
-  font-size: 1.6rem;
 }
 
 .joinButton:hover {
@@ -106,6 +112,7 @@
   display: inline-block;
   height: 100%;
   width: 100%;
+  font-size: 5rem;
   border-radius: 10rem;
   position: absolute;
   top: 0;
@@ -127,8 +134,8 @@
 }
 
 .video {
-  width: 32rem;
-  height: 18rem;
+  width: 48rem;
+  height: 24rem;
 }
 
 .stain1 {
