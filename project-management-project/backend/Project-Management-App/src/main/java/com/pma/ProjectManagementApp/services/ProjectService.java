@@ -1,20 +1,29 @@
 package com.pma.ProjectManagementApp.services;
 
 import com.pma.ProjectManagementApp.models.ProjectDto;
-import com.pma.ProjectManagementApp.modules.Activity;
-import com.pma.ProjectManagementApp.modules.Project;
-import com.pma.ProjectManagementApp.modules.User;
-import com.pma.ProjectManagementApp.repos.ProjectRepo;
+import com.pma.ProjectManagementApp.modules.*;
+import com.pma.ProjectManagementApp.repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
 public class ProjectService {
     @Autowired
     private ProjectRepo projectRepo;
+    @Autowired
+    private UserRepo userRepo;
+    @Autowired
+    private TeamRepo teamRepo;
+    @Autowired
+    private ActivityRepo activityRepo;
+    @Autowired
+    private StatusRepo statusRepo;
+    @Autowired
+    private StatusTableRepo tableRepo;
 
     public List<ProjectDto> getProjects(){
         List<Project> projects = projectRepo.findAll();
@@ -23,24 +32,8 @@ public class ProjectService {
                 .collect(Collectors.toList());
     }
 
-    private ProjectDto convertToDto(Project project) {
-        ProjectDto dto = new ProjectDto();
-        dto.setProjectID(project.getProjectID());
-        dto.setProjectName(project.getProjectName());
-        dto.setProjectDescription(project.getProjectDescription());
-        dto.setStartDate(project.getStartDate());
-        dto.setEndDate(project.getEndDate());
-        dto.setOwnerID(project.getOwnerID());
-        // Ustawienie ID użytkowników, ID aktywności, ID zespołu, ID statusu oraz ID tabeli
-        dto.setUserIds(project.getUsers().stream().map(User::getUserID).collect(Collectors.toList()));
-        dto.setActivityIds(project.getActivitiesPr().stream().map(Activity::getActivityID).collect(Collectors.toList()));
-        dto.setTeamId(project.getTeam().getTeamID());
-        dto.setStatusId(project.getStatus().getStatusID());
-        dto.setTableId(project.getTable().getTableID());
-        return dto;
-    }
-
-    public Project addProject(Project project){
+    public Project addProject(ProjectDto projectDto){
+        Project project = convertToProject(projectDto);
         Project addedProject = projectRepo.save(project);
         return addedProject;
     }
@@ -74,4 +67,51 @@ public class ProjectService {
             System.out.println("Not found");
         }
     }
+
+    private ProjectDto convertToDto(Project project) {
+        ProjectDto dto = new ProjectDto();
+        dto.setProjectID(project.getProjectID());
+        dto.setProjectName(project.getProjectName());
+        dto.setProjectDescription(project.getProjectDescription());
+        dto.setStartDate(project.getStartDate());
+        dto.setEndDate(project.getEndDate());
+        dto.setOwnerID(project.getOwnerID());
+        // Ustawienie ID użytkowników, ID aktywności, ID zespołu, ID statusu oraz ID tabeli
+        dto.setUserIds(project.getUsers().stream().map(User::getUserID).collect(Collectors.toList()));
+        dto.setActivityIds(project.getActivitiesPr().stream().map(Activity::getActivityID).collect(Collectors.toList()));
+        dto.setTeamId(project.getTeam().getTeamID());
+        dto.setStatusId(project.getStatus().getStatusID());
+        dto.setTableId(project.getTable().getTableID());
+        return dto;
+    }
+
+    private Project convertToProject(ProjectDto projectDto) {
+        Project project = new Project();
+        project.setProjectName(projectDto.getProjectName());
+        project.setProjectDescription(projectDto.getProjectDescription());
+        project.setStartDate(projectDto.getStartDate());
+        project.setEndDate(projectDto.getEndDate());
+        project.setOwnerID(projectDto.getOwnerID());
+
+        List<User> users = projectDto.getUserIds().stream()
+                .map(userId -> userRepo.findById(userId).orElse(null))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+        project.setUsers(users);
+        List<Activity> activities = projectDto.getActivityIds().stream()
+                .map(userId -> activityRepo.findById(userId).orElse(null))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+        project.setActivitiesPr(activities);
+        Team team = teamRepo.findById(projectDto.getTeamId()).orElse(null);
+        project.setTeam(team);
+        Status status = statusRepo.findById(projectDto.getTeamId()).orElse(null);
+        project.setStatus(status);
+        StatusTable table = tableRepo.findById(projectDto.getTeamId()).orElse(null);
+        project.setTable(table);
+
+
+        return project;
+    }
+
 }

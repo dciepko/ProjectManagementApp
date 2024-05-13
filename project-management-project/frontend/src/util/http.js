@@ -20,6 +20,16 @@ export async function fetchProjects() {
   return resData;
 }
 
+export async function addProject(newProject) {
+  fetch("http://localhost:8080/projects", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newProject),
+  });
+}
+
 export async function fetchTasks(projectId) {
   const response = await fetch(`http://localhost:8080/activities/${projectId}`);
   const resData = await response.json();
