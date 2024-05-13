@@ -9,7 +9,7 @@ export default function TimeTable({ title, id, tasks, onReload }) {
   const modal = useRef();
 
   const filteredActivities = tasks.filter((task) => {
-    return task.tableA.tableID === id;
+    return task.tableID === id;
   });
 
   function handleDragStart(event, activity) {
@@ -38,7 +38,7 @@ export default function TimeTable({ title, id, tasks, onReload }) {
 
     activityToTransfer = {
       ...activityToTransfer,
-      tableA: { tableID: id },
+      tableID: id,
     };
 
     copy = copy.filter((act) => {
