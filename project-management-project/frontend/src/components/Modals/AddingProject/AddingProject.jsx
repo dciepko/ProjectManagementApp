@@ -8,6 +8,7 @@ import { addNewProject } from "../../../store/projects-slice";
 const AddingProject = forwardRef(function Modal({}, ref) {
   const dispatch = useDispatch();
   const dialog = useRef();
+  const formRef = useRef();
   const [newProject, setNewProject] = useState({
     ownerID: 1,
     userIds: [1],
@@ -20,7 +21,6 @@ const AddingProject = forwardRef(function Modal({}, ref) {
   function handleChange(event) {
     const { name, value } = event.target;
     setNewProject({ ...newProject, [name]: value });
-    console.log(newProject);
   }
 
   useImperativeHandle(ref, () => {
@@ -32,25 +32,29 @@ const AddingProject = forwardRef(function Modal({}, ref) {
   });
 
   function handleCloseButton() {
+    formRef.current.reset();
     dialog.current.close();
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     dispatch(addNewProject(newProject));
+
+    dialog.current.close();
   }
 
   return createPortal(
     <dialog ref={dialog} className={classes.addingModal}>
       <div className={classes.modalContainer}>
         <h2 className={classes.h2}>Nowy projekt</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} ref={formRef}>
           <div className={classes.inputContainer}>
             <AddingInput
               type="text"
               identifier="name"
               name="projectName"
               onChange={handleChange}
+              value={newProject.projectName}
             >
               Nazwa projektu
             </AddingInput>
@@ -59,6 +63,7 @@ const AddingProject = forwardRef(function Modal({}, ref) {
               identifier="description"
               name="projectDescription"
               onChange={handleChange}
+              value={newProject.projectDescription}
             >
               Opis projektu
             </AddingInput>
@@ -67,6 +72,7 @@ const AddingProject = forwardRef(function Modal({}, ref) {
               identifier="startDate"
               name="startDate"
               onChange={handleChange}
+              value={newProject.startDate}
             >
               Planowana data rozpoczęcia
             </AddingInput>
@@ -75,6 +81,7 @@ const AddingProject = forwardRef(function Modal({}, ref) {
               identifier="endDate"
               name="endDate"
               onChange={handleChange}
+              value={newProject.endDate}
             >
               Planowana data zakończenia
             </AddingInput>
@@ -83,6 +90,7 @@ const AddingProject = forwardRef(function Modal({}, ref) {
               identifier="team"
               name="teamId"
               onChange={handleChange}
+              value={newProject.userIds}
             >
               Wybierz zespół
             </AddingInput>
@@ -91,14 +99,16 @@ const AddingProject = forwardRef(function Modal({}, ref) {
               identifier="team"
               name="userIds"
               onChange={handleChange}
+              value={newProject.teamId}
             >
               Dodaj uczestników
             </AddingInput>
           </div>
           <div className={classes.buttonContainer}>
             <button
-              onClick={handleCloseButton}
               className={classes.cancelButton}
+              type="reset"
+              onClick={handleCloseButton}
             >
               Anuluj
             </button>

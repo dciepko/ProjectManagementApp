@@ -24,6 +24,8 @@ export default function SelectedProject({ currentProject }) {
   useEffect(() => {
     if (currentProjectActivities.length > 0) {
       setActivities(currentProjectActivities);
+    } else {
+      setActivities([]);
     }
   }, [currentProjectActivities]);
 

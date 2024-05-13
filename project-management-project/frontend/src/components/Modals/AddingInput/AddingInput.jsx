@@ -6,6 +6,7 @@ export default function AddingInput({
   children,
   name,
   onChange,
+  value,
 }) {
   return (
     <div className={classes.inputContainer}>
@@ -19,6 +20,7 @@ export default function AddingInput({
           id={identifier}
           name={name}
           onChange={onChange}
+          value={value}
         />
       ) : (
         <textarea
@@ -26,6 +28,7 @@ export default function AddingInput({
           id={identifier}
           name={name}
           onChange={onChange}
+          value={value}
         />
       )}
     </div>
