@@ -22,12 +22,12 @@ export default function HeadMenu() {
             </li>
             <li className={classes.li}>
               <a href="#" className={classes.button}>
-                Projekty
+                Workspaces
               </a>
             </li>
             <li className={classes.li}>
               <a href="#" className={classes.button}>
-                Zespoły
+                Meeting
               </a>
             </li>
             <li className={classes.li}>

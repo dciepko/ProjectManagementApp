@@ -4,18 +4,68 @@ import filters from "../../../assets/filters-icon.png";
 import group from "../../../assets/group-icon.png";
 import plus from "../../../assets/plus-icon.png";
 import wrap from "../../../assets/wrap-down-button.png";
+import wrapUp from "../../../assets/wrap-up-button.png";
+
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteProject } from "../../../store/projects-slice";
 
 export default function ProjectHeader({
   currentProject,
   selectedOption,
   onSelectChange,
 }) {
+  const [viewType, setViewType] = useState("wrapped");
+  const dispatch = useDispatch();
+
+  function handleWrapButton() {
+    {
+      viewType === "wrapped"
+        ? setViewType("unwrapped")
+        : setViewType("wrapped");
+    }
+  }
+
+  function handleDeleteButton() {
+    const result = confirm("Czy na pewno chcesz usunąć ten projekt?");
+    console.log(currentProject);
+    if (result) {
+      dispatch(deleteProject(currentProject.projectID));
+    }
+  }
+
   return (
-    <header className={classes.header}>
+    <header
+      className={
+        viewType === "wrapped" ? classes.header : classes.headerUnwrapped
+      }
+    >
       <h1 className={classes.h1}>{currentProject.projectName}</h1>
-      <button className={classes.unwrapButton}>
-        <img src={wrap} alt="wrap header" />
+      <button className={classes.unwrapButton} onClick={handleWrapButton}>
+        {viewType === "wrapped" ? (
+          <img src={wrap} alt="unwrap header" />
+        ) : (
+          <img src={wrapUp} alt="wrap header" />
+        )}
       </button>
+      {viewType === "unwrapped" && (
+        <button className={classes.deleteButton} onClick={handleDeleteButton}>
+          kosz
+        </button>
+      )}
+      {viewType === "unwrapped" && (
+        <section>
+          <div className={classes.descriptionField}>
+            {currentProject.projectDescription}
+          </div>
+          <div className={classes.dateField}>
+            Data rozpoczęcia: {currentProject.startDate}
+          </div>
+          <div className={classes.dateField}>
+            Planowana data zakończenia: {currentProject.endDate}
+          </div>
+        </section>
+      )}
       <section className={classes.optionButtonsContainer}>
         <select
           value={selectedOption}

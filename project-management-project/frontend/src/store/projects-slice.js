@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addProject, fetchProjects } from "../util/http";
+import { addProject, fetchProjects, deleteProjectById } from "../util/http";
 
 const projectsSlice = createSlice({
   name: "projects",
@@ -19,6 +19,12 @@ export const fetchProjectsAction = () => async (dispatch) => {
 
 export const addNewProject = (newProject) => async (dispatch) => {
   addProject(newProject);
+  fetchProjectsAction();
+};
+
+export const deleteProject = (projectId) => async (dispatch) => {
+  console.log(projectId);
+  deleteProjectById(projectId);
   fetchProjectsAction();
 };
 

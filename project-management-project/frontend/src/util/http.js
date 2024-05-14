@@ -30,6 +30,19 @@ export async function addProject(newProject) {
   });
 }
 
+export async function deleteProjectById(projectId) {
+  const response = await fetch(
+    `http://localhost:8080/projects?id=${projectId}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Nie udało się usunąć projektu");
+  }
+}
+
 export async function fetchTasks(projectId) {
   const response = await fetch(`http://localhost:8080/activities/${projectId}`);
   const resData = await response.json();
