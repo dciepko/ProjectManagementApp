@@ -4,7 +4,10 @@ import SelectedProject from "../ProjectLayout/SelectedProject/SelectedProject";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
-import { fetchProjectsAction } from "../../store/projects-slice";
+import {
+  chooseCurrentProject,
+  fetchProjectsAction,
+} from "../../store/projects-slice";
 
 export default function WorkspacePage() {
   const dispatch = useDispatch();
@@ -25,11 +28,12 @@ export default function WorkspacePage() {
   }, [projects]);
 
   function handleProjectChoose(projectId) {
-    const selectedProject = currentProjects.find(
+    const chosenProject = projects.find(
       (project) => project.projectID === projectId
     );
-    if (selectedProject) {
-      setSelectedProject(selectedProject);
+    dispatch(chooseCurrentProject(chosenProject));
+    if (chosenProject) {
+      setSelectedProject(chosenProject);
     }
   }
 

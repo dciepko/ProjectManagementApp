@@ -22,6 +22,7 @@ public class ActivityController {
     public void deleteActivity(@RequestParam Integer id){
         service.deleteActivity(id);
     }
+    @PostMapping("/")
 
     @GetMapping("/activities/{projectId}")
     public List<ActivityDto> getTasksByProjectId(@PathVariable Integer projectId) {

@@ -53,3 +53,13 @@ export async function fetchTasks(projectId) {
 
   return resData;
 }
+
+export async function addActivity(newProject) {
+  fetch("http://localhost:8080/activities", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newProject),
+  });
+}

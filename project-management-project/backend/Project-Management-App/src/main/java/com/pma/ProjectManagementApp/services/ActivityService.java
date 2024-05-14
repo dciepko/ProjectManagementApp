@@ -1,7 +1,9 @@
 package com.pma.ProjectManagementApp.services;
 
 import com.pma.ProjectManagementApp.models.ActivityDto;
+import com.pma.ProjectManagementApp.models.ProjectDto;
 import com.pma.ProjectManagementApp.modules.Activity;
+import com.pma.ProjectManagementApp.modules.Project;
 import com.pma.ProjectManagementApp.repos.ActivityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,12 @@ public class ActivityService {
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
+
+//    public Activity addActivity(ActivityDto activityDto){
+//        Project project = convertToProject(projectDto);
+//        Project addedProject = projectRepo.save(project);
+//        return addedProject;
+//    }
 
     public void deleteActivity(Integer id)
     {

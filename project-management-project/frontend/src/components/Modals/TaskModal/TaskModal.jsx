@@ -20,8 +20,13 @@ const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
   return createPortal(
     <dialog ref={dialog} className={classes.addingModal}>
       <div className={classes.modalContainer}>
-        <h2 className={classes.h2}>{task.title}</h2>
-        <div className={classes.informationContainer}>...</div>
+        <h2 className={classes.h2}>{task.activityName}</h2>
+
+        <div className={classes.informationContainer}>
+          {" "}
+          <div>{task.dueDate}</div>
+          <div>{task.activityDescription}</div>
+        </div>
         <div>
           {checklist &&
             checklist.map((element) => {
