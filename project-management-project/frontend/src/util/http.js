@@ -21,6 +21,7 @@ export async function fetchProjects() {
 }
 
 export async function addProject(newProject) {
+  console.log(newProject);
   fetch("http://localhost:8080/projects", {
     method: "POST",
     headers: {
@@ -55,6 +56,7 @@ export async function fetchTasks(projectId) {
 }
 
 export async function addActivity(newProject) {
+  console.log(newProject);
   fetch("http://localhost:8080/activities", {
     method: "POST",
     headers: {

@@ -19,6 +19,7 @@ export const fetchProjectsAction = () => async (dispatch) => {
   const fetchedProjects = await fetchProjects();
 
   dispatch(getProjects(fetchedProjects));
+  // dispatch(changeCurrentProject(fetchProjects[0]));
 };
 
 export const addNewProject = (newProject) => async (dispatch) => {
@@ -33,7 +34,7 @@ export const deleteProject = (projectId) => async (dispatch) => {
 };
 
 export const chooseCurrentProject = (project) => async (dispatch) => {
-  changeCurrentProject(project);
+  dispatch(changeCurrentProject(project));
 };
 
 export const { getProjects, changeCurrentProject } = projectsSlice.actions;

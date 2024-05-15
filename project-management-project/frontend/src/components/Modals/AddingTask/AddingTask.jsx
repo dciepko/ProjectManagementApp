@@ -1,12 +1,14 @@
 import classes from "./AddingTask.module.css";
 
-import { useRef, forwardRef, useState } from "react";
+import { useRef, forwardRef, useState, useEffect } from "react";
 import { useImperativeHandle } from "react";
 
 import AddingInput from "../AddingInput/AddingInput";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewActivity } from "../../../store/activity-slice";
 
 const AddingTask = forwardRef(function AddingTask({}, ref) {
+  const dispatch = useDispatch();
   const currentProject = useSelector((state) => state.projects.currentProject);
   const dialog = useRef();
   const formRef = useRef();
@@ -14,12 +16,20 @@ const AddingTask = forwardRef(function AddingTask({}, ref) {
     activityType: 1,
     tableID: 1,
     labelID: 1,
-    projectIds: [currentProject.projectID],
-    statusId: 1,
-    userIds: [1],
-    attachementIds: [1],
-    commentIds: [1],
+    projectIDs: [],
+    statusID: 1,
+    userIDs: [1],
+    attachementIds: [],
+    commentIds: [],
   });
+
+  useEffect(() => {
+    setNewActivity((newActivity) => ({
+      ...newActivity,
+      projectIDs: [currentProject.projectID],
+    }));
+  }, [currentProject]);
+  console.log(newActivity.projectIDs);
 
   useImperativeHandle(ref, () => {
     return {
@@ -40,8 +50,8 @@ const AddingTask = forwardRef(function AddingTask({}, ref) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(addNewActivity(newActivity));
 
+    dispatch(addNewActivity(newActivity));
     dialog.current.close();
   }
 
@@ -103,7 +113,13 @@ const AddingTask = forwardRef(function AddingTask({}, ref) {
             >
               Data
             </AddingInput>
-            <AddingInput type="number" identifier="priority">
+            <AddingInput
+              type="number"
+              identifier="priority"
+              name="activityPriority"
+              onChange={handleChange}
+              value={newActivity.activityPriority}
+            >
               Priorytet
             </AddingInput>
             <AddingInput type="text" identifier="users">
@@ -114,6 +130,7 @@ const AddingTask = forwardRef(function AddingTask({}, ref) {
             <button
               className={classes.cancelButton}
               onClick={handleCloseButton}
+              type="reset"
             >
               Anuluj
             </button>
