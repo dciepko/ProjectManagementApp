@@ -14,7 +14,7 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer notificationID;
-    private Integer targetUserID;
+    //private Integer targetUserID;
     private String notificationContent;
     private Date notificationDate;
 

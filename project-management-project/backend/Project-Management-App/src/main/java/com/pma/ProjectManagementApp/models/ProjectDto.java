@@ -17,7 +17,7 @@ public class ProjectDto {
     private Integer ownerID;
     private List<Integer> userIds; // Lista ID użytkowników
     private List<Integer> activityIds; // Lista ID aktywności
-    private Integer teamId; // ID zespołu
+    private List<Integer> teamIds; // ID zespołu
     private Integer statusId; // ID statusu
     private Integer tableId; // ID tabeli statusów
     private Integer workspaceID;

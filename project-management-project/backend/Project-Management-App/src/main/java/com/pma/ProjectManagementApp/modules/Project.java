@@ -27,12 +27,7 @@ public class Project {
 
     @ManyToMany(mappedBy = "projectsTeam")
     @JsonIgnore
-    private List<User> usersTeams;
-
-    @ManyToOne
-    @JoinColumn(name = "teamID")
-    @JsonIgnore
-    private Team team;
+    private List<Team> teams;
 
     @ManyToOne
     @JoinColumn(name = "statusID")
@@ -48,7 +43,7 @@ public class Project {
     @JoinColumn(name = "workspaceID")
     private Workspace workspace;
 
-    @OneToMany(mappedBy = "projectsActivities")
+    @OneToMany(mappedBy = "activityProject")
     @JsonIgnore
-    private List<Activity> activityProjects;
+    private List<Activity> projectActivities;
 }
