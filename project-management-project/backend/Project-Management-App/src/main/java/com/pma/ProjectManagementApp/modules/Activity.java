@@ -55,4 +55,8 @@ public class Activity {
     @OneToMany(mappedBy = "activity")
     @JsonIgnore
     private List<Attachement> attachements;
+
+    @OneToMany(mappedBy = "activityProject")
+    @JsonIgnore
+    private List<Project> projectsActivity;
 }
