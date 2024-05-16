@@ -56,7 +56,8 @@ public class Activity {
     @JsonIgnore
     private List<Attachement> attachements;
 
-    @OneToMany(mappedBy = "activityProject")
+    @ManyToOne
+    @JoinColumn(name = "projectID")
     @JsonIgnore
-    private List<Project> projectsActivity;
+    private Project activityProject;
 }

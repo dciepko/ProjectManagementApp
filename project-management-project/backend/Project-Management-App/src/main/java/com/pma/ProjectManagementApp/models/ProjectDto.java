@@ -20,4 +20,5 @@ public class ProjectDto {
     private Integer teamId; // ID zespołu
     private Integer statusId; // ID statusu
     private Integer tableId; // ID tabeli statusów
+    private Integer workspaceID;
 }

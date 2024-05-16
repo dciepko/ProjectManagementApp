@@ -48,8 +48,7 @@ public class Project {
     @JoinColumn(name = "workspaceID")
     private Workspace workspace;
 
-    @ManyToOne
-    @JoinColumn(name = "activityID")
+    @OneToMany(mappedBy = "projectsActivities")
     @JsonIgnore
-    private Activity activityProject;
+    private List<Activity> activityProjects;
 }

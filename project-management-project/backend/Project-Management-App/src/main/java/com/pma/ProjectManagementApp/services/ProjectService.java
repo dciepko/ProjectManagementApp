@@ -33,10 +33,11 @@ public class ProjectService {
         dto.setOwnerID(project.getOwnerID());
         // Ustawienie ID użytkowników, ID aktywności, ID zespołu, ID statusu oraz ID tabeli
         dto.setUserIds(project.getUsers().stream().map(User::getUserID).collect(Collectors.toList()));
-        dto.setActivityIds(project.getActivitiesPr().stream().map(Activity::getActivityID).collect(Collectors.toList()));
+        dto.setActivityIds(project.getActivityProjects().stream().map(Activity::getActivityID).collect(Collectors.toList()));
         dto.setTeamId(project.getTeam().getTeamID());
         dto.setStatusId(project.getStatus().getStatusID());
         dto.setTableId(project.getTable().getTableID());
+        dto.setWorkspaceID(project.getWorkspace().getWorkspaceID());
         return dto;
     }
 
@@ -54,10 +55,11 @@ public class ProjectService {
             editedProject.setStartDate(newProject.getStartDate());
             editedProject.setEndDate(newProject.getEndDate());
             editedProject.setOwnerID(newProject.getOwnerID());
-            editedProject.setActivitiesPr(newProject.getActivitiesPr());
+            editedProject.setActivityProjects(newProject.getActivityProjects());
             editedProject.setTeam(newProject.getTeam());
             editedProject.setTable(newProject.getTable());
             editedProject.setUsers(newProject.getUsers());
+            editedProject.setWorkspace(newProject.getWorkspace());
 
             projectRepo.save(editedProject);
 
