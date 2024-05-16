@@ -22,7 +22,7 @@ public class ActivityService {
     }
 
     public List<ActivityDto> getActivityById(Integer projectId) {
-        List<Activity> activities = activityRepo.findByProjectsAProjectID(projectId);
+        List<Activity> activities = activityRepo.findByActivityProjectProjectID(projectId);
         return activities.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
