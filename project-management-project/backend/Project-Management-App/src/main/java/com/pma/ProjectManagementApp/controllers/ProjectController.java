@@ -19,8 +19,8 @@ public class ProjectController {
     }
 
     @PostMapping("/projects")
-    public Project addProject(@RequestBody Project project){
-        return service.addProject(project);
+    public Project addProject(@RequestBody ProjectDto projectDto){
+        return service.addProject(projectDto);
     }
 
     @PutMapping("/projects")

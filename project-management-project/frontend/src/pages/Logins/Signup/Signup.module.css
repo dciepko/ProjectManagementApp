@@ -27,6 +27,7 @@
 .form {
   border-radius: 0.5rem;
   padding: 1.7rem;
+  width: 80%;
 }
 
 .h2 {
@@ -69,6 +70,7 @@
   border: none;
   border-radius: 1.5rem;
   text-decoration: none;
+  text-align: center;
 }
 
 .cancelButton:hover {

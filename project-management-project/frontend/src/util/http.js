@@ -20,6 +20,30 @@ export async function fetchProjects() {
   return resData;
 }
 
+export async function addProject(newProject) {
+  console.log(newProject);
+  fetch("http://localhost:8080/projects", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newProject),
+  });
+}
+
+export async function deleteProjectById(projectId) {
+  const response = await fetch(
+    `http://localhost:8080/projects?id=${projectId}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Nie udało się usunąć projektu");
+  }
+}
+
 export async function fetchTasks(projectId) {
   console.log(projectId);
   const response = await fetch(`http://localhost:8080/activities/${projectId}`);
@@ -30,4 +54,28 @@ export async function fetchTasks(projectId) {
   }
 
   return resData;
+}
+
+export async function addActivity(newProject) {
+  console.log(newProject);
+  fetch("http://localhost:8080/activities", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newProject),
+  });
+}
+
+export async function deleteActivityById(activityID) {
+  const response = await fetch(
+    `http://localhost:8080/projects?id=${activityID}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Nie udało się usunąć aktywności");
+  }
 }

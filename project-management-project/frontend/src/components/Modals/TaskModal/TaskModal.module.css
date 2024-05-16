@@ -14,7 +14,7 @@
 .modalContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: right;
   width: 100%;
   height: 100%;

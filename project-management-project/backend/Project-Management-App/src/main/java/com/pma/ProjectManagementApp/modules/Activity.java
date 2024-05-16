@@ -17,8 +17,8 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer activityID;
     private String activityName;
-    private String activityDescription; //TU TEZ STRING?
-    private Date dueDate; //DATE?
+    private String activityDescription;
+    private Date dueDate;
     private Integer activityType;
     private Integer activityPriority;
 

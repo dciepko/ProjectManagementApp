@@ -1,11 +1,11 @@
-import Login from "./components/Logins/Login/Login";
-import Signup from "./components/Logins/Signup/Signup.jsx";
+import Login from "./pages/Logins/Login/Login.jsx";
+import Signup from "./pages/Logins/Signup/Signup.jsx";
 import HeadMenu from "./components/HeadMenu/HeadMenu.jsx";
-import Starter from "./components/Starter/Starter.jsx";
-import HomePage from "./components/HomePage/HomePage.jsx";
+import Starter from "./pages/Starter/Starter.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import WorkspacePage from "./pages/Workspace/WorkspacePage.jsx";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import WorkspacePage from "./components/Workspace/WorkspacePage.jsx";
 
 function App() {
   const router = createBrowserRouter([

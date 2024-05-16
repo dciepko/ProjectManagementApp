@@ -14,7 +14,7 @@ public class Attachement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer attachementID;
     private String attachementName;
-    private Date date; //Date?
+    private Date date;
     private String attachementUrl;
     private String attachementType;
 
