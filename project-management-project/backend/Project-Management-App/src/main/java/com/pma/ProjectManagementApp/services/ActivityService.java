@@ -22,7 +22,7 @@ public class ActivityService {
     }
 
     public List<ActivityDto> getActivityById(Integer projectId) {
-        List<Activity> activities = activityRepo.findByProjectsAProjectID(projectId);
+        List<Activity> activities = activityRepo.findByActivityProjectProjectID(projectId);
         return activities.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
@@ -49,9 +49,7 @@ public class ActivityService {
         activityDTO.setTableID(activity.getTableA().getTableID());
         activityDTO.setLabelID(activity.getLabelA().getLabelID());
         activityDTO.setStatusID(activity.getActivitiesStatus().getStatusID());
-        activityDTO.setProjectIDs(activity.getProjectsA().stream()
-                .map(project -> project.getProjectID())
-                .collect(Collectors.toList()));
+        activityDTO.setProjectID(activity.getActivityProject().getProjectID());
         activityDTO.setUserIDs(activity.getUsersActivity().stream()
                 .map(user -> user.getUserID())
                 .collect(Collectors.toList()));

@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ActivityRepo extends JpaRepository<Activity, Integer> {
-    List<Activity> findByProjectsAProjectID(Integer id);
+    List<Activity> findByActivityProjectProjectID(Integer id);
 }

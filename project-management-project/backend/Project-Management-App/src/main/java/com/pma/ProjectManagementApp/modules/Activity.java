@@ -36,14 +36,6 @@ public class Activity {
     @JsonIgnore
     private Status activitiesStatus;
 
-    @ManyToMany
-    @JoinTable(
-            name = "activity_project",
-            joinColumns = @JoinColumn(name = "activityID"),
-            inverseJoinColumns = @JoinColumn(name = "projectID")
-    )
-    private List<Project> projectsA;
-
     @ManyToMany(mappedBy = "activitiesUser")
     @JsonIgnore
     private List<User> usersActivity;
@@ -55,4 +47,9 @@ public class Activity {
     @OneToMany(mappedBy = "activity")
     @JsonIgnore
     private List<Attachement> attachements;
+
+    @ManyToOne
+    @JoinColumn(name = "projectID")
+    @JsonIgnore
+    private Project activityProject;
 }

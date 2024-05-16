@@ -37,6 +37,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "userAtt")
     @JsonIgnore
     private List<Attachement> attachements;
+    @OneToMany(mappedBy = "userNotification")
+    @JsonIgnore
+    private List<Notification> notifications;
 
     @ManyToMany
     @JoinTable(name = "user_project", joinColumns = {@JoinColumn(name = "userID")},

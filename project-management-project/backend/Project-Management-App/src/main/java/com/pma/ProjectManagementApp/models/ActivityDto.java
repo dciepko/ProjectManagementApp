@@ -19,8 +19,8 @@ public class ActivityDto {
     private Integer tableID;
     private Integer labelID;
     private Integer statusID;
+    private Integer projectID;
 
-    private List<Integer> projectIDs;
     private List<Integer> userIDs;
     private List<Integer> commentIDs;
     private List<Integer> attachementIDs;
