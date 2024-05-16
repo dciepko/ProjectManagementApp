@@ -1,7 +1,6 @@
 import classes from "./HomePage.module.css";
 
-import ActivityHomeElement from "../ActivityHomeElement/ActivityHomeElement";
-import HeadMenu from "../HeadMenu/HeadMenu";
+import ActivityHomeElement from "../../components/ActivityHomeElement/ActivityHomeElement";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {

@@ -1,5 +1,5 @@
-import ProjectsSidebar from "../ProjectSidebar/ProjectsSidebar";
-import SelectedProject from "../ProjectLayout/SelectedProject/SelectedProject";
+import ProjectsSidebar from "../../components/ProjectSidebar/ProjectsSidebar.jsx";
+import SelectedProject from "../../components/ProjectLayout/SelectedProject/SelectedProject";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
