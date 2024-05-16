@@ -26,12 +26,8 @@ public class ActivityController {
     }
     @PostMapping("/activities")
     public Activity addActivity(@RequestBody ActivityDto activityDto){
-
-        System.out.println(activityDto.getProjectIDs());
         return service.addActivity(activityDto);
     }
-
-
     @GetMapping("/activities/{projectId}")
     public List<ActivityDto> getTasksByProjectId(@PathVariable Integer projectId) {
         return service.getActivityById(projectId);

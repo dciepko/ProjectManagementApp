@@ -65,3 +65,16 @@ export async function addActivity(newProject) {
     body: JSON.stringify(newProject),
   });
 }
+
+export async function deleteActivityById(activityID) {
+  const response = await fetch(
+    `http://localhost:8080/projects?id=${activityID}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Nie udało się usunąć aktywności");
+  }
+}

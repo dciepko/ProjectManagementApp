@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchTasks, addActivity } from "../util/http";
+import { fetchTasks, addActivity, deleteActivityById } from "../util/http";
 
 const activitySlice = createSlice({
   name: "activities",
@@ -20,6 +20,10 @@ export const fetchCurrentProjectTasks = (projectId) => async (dispatch) => {
 export const addNewActivity = (newActivity) => async (dispatch) => {
   addActivity(newActivity);
   fetchCurrentProjectTasks();
+};
+
+export const deleteActivity = (actID) => async (dispatch) => {
+  deleteActivityById(actID);
 };
 
 export const { getActivities } = activitySlice.actions;

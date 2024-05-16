@@ -17,8 +17,8 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer activityID;
     private String activityName;
-    private String activityDescription; //TU TEZ STRING?
-    private Date dueDate; //DATE?
+    private String activityDescription;
+    private Date dueDate;
     private Integer activityType;
     private Integer activityPriority;
 
@@ -36,7 +36,7 @@ public class Activity {
     @JsonIgnore
     private Status activitiesStatus;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "activity_project",
             joinColumns = @JoinColumn(name = "activityID"),

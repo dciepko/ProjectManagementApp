@@ -1,9 +1,13 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import classes from "./TaskModal.module.css";
 import { createPortal } from "react-dom";
+import { deleteActivity } from "../../../store/activity-slice";
+import { useDispatch } from "react-redux";
 
 const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
   const dialog = useRef();
+
+  const dispatch = useDispatch();
 
   useImperativeHandle(ref, () => {
     return {
@@ -12,6 +16,13 @@ const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
       },
     };
   });
+
+  function handleDeleteButton() {
+    const result = confirm("Czy na pewno chcesz usunąć tę aktywność?");
+    if (result) {
+      dispatch(deleteActivity(task.activityID));
+    }
+  }
 
   function handleCloseButton() {
     dialog.current.close();
@@ -47,6 +58,7 @@ const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
           <button className={classes.closeButton} onClick={handleCloseButton}>
             Zamknij
           </button>
+          <button onClick={handleDeleteButton}>kosz</button>
         </div>
       </div>
     </dialog>,

@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Task extends Activity{
-
-
     @OneToOne
     @JoinColumn(name = "chechlistID")
     @JsonIgnore

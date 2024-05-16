@@ -19,8 +19,8 @@ const AddingTask = forwardRef(function AddingTask({}, ref) {
     projectIDs: [],
     statusID: 1,
     userIDs: [1],
-    attachementIds: [],
-    commentIds: [],
+    attachementIDs: [],
+    commentIDs: [],
   });
 
   useEffect(() => {

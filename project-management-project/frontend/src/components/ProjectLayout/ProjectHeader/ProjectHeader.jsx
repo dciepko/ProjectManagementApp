@@ -28,7 +28,6 @@ export default function ProjectHeader({
 
   function handleDeleteButton() {
     const result = confirm("Czy na pewno chcesz usunąć ten projekt?");
-    console.log(currentProject);
     if (result) {
       dispatch(deleteProject(currentProject.projectID));
     }

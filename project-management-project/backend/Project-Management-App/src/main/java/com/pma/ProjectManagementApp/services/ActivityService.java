@@ -60,6 +60,7 @@ public class ActivityService {
 
     public void deleteActivity(Integer id)
     {
+        System.out.println("Oto id: "+id);
         if(!activityRepo.findById(id).isEmpty()){
             activityRepo.deleteById(id);
         }
