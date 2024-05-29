@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addProject, fetchProjects, deleteProjectById } from "../util/http";
+import {
+  addProject,
+  fetchProjects,
+  deleteProjectById,
+  addBoard,
+} from "../util/http";
 import { useSelector } from "react-redux";
 
 const projectsSlice = createSlice({
@@ -28,13 +33,17 @@ export const addNewProject = (newProject) => async (dispatch) => {
 };
 
 export const deleteProject = (projectId) => async (dispatch) => {
-  console.log(projectId);
   deleteProjectById(projectId);
   fetchProjectsAction();
 };
 
 export const chooseCurrentProject = (project) => async (dispatch) => {
   dispatch(changeCurrentProject(project));
+};
+
+export const addNewTable = (projectID, newTable) => async (dispatch) => {
+  addBoard(projectID, newTable);
+  fetchProjectsAction();
 };
 
 export const { getProjects, changeCurrentProject } = projectsSlice.actions;

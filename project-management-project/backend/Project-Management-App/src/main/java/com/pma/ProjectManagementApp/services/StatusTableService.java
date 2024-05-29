@@ -1,2 +1,33 @@
-package com.pma.ProjectManagementApp.services;public class BoardService {
+package com.pma.ProjectManagementApp.services;
+
+import com.pma.ProjectManagementApp.modules.StatusTable;
+import com.pma.ProjectManagementApp.repos.StatusTableRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class StatusTableService {
+    @Autowired
+    StatusTableRepo repo;
+
+    public void addStatusTable(StatusTable newStatusTable) {
+        repo.save(newStatusTable);
+    }
+
+    public void editStatusTable(Integer id, StatusTable newStatusTable) {
+        StatusTable editedStatusTable = repo.findById(id).get();
+        if(editedStatusTable!=null) {
+            editedStatusTable.setTableID(newStatusTable.getTableID());
+            editedStatusTable.setTableName(newStatusTable.getTableName());
+            editedStatusTable.setTableColor(newStatusTable.getTableColor());
+            editedStatusTable.setProject(newStatusTable.getProject());
+            editedStatusTable.setActivitiesTab(newStatusTable.getActivitiesTab());
+
+            repo.save(editedStatusTable);
+        }
+    }
+
+    public void deleteUser(Integer id) {
+        repo.deleteById(id);
+    }
 }

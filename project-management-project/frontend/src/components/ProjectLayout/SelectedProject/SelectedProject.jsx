@@ -7,6 +7,7 @@ import classes from "./SelectedProject.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentProjectTasks } from "../../../store/activity-slice";
+import { current } from "@reduxjs/toolkit";
 
 export default function SelectedProject({ currentProject }) {
   const dispatch = useDispatch();
@@ -38,7 +39,6 @@ export default function SelectedProject({ currentProject }) {
   function handleSelectChange(event) {
     setSelectedLayout(event.target.value);
   }
-
   return (
     <div className={classes.container}>
       <ProjectHeader
@@ -50,7 +50,8 @@ export default function SelectedProject({ currentProject }) {
         <ProjectBoardTable
           activities={activities}
           activitiesListChange={activitiesListChange}
-          tablesList={tablesList}
+          tablesList={currentProject.tables}
+          currentProjectID={currentProject.projectID}
         />
       )}
       {selectedLayout === "long" && (

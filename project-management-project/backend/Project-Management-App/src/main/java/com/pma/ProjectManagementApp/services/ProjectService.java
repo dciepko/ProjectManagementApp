@@ -3,6 +3,7 @@ package com.pma.ProjectManagementApp.services;
 import com.pma.ProjectManagementApp.models.ProjectDto;
 import com.pma.ProjectManagementApp.modules.*;
 import com.pma.ProjectManagementApp.repos.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,23 @@ public class ProjectService {
         Project project = convertToProject(projectDto);
         Project addedProject = projectRepo.save(project);
         return addedProject;
+    }
+
+    @Transactional
+    public void addNewTableAndUpdateProject(Integer projectID, StatusTable newTable) {
+        Project project = projectRepo.findById(projectID).get();
+
+        StatusTable table = new StatusTable();
+        table.setTableName(newTable.getTableName());
+        table.setTableColor(newTable.getTableColor());
+        table.setProject(project);
+
+        tableRepo.save(table);
+
+        List<StatusTable> projectTables = project.getTables();
+        projectTables.add(table);
+        project.setTables(projectTables);
+        projectRepo.save(project);
     }
 
 

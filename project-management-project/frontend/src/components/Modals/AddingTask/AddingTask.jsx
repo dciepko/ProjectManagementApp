@@ -29,7 +29,6 @@ const AddingTask = forwardRef(function AddingTask({}, ref) {
       projectIDs: [currentProject.projectID],
     }));
   }, [currentProject]);
-  console.log(newActivity.projectIDs);
 
   useImperativeHandle(ref, () => {
     return {

@@ -3,7 +3,7 @@ import AddingTask from "../../Modals/AddingTask/AddingTask.jsx";
 import classes from "./StatusTable.module.css";
 import Activity from "../Activty/Activity.jsx";
 
-export default function TimeTable({ title, id, tasks, onReload }) {
+export default function TimeTable({ title, id, tasks, onReload, color }) {
   const [isActive, setIsActive] = useState(false);
 
   const modal = useRef();
@@ -64,6 +64,7 @@ export default function TimeTable({ title, id, tasks, onReload }) {
         onDragLeave={handleDragLeave}
         onDrop={handleDragEnd}
         className={!isActive ? classes.section : classes.sectionActive}
+        style={{ backgroundColor: color }}
       >
         <h3 className={classes.h3}>{title}</h3>
         <ul>

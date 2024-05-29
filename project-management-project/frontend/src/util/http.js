@@ -21,7 +21,6 @@ export async function fetchProjects() {
 }
 
 export async function addProject(newProject) {
-  console.log(newProject);
   fetch("http://localhost:8080/projects", {
     method: "POST",
     headers: {
@@ -45,10 +44,8 @@ export async function deleteProjectById(projectId) {
 }
 
 export async function fetchTasks(projectId) {
-  console.log(projectId);
   const response = await fetch(`http://localhost:8080/activities/${projectId}`);
   const resData = await response.json();
-  console.log(resData);
   if (!response.ok) {
     throw new Error("Nie udało się załadować tasków");
   }
@@ -57,7 +54,6 @@ export async function fetchTasks(projectId) {
 }
 
 export async function addActivity(newProject) {
-  console.log(newProject);
   fetch("http://localhost:8080/activities", {
     method: "POST",
     headers: {
@@ -78,4 +74,15 @@ export async function deleteActivityById(activityID) {
   if (!response.ok) {
     throw new Error("Nie udało się usunąć aktywności");
   }
+}
+
+export async function addBoard(projectID, newBoard) {
+  console.log(projectID);
+  fetch(`http://localhost:8080/projects/${projectID}/boards`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newBoard),
+  });
 }
