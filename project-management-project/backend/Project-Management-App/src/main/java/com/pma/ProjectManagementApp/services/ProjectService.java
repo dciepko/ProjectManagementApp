@@ -82,7 +82,7 @@ public class ProjectService {
         // Ustawienie ID użytkowników, ID aktywności, ID zespołu, ID statusu oraz ID tabeli
         dto.setUserIds(project.getUsers().stream().map(User::getUserID).collect(Collectors.toList()));
         dto.setActivityIds(project.getProjectActivities().stream().map(Activity::getActivityID).collect(Collectors.toList()));
-        dto.setTableIds(project.getTables().stream().map(StatusTable::getTableID).collect(Collectors.toList()));
+        dto.setTables(project.getTables());
         dto.setTeamIds(project.getTeams().stream().map(Team::getTeamID).collect(Collectors.toList()));
         dto.setStatusId(project.getStatus().getStatusID());
         dto.setWorkspaceID(project.getWorkspace().getWorkspaceID());
@@ -96,6 +96,7 @@ public class ProjectService {
         project.setStartDate(projectDto.getStartDate());
         project.setEndDate(projectDto.getEndDate());
         project.setOwnerID(projectDto.getOwnerID());
+        project.setTables(projectDto.getTables());
 
         List<User> users = projectDto.getUserIds().stream()
                 .map(userId -> userRepo.findById(userId).orElse(null))
@@ -107,11 +108,6 @@ public class ProjectService {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
         project.setProjectActivities(activities);
-        List<StatusTable> tables = projectDto.getTableIds().stream()
-                .map(userId -> tableRepo.findById(userId).orElse(null))
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
-        project.setTables(tables);
         List<Team> teams = projectDto.getTeamIds().stream()
                 .map(userId -> teamRepo.findById(userId).orElse(null))
                 .filter(Objects::nonNull)

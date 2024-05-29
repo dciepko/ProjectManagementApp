@@ -21,4 +21,5 @@
 
 .addTableButton:hover {
   background-color: #4135ac;
+  cursor: pointer;
 }

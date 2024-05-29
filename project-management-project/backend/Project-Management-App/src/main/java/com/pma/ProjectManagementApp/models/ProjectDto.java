@@ -1,5 +1,6 @@
 package com.pma.ProjectManagementApp.models;
 
+import com.pma.ProjectManagementApp.modules.StatusTable;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,6 @@ public class ProjectDto {
     private List<Integer> activityIds; // Lista ID aktywności
     private List<Integer> teamIds; // ID zespołu
     private Integer statusId; // ID statusu
-    private List<Integer> tableIds; // ID tabeli statusów
+    private List<StatusTable> tables; // ID tabeli statusów
     private Integer workspaceID;
 }

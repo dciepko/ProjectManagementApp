@@ -17,6 +17,8 @@ export default function SelectedProject({ currentProject }) {
   const [activities, setActivities] = useState(currentProjectActivities);
   const [selectedLayout, setSelectedLayout] = useState("table");
 
+  const tablesList = currentProject.tables;
+
   useEffect(() => {
     dispatch(fetchCurrentProjectTasks(currentProject.projectID));
   }, [dispatch, currentProject]);
@@ -48,12 +50,14 @@ export default function SelectedProject({ currentProject }) {
         <ProjectBoardTable
           activities={activities}
           activitiesListChange={activitiesListChange}
+          tablesList={tablesList}
         />
       )}
       {selectedLayout === "long" && (
         <ProjectBoardLong
           activities={activities}
           activitiesListChange={activitiesListChange}
+          tablesList={tablesList}
         />
       )}
       {selectedLayout === "group" && (

@@ -1,27 +1,24 @@
 import StatusList from "../../StatusList/StatusList";
 import classes from "./ProjectBoardLong.module.css";
 
-export default function ProjectBoardLong({ activities, activitiesListChange }) {
+export default function ProjectBoardLong({
+  activities,
+  activitiesListChange,
+  tablesList,
+}) {
   return (
     <>
-      <StatusList
-        activities={activities}
-        activitiesListChange={activitiesListChange}
-        title={"Do zrobienia"}
-        id={"todo"}
-      />
-      <StatusList
-        activities={activities}
-        activitiesListChange={activitiesListChange}
-        title={"W toku"}
-        id={"doing"}
-      />
-      <StatusList
-        activities={activities}
-        activitiesListChange={activitiesListChange}
-        title={"Zrobione"}
-        id={"done"}
-      />
+      {tablesList.map((table) => {
+        return (
+          <StatusList
+            activities={activities}
+            activitiesListChange={activitiesListChange}
+            title={table.tableName}
+            id={table.tableID}
+            key={table.tableID}
+          />
+        );
+      })}
     </>
   );
 }
