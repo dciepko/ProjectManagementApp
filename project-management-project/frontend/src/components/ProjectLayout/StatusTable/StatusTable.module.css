@@ -23,8 +23,26 @@
   overflow: auto;
 }
 
+.nonListPart {
+  display: flex;
+  justify-content: space-between;
+}
+
 .h3 {
   font-weight: 400;
+  font-size: 2.6rem;
+}
+
+.nameChangeInput {
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 2.6rem;
+  width: 70%;
+}
+
+.sideButton {
+  width: 10%;
 }
 
 .addTaskButton {

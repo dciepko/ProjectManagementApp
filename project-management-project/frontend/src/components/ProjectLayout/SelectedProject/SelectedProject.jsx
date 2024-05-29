@@ -32,10 +32,10 @@ export default function SelectedProject({ currentProject }) {
     }
   }, [currentProjectActivities]);
 
-  function activitiesListChange() {
-    //setActivities(activities);
+  function activitiesListChange(activities) {
+    setActivities(activities);
     console.log("doszlo");
-    dispatch(fetchCurrentProjectTasks(currentProject.projectID));
+    //dispatch(fetchCurrentProjectTasks(currentProject.projectID));
   }
 
   function handleSelectChange(event) {
