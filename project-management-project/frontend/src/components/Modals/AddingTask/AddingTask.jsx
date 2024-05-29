@@ -7,12 +7,16 @@ import AddingInput from "../AddingInput/AddingInput";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewActivity } from "../../../store/activity-slice";
 
-const AddingTask = forwardRef(function AddingTask({}, ref) {
+const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
   const dispatch = useDispatch();
   const currentProject = useSelector((state) => state.projects.currentProject);
   const dialog = useRef();
   const formRef = useRef();
   const [newActivity, setNewActivity] = useState({
+    activityPriority: 1,
+    activityName: "",
+    activityDescription: "",
+    dueDate: "",
     activityType: 1,
     tableID: 1,
     labelID: 1,
@@ -24,9 +28,11 @@ const AddingTask = forwardRef(function AddingTask({}, ref) {
   });
 
   useEffect(() => {
+    console.log(currentProject);
     setNewActivity((newActivity) => ({
       ...newActivity,
-      projectIDs: [currentProject.projectID],
+      projectID: currentProject.projectID,
+      tableID: tableID,
     }));
   }, [currentProject]);
 
@@ -51,6 +57,7 @@ const AddingTask = forwardRef(function AddingTask({}, ref) {
     event.preventDefault();
 
     dispatch(addNewActivity(newActivity));
+    handleAdd();
     dialog.current.close();
   }
 

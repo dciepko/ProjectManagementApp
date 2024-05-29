@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -25,7 +26,8 @@ public class ProjectService {
     private StatusRepo statusRepo;
     @Autowired
     private StatusTableRepo tableRepo;
-
+    @Autowired
+    private WorkspaceRepo workspaceRepo;
 
     public List<ProjectDto> getProjects(){
         List<Project> projects = projectRepo.findAll();
@@ -34,8 +36,31 @@ public class ProjectService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public Project addProject(ProjectDto projectDto){
         Project project = convertToProject(projectDto);
+
+        StatusTable table1 = new StatusTable();
+        table1.setTableName("Do zrobienia");
+        table1.setTableColor("blue");
+        table1.setProject(project);
+        tableRepo.save(table1);
+        StatusTable table2 = new StatusTable();
+        table2.setTableName("W trakcie");
+        table2.setTableColor("blue");
+        table2.setProject(project);
+        tableRepo.save(table2);
+        StatusTable table3 = new StatusTable();
+        table3.setTableName("Zakończone");
+        table3.setTableColor("blue");
+        table3.setProject(project);
+        tableRepo.save(table3);
+        List<StatusTable> projectTables = new ArrayList<>();
+        projectTables.add(table1);
+        projectTables.add(table2);
+        projectTables.add(table3);
+        project.setTables(projectTables);
+
         Project addedProject = projectRepo.save(project);
         return addedProject;
     }
@@ -133,6 +158,8 @@ public class ProjectService {
         project.setTeams(teams);
         Status status = statusRepo.findById(projectDto.getStatusId()).orElse(null);
         project.setStatus(status);
+        Workspace workspace = workspaceRepo.findById(projectDto.getWorkspaceID()).orElse(null);
+        project.setWorkspace(workspace);
 
         return project;
     }

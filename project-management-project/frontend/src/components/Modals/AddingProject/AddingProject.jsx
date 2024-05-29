@@ -10,12 +10,16 @@ const AddingProject = forwardRef(function Modal({}, ref) {
   const dialog = useRef();
   const formRef = useRef();
   const [newProject, setNewProject] = useState({
+    projectName: "",
+    projectDescription: "",
+    startDate: "",
+    endDate: "",
     ownerID: 1,
     userIds: [1],
     activityIds: [],
-    teamId: 1,
+    teamIds: [1],
     statusId: 1,
-    tableId: 1,
+    workspaceID: 1,
   });
 
   function handleChange(event) {

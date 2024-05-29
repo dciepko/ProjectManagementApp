@@ -24,6 +24,7 @@ export default function WorkspacePage() {
     if (projects.length > 0) {
       setCurrentProjects(projects);
       setSelectedProject(projects[0]);
+      dispatch(chooseCurrentProject(projects[0]));
     }
   }, [projects]);
 

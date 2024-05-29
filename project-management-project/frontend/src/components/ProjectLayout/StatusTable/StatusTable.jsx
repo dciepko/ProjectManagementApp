@@ -12,6 +12,10 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
     return task.tableID === id;
   });
 
+  function handleNewActivity() {
+    onReload();
+  }
+
   function handleDragStart(event, activity) {
     event.dataTransfer.setData("actId", activity.activityID);
   }
@@ -58,7 +62,7 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
 
   return (
     <>
-      <AddingTask ref={modal} />
+      <AddingTask ref={modal} tableID={id} handleAdd={handleNewActivity} />
       <section
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
