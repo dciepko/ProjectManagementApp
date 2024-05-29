@@ -34,10 +34,9 @@ public class Project {
     @JsonIgnore
     private Status status;
 
-    @ManyToOne
-    @JoinColumn(name = "tableID")
+    @OneToMany(mappedBy = "project")
     @JsonIgnore
-    private StatusTable table;
+    private List<StatusTable> tables;
 
     @ManyToOne
     @JoinColumn(name = "workspaceID")

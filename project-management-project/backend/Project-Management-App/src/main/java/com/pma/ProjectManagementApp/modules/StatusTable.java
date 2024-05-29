@@ -17,9 +17,10 @@ public class StatusTable {
     private String tableName;
     private String tableColor;
 
-    @OneToMany(mappedBy = "table")
+    @ManyToOne
+    @JoinColumn(name = "projectID")
     @JsonIgnore
-    private List<Project> projects;
+    private Project project;
 
     @OneToMany(mappedBy = "tableA")
     @JsonIgnore

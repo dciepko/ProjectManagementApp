@@ -51,7 +51,7 @@ public class ProjectService {
             editedProject.setOwnerID(newProject.getOwnerID());
             editedProject.setProjectActivities(newProject.getProjectActivities());
             editedProject.setTeams(newProject.getTeams());
-            editedProject.setTable(newProject.getTable());
+            editedProject.setTables(newProject.getTables());
             editedProject.setUsers(newProject.getUsers());
             editedProject.setWorkspace(newProject.getWorkspace());
 
@@ -82,9 +82,9 @@ public class ProjectService {
         // Ustawienie ID użytkowników, ID aktywności, ID zespołu, ID statusu oraz ID tabeli
         dto.setUserIds(project.getUsers().stream().map(User::getUserID).collect(Collectors.toList()));
         dto.setActivityIds(project.getProjectActivities().stream().map(Activity::getActivityID).collect(Collectors.toList()));
+        dto.setTableIds(project.getTables().stream().map(StatusTable::getTableID).collect(Collectors.toList()));
         dto.setTeamIds(project.getTeams().stream().map(Team::getTeamID).collect(Collectors.toList()));
         dto.setStatusId(project.getStatus().getStatusID());
-        dto.setTableId(project.getTable().getTableID());
         dto.setWorkspaceID(project.getWorkspace().getWorkspaceID());
         return dto;
     }
@@ -107,6 +107,11 @@ public class ProjectService {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
         project.setProjectActivities(activities);
+        List<StatusTable> tables = projectDto.getTableIds().stream()
+                .map(userId -> tableRepo.findById(userId).orElse(null))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+        project.setTables(tables);
         List<Team> teams = projectDto.getTeamIds().stream()
                 .map(userId -> teamRepo.findById(userId).orElse(null))
                 .filter(Objects::nonNull)
@@ -114,9 +119,6 @@ public class ProjectService {
         project.setTeams(teams);
         Status status = statusRepo.findById(projectDto.getStatusId()).orElse(null);
         project.setStatus(status);
-        StatusTable table = tableRepo.findById(projectDto.getTableId()).orElse(null);
-        project.setTable(table);
-
 
         return project;
     }

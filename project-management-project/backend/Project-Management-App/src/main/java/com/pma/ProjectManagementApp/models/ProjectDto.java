@@ -19,6 +19,6 @@ public class ProjectDto {
     private List<Integer> activityIds; // Lista ID aktywności
     private List<Integer> teamIds; // ID zespołu
     private Integer statusId; // ID statusu
-    private Integer tableId; // ID tabeli statusów
+    private List<Integer> tableIds; // ID tabeli statusów
     private Integer workspaceID;
 }
