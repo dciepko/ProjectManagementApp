@@ -16,6 +16,7 @@ export default function ProjectBoardLong({
             title={table.tableName}
             id={table.tableID}
             key={table.tableID}
+            color={table.tableColor}
           />
         );
       })}

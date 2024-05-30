@@ -55,7 +55,7 @@ export default function Activity({ id, task, handleDragStart }) {
           </div>
           <div className={classes.buttonContainer}>
             <button className={classes.button} onClick={handleOpenModal}>
-              <img src={info} alt="" />
+              <img src={info} alt="Information button" />
             </button>
             {task.type === "task" && (
               <button className={classes.button} onClick={handleWrapButton}>
