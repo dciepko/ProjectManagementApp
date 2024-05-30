@@ -4,11 +4,12 @@
   height: 83%;
   background: url(../../../../assets/gridBcg.png);
   background-size: cover;
+  overflow-x: auto;
 }
 
 .addTableButton {
   background-color: #4f40ce;
-  width: 20%;
+  min-width: 20%;
   margin: 3rem;
   padding: 2rem 0;
   border-radius: 10px;
