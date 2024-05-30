@@ -8,6 +8,7 @@ import {
   editingActivity,
 } from "../../../store/activity-slice.js";
 import { useDispatch } from "react-redux";
+import { editingTables } from "../../../store/projects-slice.js";
 
 export default function TimeTable({ title, id, tasks, onReload, color }) {
   const [isActive, setIsActive] = useState(false);
@@ -42,11 +43,25 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
 
   const handleBlur = () => {
     setIsEditing(false);
+    dispatch(
+      editingTables({
+        tableID: id,
+        tableName: text,
+        tableColor: color,
+      })
+    );
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       setIsEditing(false);
+      dispatch(
+        editingTables({
+          tableID: id,
+          tableName: text,
+          tableColor: color,
+        })
+      );
     }
   };
 
@@ -64,29 +79,8 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
   }
 
   function handleDragEnd(event) {
-    // const activityId = event.dataTransfer.getData("actId");
-    // let copy = [...tasks];
-    // let activityToTransfer = copy.find((act) => {
-    //   return act.activityID == activityId;
-    // });
-    // if (!activityId) return;
-    // activityToTransfer = {
-    //   ...activityToTransfer,
-    //   tableID: id,
-    // };
-    // copy = copy.filter((act) => {
-    //   return act.activityID != activityId;
-    // });
-    // copy.push(activityToTransfer);
-    // onReload(copy);
-    // setIsActive(false);
-    console.log("handledragend");
-
     const activityId = event.dataTransfer.getData("actId");
-    console.log(activityId);
-    console.log(tasks);
     let activityToTransfer = tasks.find((act) => act.activityID == activityId);
-    console.log(activityToTransfer);
 
     if (!activityToTransfer) return;
 
@@ -113,10 +107,23 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
     }
   }
 
+  function handleSaveBoardColorChanges(newColor) {
+    dispatch(
+      editingTables({
+        tableID: id,
+        tableName: text,
+        tableColor: newColor,
+      })
+    );
+  }
+
   return (
     <>
       <AddingTask ref={modal} tableID={id} handleAdd={handleNewActivity} />
-      <ColorModal ref={colorModal} />
+      <ColorModal
+        ref={colorModal}
+        onColorSubmit={handleSaveBoardColorChanges}
+      />
       <section
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}

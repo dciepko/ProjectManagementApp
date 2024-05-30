@@ -10,19 +10,11 @@ public class StatusTableService {
     @Autowired
     StatusTableRepo repo;
 
-    public void addStatusTable(StatusTable newStatusTable) {
-        repo.save(newStatusTable);
-    }
-
     public void editStatusTable(Integer id, StatusTable newStatusTable) {
         StatusTable editedStatusTable = repo.findById(id).get();
         if(editedStatusTable!=null) {
-            editedStatusTable.setTableID(newStatusTable.getTableID());
             editedStatusTable.setTableName(newStatusTable.getTableName());
             editedStatusTable.setTableColor(newStatusTable.getTableColor());
-            editedStatusTable.setProject(newStatusTable.getProject());
-            editedStatusTable.setActivitiesTab(newStatusTable.getActivitiesTab());
-
             repo.save(editedStatusTable);
         }
     }

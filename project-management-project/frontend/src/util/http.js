@@ -117,3 +117,21 @@ export async function addBoard(projectID, newBoard) {
     body: JSON.stringify(newBoard),
   });
 }
+
+export async function updateBoard(board) {
+  console.log("http");
+  const response = await fetch(
+    `http://localhost:8080/projects/${board.tableID}/boards`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(board),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Nie udało się zaktualizować tablicy");
+  }
+}

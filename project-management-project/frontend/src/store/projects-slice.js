@@ -4,6 +4,7 @@ import {
   fetchProjects,
   deleteProjectById,
   addBoard,
+  updateBoard,
 } from "../util/http";
 import { useSelector } from "react-redux";
 
@@ -44,6 +45,15 @@ export const chooseCurrentProject = (project) => async (dispatch) => {
 export const addNewTable = (projectID, newTable) => async (dispatch) => {
   addBoard(projectID, newTable);
   fetchProjectsAction();
+};
+
+export const editingTables = (updatedTable) => async (dispatch) => {
+  try {
+    await updateBoard(updatedTable);
+    dispatch(fetchProjectsAction());
+  } catch (error) {
+    console.error("Error adding table:", error);
+  }
 };
 
 export const { getProjects, changeCurrentProject } = projectsSlice.actions;
