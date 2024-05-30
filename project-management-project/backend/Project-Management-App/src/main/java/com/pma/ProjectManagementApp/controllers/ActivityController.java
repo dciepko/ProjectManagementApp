@@ -32,4 +32,9 @@ public class ActivityController {
     public List<ActivityDto> getTasksByProjectId(@PathVariable Integer projectId) {
         return service.getActivityById(projectId);
     }
+
+    @PutMapping("/activities/{activityId}")
+    public ActivityDto updateActivity(@PathVariable Integer activityId, @RequestBody ActivityDto activityDto) {
+        return service.updateActivity(activityId, activityDto);
+    }
 }

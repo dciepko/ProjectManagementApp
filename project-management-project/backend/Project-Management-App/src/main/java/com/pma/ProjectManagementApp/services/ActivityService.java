@@ -56,6 +56,31 @@ public class ActivityService {
         return addedActivity;
     }
 
+    public ActivityDto updateActivity(Integer activityId, ActivityDto updatedActivityDto) {
+        Activity existingActivity = activityRepo.findById(activityId)
+                .orElseThrow(() -> new RuntimeException("Activity not found with id: " + activityId));
+
+        Activity updatedActivity = convertToActivity(updatedActivityDto);
+
+        // Update existing activity with data from updatedActivityDto
+        existingActivity.setActivityName(updatedActivity.getActivityName());
+        existingActivity.setActivityDescription(updatedActivity.getActivityDescription());
+        existingActivity.setDueDate(updatedActivity.getDueDate());
+        existingActivity.setActivityType(updatedActivity.getActivityType());
+        existingActivity.setTableA(updatedActivity.getTableA());
+        existingActivity.setLabelA(updatedActivity.getLabelA());
+        existingActivity.setActivitiesStatus(updatedActivity.getActivitiesStatus());
+        existingActivity.setActivityProject(updatedActivity.getActivityProject());
+        existingActivity.setUsersActivity(updatedActivity.getUsersActivity());
+        existingActivity.setComments(updatedActivity.getComments());
+        existingActivity.setAttachements(updatedActivity.getAttachements());
+
+        activityRepo.save(existingActivity);
+
+        // Convert the updated activity to ActivityDto and return
+        return convertToDTO(existingActivity);
+    }
+
     public void deleteActivity(Integer id)
     {
         if(!activityRepo.findById(id).isEmpty()){

@@ -3,6 +3,11 @@ import AddingTask from "../../Modals/AddingTask/AddingTask.jsx";
 import ColorModal from "../../Modals/ColorModal/ColorModal.jsx";
 import classes from "./StatusTable.module.css";
 import Activity from "../Activty/Activity.jsx";
+import {
+  editActivity,
+  editingActivity,
+} from "../../../store/activity-slice.js";
+import { useDispatch } from "react-redux";
 
 export default function TimeTable({ title, id, tasks, onReload, color }) {
   const [isActive, setIsActive] = useState(false);
@@ -13,12 +18,18 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
   const modal = useRef();
   const colorModal = useRef();
 
+  const dispatch = useDispatch();
+
+  if (!tasks || !Array.isArray(tasks)) {
+    return <div>Loading...</div>;
+  }
+
   const filteredActivities = tasks.filter((task) => {
     return task.tableID === id;
   });
 
   function handleNewActivity() {
-    onReload();
+    onReload([]);
   }
 
   const handleDoubleClick = () => {
@@ -53,29 +64,38 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
   }
 
   function handleDragEnd(event) {
+    // const activityId = event.dataTransfer.getData("actId");
+    // let copy = [...tasks];
+    // let activityToTransfer = copy.find((act) => {
+    //   return act.activityID == activityId;
+    // });
+    // if (!activityId) return;
+    // activityToTransfer = {
+    //   ...activityToTransfer,
+    //   tableID: id,
+    // };
+    // copy = copy.filter((act) => {
+    //   return act.activityID != activityId;
+    // });
+    // copy.push(activityToTransfer);
+    // onReload(copy);
+    // setIsActive(false);
+    console.log("handledragend");
+
     const activityId = event.dataTransfer.getData("actId");
+    console.log(activityId);
+    console.log(tasks);
+    let activityToTransfer = tasks.find((act) => act.activityID == activityId);
+    console.log(activityToTransfer);
 
-    let copy = [...tasks];
-
-    let activityToTransfer = copy.find((act) => {
-      return act.activityID == activityId;
-    });
-
-    if (!activityId) return;
+    if (!activityToTransfer) return;
 
     activityToTransfer = {
       ...activityToTransfer,
       tableID: id,
     };
 
-    copy = copy.filter((act) => {
-      return act.activityID != activityId;
-    });
-
-    copy.push(activityToTransfer);
-
-    onReload(copy);
-
+    dispatch(editingActivity(activityToTransfer));
     setIsActive(false);
   }
 

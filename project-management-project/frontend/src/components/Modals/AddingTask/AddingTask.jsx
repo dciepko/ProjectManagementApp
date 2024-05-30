@@ -28,7 +28,6 @@ const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
   });
 
   useEffect(() => {
-    console.log(currentProject);
     setNewActivity((newActivity) => ({
       ...newActivity,
       projectID: currentProject.projectID,
@@ -56,7 +55,7 @@ const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    dispatch(addNewActivity(newActivity));
+    dispatch(addNewActivity(newActivity, currentProject.projectID));
     handleAdd();
     dialog.current.close();
   }

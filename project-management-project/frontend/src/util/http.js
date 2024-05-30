@@ -44,23 +44,54 @@ export async function deleteProjectById(projectId) {
 }
 
 export async function fetchTasks(projectId) {
-  const response = await fetch(`http://localhost:8080/activities/${projectId}`);
-  const resData = await response.json();
-  if (!response.ok) {
-    throw new Error("Nie udało się załadować tasków");
-  }
+  try {
+    console.log("Fetching tasks for projectId:", projectId);
+    const response = await fetch(
+      `http://localhost:8080/activities/${projectId}`
+    );
+    const resData = await response.json();
 
-  return resData;
+    if (!response.ok) {
+      throw new Error("Nie udało się załadować tasków");
+    }
+
+    console.log("Fetched tasks data:", resData);
+    return resData;
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    throw error;
+  }
 }
 
 export async function addActivity(newProject) {
-  fetch("http://localhost:8080/activities", {
+  const response = await fetch("http://localhost:8080/activities", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newProject),
   });
+
+  if (!response.ok) {
+    throw new Error("Nie udało się dodać aktywności");
+  }
+}
+
+export async function updateActivity(activity) {
+  const response = await fetch(
+    `http://localhost:8080/activities/${activity.activityID}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(activity),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Nie udało się zaktualizować aktywności");
+  }
 }
 
 export async function deleteActivityById(activityID) {
