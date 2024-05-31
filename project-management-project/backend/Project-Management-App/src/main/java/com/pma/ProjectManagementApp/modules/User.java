@@ -25,8 +25,7 @@ public class User implements UserDetails {
     private String userPassword;
     private String workingHours;
     private Boolean isOwner;
-
-    private String role;
+    private Role role;
 
     @OneToMany(mappedBy = "userA")
     @JsonIgnore
@@ -61,7 +60,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(role));
+        return Collections.singleton(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
