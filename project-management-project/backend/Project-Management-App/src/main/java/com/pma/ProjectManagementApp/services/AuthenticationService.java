@@ -1,16 +1,13 @@
 package com.pma.ProjectManagementApp.services;
 
 import com.pma.ProjectManagementApp.models.AuthenticationResponse;
+import com.pma.ProjectManagementApp.models.Role;
 import com.pma.ProjectManagementApp.modules.User;
 import com.pma.ProjectManagementApp.repos.UserRepo;
-import jakarta.servlet.Registration;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class AuthenticationService {
@@ -36,11 +33,19 @@ public class AuthenticationService {
         user.setUserSurename(request.getUserSurename());
         user.setUserNickname(request.getUserNickname());
         user.setUserEmail(request.getUserEmail());
-        user.setIsOwner(request.getIsOwner());
-        user.setWorkingHours(request.getWorkingHours());
+
         user.setUserPassword(passwordEncoder.encode(request.getUserPassword()));
 
-        user.setRole(request.getRole());
+        user.setRole(
+                request.getRole() != null ? request.getRole() : Role.USER
+        );
+        user.setIsOwner(
+                request.getIsOwner() != null ? request.getIsOwner() : false
+        );
+        user.setWorkingHours(
+                request.getWorkingHours() != null ? request.getWorkingHours() : "no schedule"
+        );
+
         user = repository.save(user);
         System.out.println("service");
         String token = jwtService.generateToken(user);
@@ -50,14 +55,33 @@ public class AuthenticationService {
 
     public AuthenticationResponse authenticate(User request) {
         System.out.println("service");
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getUserNickname(),
-                        request.getPassword()
-                )
-        );
+        System.out.println("Nickanme: " + request.getUserNickname());
+        System.out.println("Password: " + request.getUserPassword());
+
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getUserNickname(),
+                            request.getUserPassword()
+                    )
+            );
+        } catch (Exception e) {
+            System.out.println("Authentication failed: " + e.getMessage());
+            // Możesz rzucić wyjątek lub zwrócić odpowiedni komunikat
+            throw new RuntimeException("Authentication failed");
+        }
+
         User user = repository.findByUserNickname(request.getUserNickname());
+        if (user == null) {
+            System.out.println("User not found in database");
+            // Możesz rzucić wyjątek lub zwrócić odpowiedni komunikat
+            throw new RuntimeException("User not found");
+        }
+
+        System.out.println("User found: " + user);
+
         String token = jwtService.generateToken(user);
+        System.out.println("Generated token: " + token);
 
         return new AuthenticationResponse(token);
     }

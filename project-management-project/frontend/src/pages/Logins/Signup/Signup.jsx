@@ -7,9 +7,11 @@ import Input from "../Input/Input.jsx";
 
 import { useInput } from "../../../hooks/useInput.js";
 import classes from "./Signup.module.css";
-import { Link } from "react-router-dom";
+import { Link, json, redirect, useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const navigate = useNavigate();
+
   const {
     value: firstNameValue,
     handleInputChange: handleFirstNameChange,
@@ -47,7 +49,7 @@ export default function Signup() {
     hasError: passwordRepeatHasError,
   } = useInput("", (value) => isNotEmpty(value) && hasMinLength(value, 6));
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log(
       firstNameValue,
@@ -57,6 +59,52 @@ export default function Signup() {
       passwordValue,
       passwordRepeatValue
     );
+
+    if (
+      firstNameHasError ||
+      lastNameHasError ||
+      emailHasError ||
+      nickHasError ||
+      passwordHasError ||
+      passwordRepeatHasError ||
+      !firstNameValue ||
+      !lastNameValue ||
+      !emailValue ||
+      !nickValue ||
+      !passwordValue ||
+      !passwordRepeatValue ||
+      passwordValue !== passwordRepeatValue
+    ) {
+      alert("Proszę wypełnić wszystkie pola poprawnie.");
+      return;
+    }
+
+    const authData = {
+      userFirstName: firstNameValue,
+      userSurename: lastNameValue,
+      userEmail: emailValue,
+      userNickname: nickValue,
+      userPassword: passwordValue,
+    };
+
+    const response = await fetch("http://localhost:8080/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(authData),
+    });
+
+    if (response.status === 422 || response.status === 401) {
+      return response;
+    }
+
+    if (!response.ok) {
+      throw new Error("Could not authenticate user.");
+    }
+    if (response.ok) {
+      navigate("/home");
+    }
   }
 
   return (
@@ -146,3 +194,32 @@ export default function Signup() {
     </div>
   );
 }
+
+// export async function action({ request }) {
+//   console.log("weszlo do akcji");
+//   const data = await request.formData();
+//   const authData = {
+//     firstName: data.get("firstNameValue"),
+//     lastName: data.get("lastNameValue"),
+//     email: data.get("emailValue"),
+//     nickName: data.get("nickValue"),
+//     password: data.get("passwordValue"),
+//   };
+
+//   const response = await fetch("http://localhost:8080/register", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(authData),
+//   });
+
+//   if (response.status === 422 || response.status === 401) {
+//     return response;
+//   }
+
+//   if (!response.ok) {
+//     throw json({ message: "Could not authenticate user." }, { status: 500 });
+//   }
+//   return redirect("/home");
+// }

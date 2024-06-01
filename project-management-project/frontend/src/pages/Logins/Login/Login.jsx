@@ -13,11 +13,11 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const {
-    value: emailValue,
-    handleInputChange: handleEmailChange,
-    handleInputBlur: handleEmailBlur,
-    hasError: emailHasError,
-  } = useInput("", (value) => isEmail(value) && isNotEmpty(value));
+    value: nicknameValue,
+    handleInputChange: handleNickChange,
+    handleInputBlur: handleNickBlur,
+    hasError: nickHasError,
+  } = useInput("", (value) => isNotEmpty(value));
 
   const {
     value: passwordValue,
@@ -39,15 +39,15 @@ export default function Login() {
           <h2 className={classes.h2}>Zaloguj się</h2>
           <div className={classes.inputsContainer}>
             <Input
-              label="Email"
-              id="email"
-              type="email"
-              name="email"
-              onBlur={handleEmailBlur}
-              onChange={handleEmailChange}
-              value={emailValue}
-              error={emailHasError && "Wprowadź poprawny adres email"}
-              placeholder="Wprowadź swój adres email"
+              label="Nick"
+              id="nickname"
+              type="text"
+              name="nickname"
+              onBlur={handleNickBlur}
+              onChange={handleNickChange}
+              value={nicknameValue}
+              error={nickHasError && "Wprowadź poprawny nick"}
+              placeholder="Wprowadź swój nick"
             />
             <Input
               label="Hasło"
