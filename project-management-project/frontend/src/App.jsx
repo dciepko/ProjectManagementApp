@@ -4,6 +4,7 @@ import HeadMenu from "./components/HeadMenu/HeadMenu.jsx";
 import Starter from "./pages/Starter/Starter.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import WorkspacePage from "./pages/Workspace/WorkspacePage.jsx";
+import { checkAuthLoader, tokenLoader } from "./util/auth.js";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
@@ -15,9 +16,15 @@ function App() {
     {
       path: "/",
       element: <HeadMenu />,
+      loader: tokenLoader,
+      id: "root",
       children: [
-        { path: "/home", element: <HomePage /> },
-        { path: "/workspace", element: <WorkspacePage /> },
+        { path: "/home", element: <HomePage />, loader: checkAuthLoader },
+        {
+          path: "/workspace",
+          element: <WorkspacePage />,
+          loader: checkAuthLoader,
+        },
       ],
     },
   ]);

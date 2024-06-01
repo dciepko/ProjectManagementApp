@@ -15,22 +15,24 @@ export function getAuthToken() {
     return;
   }
 
-  //const tokenDuration = getTokenDuration();
+  const tokenDuration = getTokenDuration();
 
-  //   if (tokenDuration < 0) {
-  //     return "EXPIRED";
-  //   }
+  if (tokenDuration < 0) {
+    return "EXPIRED";
+  }
 
   return token;
 }
 
 export function tokenLoader() {
+  console.log(getAuthToken());
   return getAuthToken();
 }
 
 export function checkAuthLoader() {
   const token = getAuthToken();
   if (!token) {
-    return redirect("/auth");
+    return redirect("/");
   }
+  return null;
 }

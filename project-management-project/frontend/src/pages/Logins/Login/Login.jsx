@@ -63,6 +63,9 @@ export default function Login() {
       const token = resData.token;
       console.log(token);
       localStorage.setItem("token", token);
+      const expiration = new Date();
+      expiration.setHours(expiration.getHours() + 24);
+      localStorage.setItem("expiration", expiration.toISOString());
 
       navigate("/home");
     }

@@ -60,6 +60,7 @@
 
 .registerButton:hover {
   background-color: #3c319c;
+  cursor: pointer;
 }
 
 .cancelButton {
@@ -75,4 +76,5 @@
 
 .cancelButton:hover {
   background-color: #e2e2e2;
+  cursor: pointer;
 }
