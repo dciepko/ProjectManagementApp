@@ -9,9 +9,11 @@ import {
 import { useInput } from "../../../hooks/useInput.js";
 
 import classes from "./Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const {
     value: nicknameValue,
     handleInputChange: handleNickChange,
@@ -26,9 +28,44 @@ export default function Login() {
     hasError: passwordHasError,
   } = useInput("", (value) => isNotEmpty(value) && hasMinLength(value, 6));
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log(emailValue, passwordValue);
+    console.log(nicknameValue, passwordValue);
+
+    if (nickHasError || passwordHasError || !nicknameValue || !passwordValue) {
+      alert("Proszę wypełnić wszystkie pola poprawnie.");
+      return;
+    }
+
+    const authData = {
+      userNickname: nicknameValue,
+      userPassword: passwordValue,
+    };
+
+    const response = await fetch("http://localhost:8080/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(authData),
+    });
+
+    if (response.status === 422 || response.status === 401) {
+      return response;
+    }
+
+    if (!response.ok) {
+      throw new Error("Could not authenticate user.");
+    }
+
+    if (response.ok) {
+      const resData = await response.json();
+      const token = resData.token;
+      console.log(token);
+      localStorage.setItem("token", token);
+
+      navigate("/home");
+    }
   }
 
   return (

@@ -1,5 +1,12 @@
+import { getAuthToken } from "./auth";
+
 export async function fetchUsers() {
-  const response = await fetch("http://localhost:8080/users");
+  const token = getAuthToken();
+  const response = await fetch("http://localhost:8080/users", {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
   const resData = await response.json();
 
   if (!response.ok) {
@@ -10,7 +17,14 @@ export async function fetchUsers() {
 }
 
 export async function fetchProjects() {
-  const response = await fetch("http://localhost:8080/projects");
+  const token = getAuthToken();
+  console.log(token);
+
+  const response = await fetch("http://localhost:8080/projects", {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
   const resData = await response.json();
 
   if (!response.ok) {
@@ -21,20 +35,26 @@ export async function fetchProjects() {
 }
 
 export async function addProject(newProject) {
+  const token = getAuthToken();
   fetch("http://localhost:8080/projects", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(newProject),
   });
 }
 
 export async function deleteProjectById(projectId) {
+  const token = getAuthToken();
   const response = await fetch(
     `http://localhost:8080/projects?id=${projectId}`,
     {
       method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
     }
   );
 
@@ -44,10 +64,17 @@ export async function deleteProjectById(projectId) {
 }
 
 export async function fetchTasks(projectId) {
+  const token = getAuthToken();
+
   try {
     console.log("Fetching tasks for projectId:", projectId);
     const response = await fetch(
-      `http://localhost:8080/activities/${projectId}`
+      `http://localhost:8080/activities/${projectId}`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
     );
     const resData = await response.json();
 
@@ -64,10 +91,13 @@ export async function fetchTasks(projectId) {
 }
 
 export async function addActivity(newProject) {
+  const token = getAuthToken();
+
   const response = await fetch("http://localhost:8080/activities", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(newProject),
   });
@@ -78,12 +108,15 @@ export async function addActivity(newProject) {
 }
 
 export async function updateActivity(activity) {
+  const token = getAuthToken();
+
   const response = await fetch(
     `http://localhost:8080/activities/${activity.activityID}`,
     {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify(activity),
     }
@@ -95,10 +128,15 @@ export async function updateActivity(activity) {
 }
 
 export async function deleteActivityById(activityID) {
+  const token = getAuthToken();
+
   const response = await fetch(
     `http://localhost:8080/projects?id=${activityID}`,
     {
       method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
     }
   );
 
@@ -108,17 +146,22 @@ export async function deleteActivityById(activityID) {
 }
 
 export async function addBoard(projectID, newBoard) {
+  const token = getAuthToken();
+
   console.log(projectID);
   fetch(`http://localhost:8080/projects/${projectID}/boards`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(newBoard),
   });
 }
 
 export async function updateBoard(board) {
+  const token = getAuthToken();
+
   console.log("http");
   const response = await fetch(
     `http://localhost:8080/projects/${board.tableID}/boards`,
@@ -126,6 +169,7 @@ export async function updateBoard(board) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify(board),
     }
