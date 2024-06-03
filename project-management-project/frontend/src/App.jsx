@@ -7,6 +7,7 @@ import WorkspacePage from "./pages/Workspace/WorkspacePage.jsx";
 import { checkAuthLoader, tokenLoader } from "./util/auth.js";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import CallPage from "./pages/CallPage/CallPage.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,7 @@ function App() {
           element: <WorkspacePage />,
           loader: checkAuthLoader,
         },
+        { path: "/call", element: <CallPage />, loader: checkAuthLoader },
       ],
     },
   ]);
