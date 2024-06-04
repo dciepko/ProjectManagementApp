@@ -58,7 +58,7 @@ export default function CallPage() {
     <div
       className="myCallContainer"
       ref={myMeeting}
-      style={{ width: "100vw", height: "100vh" }}
+      style={{ width: "100vw", height: "90vh" }}
     ></div>
   );
 }

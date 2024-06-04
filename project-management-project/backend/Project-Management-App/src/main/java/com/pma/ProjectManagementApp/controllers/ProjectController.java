@@ -20,7 +20,6 @@ public class ProjectController {
 
     @GetMapping
     public List<ProjectDto> getProjects(){
-        System.out.println("weszlo do controllera");
         return service.getProjects();
     }
 

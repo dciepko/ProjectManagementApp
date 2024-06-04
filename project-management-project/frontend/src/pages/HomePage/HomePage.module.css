@@ -1,6 +1,8 @@
 .main {
   display: flex;
   height: 90vh;
+  background: url(../../assets/gridBcg.png);
+  background-size: cover;
 }
 
 .nav {

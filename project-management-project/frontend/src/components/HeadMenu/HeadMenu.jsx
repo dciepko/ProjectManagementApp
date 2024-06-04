@@ -51,24 +51,19 @@ export default function HeadMenu() {
         <menu className={classes.menu}>
           <ul className={classes.ul}>
             <li className={classes.li}>
-              <a href="#" className={classes.button}>
+              <Link href="#" className={classes.button}>
                 Twoja praca
-              </a>
+              </Link>
             </li>
             <li className={classes.li}>
-              <a href="#" className={classes.button}>
-                Workspaces
-              </a>
-            </li>
-            <li className={classes.li}>
-              <a href="#" className={classes.button}>
+              <Link to="/call" className={classes.button}>
                 Meeting
-              </a>
+              </Link>
             </li>
             <li className={classes.li}>
-              <a href="#" className={classes.button}>
+              <Link to="#" className={classes.button}>
                 Utwórz
-              </a>
+              </Link>
             </li>
           </ul>
         </menu>
@@ -80,11 +75,11 @@ export default function HeadMenu() {
           <button className={classes.notificationImage}>
             <img src={bell} alt="notifications icon" />
           </button>
-          <input
+          {/* <input
             className={classes.searchBar}
             type="search"
             placeholder="Wyszukaj"
-          />
+          /> */}
         </span>
       </header>
       <Outlet />

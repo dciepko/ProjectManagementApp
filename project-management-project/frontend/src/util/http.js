@@ -179,3 +179,20 @@ export async function updateBoard(board) {
     throw new Error("Nie udało się zaktualizować tablicy");
   }
 }
+
+export async function fetchWorkspaces() {
+  const token = getAuthToken();
+
+  const response = await fetch("http://localhost:8080/workspaces", {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+  const resData = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Nie udało się załadować workspace'ów");
+  }
+  console.log(resData);
+  return resData;
+}

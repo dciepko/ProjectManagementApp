@@ -2,27 +2,59 @@ import classes from "./HomePage.module.css";
 
 import ActivityHomeElement from "../../components/ActivityHomeElement/ActivityHomeElement";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { fetchWorkspacesAction } from "../../store/worskpace-slice";
 
 export default function HomePage() {
+  const dispatch = useDispatch();
+  const workspaces = useSelector((state) => state.workspaces.workspaces);
+  console.log(workspaces);
+
+  const [currentWorkspaces, setCurrentWorkspaces] = useState([]);
+
+  useEffect(() => {
+    dispatch(fetchWorkspacesAction());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (workspaces.length > 0) {
+      setCurrentWorkspaces(workspaces);
+    }
+  }, [workspaces]);
+
+  // function handleWorkspaceChoose(workspaceID) {
+  //   const chosenWorkspace = workspaces.find(
+  //     (workspace) => workspace.workspaceID === workspaceID
+  //   );
+  //   dispatch(chooseCurrentWorkspace(chosenWorkspace));
+  //   if (chosenWorkspace) {
+  //     setSelectedWorkspace(chosenWorkspace);
+  //   }
+  // }
+
   return (
     <>
       <main className={classes.main}>
         <nav className={classes.nav}>
           <div className={classes.navUp}>
-            <Link to="/workspace" className={classes.navUpButton}>
-              Projekty
-            </Link>
-            <a href="#" className={classes.navUpButton}>
-              Strona główna
-            </a>
+            {currentWorkspaces.map((workspace) => {
+              return (
+                <Link
+                  to={"#"}
+                  className={classes.navUpButton}
+                  key={workspace.workspaceID}
+                >
+                  {workspace.workspaceName}
+                </Link>
+              );
+            })}
           </div>
           <div className={classes.navDown}>
             <a href="#" className={classes.navDownButton}>
               Twój profil
             </a>
-            <a href="#" className={classes.navDownButton}>
-              Twoje zespoły
-            </a>
+
             <a href="#" className={classes.navDownButton}>
               Ustawienia
             </a>
