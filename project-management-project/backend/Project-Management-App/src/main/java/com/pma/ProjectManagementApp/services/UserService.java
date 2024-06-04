@@ -17,9 +17,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserRepo repo;
 
-//    @Autowired
-//    PasswordEncoder passwordEncoder;
-
     public List<UserDto> getUsers(){
         List<User> users = repo.findAll();
         return users.stream()
@@ -48,10 +45,6 @@ public class UserService implements UserDetailsService {
     }
 
     public void addUser(User newUser) {
-//        String newPassword = newUser.getPassword();
-//        String encodedPassword = passwordEncoder.encode(newPassword);
-//        newUser.setUserPassword(encodedPassword);
-
         repo.save(newUser);
     }
 

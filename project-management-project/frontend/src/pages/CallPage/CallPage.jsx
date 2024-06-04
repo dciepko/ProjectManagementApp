@@ -22,7 +22,6 @@ export function getUrlParams(url = window.location.href) {
 export default function CallPage() {
   const roomID = getUrlParams().get("roomID") || randomID(5);
   let myMeeting = async (element) => {
-    //generate Kit token
     const appID = 1371504779;
     const serverSecret = "2b9d622f9756f83a1fe4d589296d171d";
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
@@ -33,9 +32,8 @@ export default function CallPage() {
       randomID(5)
     );
 
-    //Create instance object from Kit token
     const zp = ZegoUIKitPrebuilt.create(kitToken);
-    //start the call
+
     zp.joinRoom({
       container: element,
       sharedLinks: [

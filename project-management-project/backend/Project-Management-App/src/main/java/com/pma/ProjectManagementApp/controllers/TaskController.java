@@ -1,6 +1,5 @@
 package com.pma.ProjectManagementApp.controllers;
 
-import com.pma.ProjectManagementApp.modules.Project;
 import com.pma.ProjectManagementApp.modules.Task;
 import com.pma.ProjectManagementApp.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;

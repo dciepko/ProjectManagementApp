@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { fetchUsers, fetchWorkspaces } from "../util/http";
+import { fetchWorkspaces } from "../util/http";
 
 const workspaceSlice = createSlice({
   name: "workspace",
@@ -15,12 +15,9 @@ const workspaceSlice = createSlice({
   },
 });
 
-//akcje
 export const fetchWorkspacesAction = () => async (dispatch) => {
   const fetchedWorkspaces = await fetchWorkspaces();
-  console.log("weszlo");
   dispatch(getWorkspaces(fetchedWorkspaces));
-  // dispatch(changeCurrentProject(fetchProjects[0]));
 };
 
 export const { getWorkspaces, changeCurrentWorkspace } = workspaceSlice.actions;

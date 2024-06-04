@@ -1,7 +1,6 @@
 package com.pma.ProjectManagementApp.modules;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +13,6 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer notificationID;
-    //private Integer targetUserID;
     private String notificationContent;
     private Date notificationDate;
 

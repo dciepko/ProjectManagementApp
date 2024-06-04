@@ -17,7 +17,7 @@ public class Workspace {
     private Integer ownerID;
     private String workspaceName;
     private String wsDescription;
-    private String logo; // a może jednak nie
+    private String logo;
 
     @OneToMany(mappedBy = "workspace")
     @JsonIgnore

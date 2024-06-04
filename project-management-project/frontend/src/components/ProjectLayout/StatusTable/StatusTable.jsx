@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import AddingTask from "../../Modals/AddingTask/AddingTask.jsx";
 import ColorModal from "../../Modals/ColorModal/ColorModal.jsx";
 import classes from "./StatusTable.module.css";
 import Activity from "../Activty/Activity.jsx";
-import {
-  editActivity,
-  editingActivity,
-} from "../../../store/activity-slice.js";
+import { editingActivity } from "../../../store/activity-slice.js";
 import { useDispatch } from "react-redux";
 import { editingTables } from "../../../store/projects-slice.js";
 
@@ -102,7 +99,6 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
       console.log("Usuwanie");
     }
     if (event.target.value === "color") {
-      console.log("zmieniamy kolor");
       colorModal.current.open();
     }
   }

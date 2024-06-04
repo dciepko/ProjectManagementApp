@@ -23,7 +23,6 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody User request) {
-        System.out.println(request.getUserNickname());
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 }

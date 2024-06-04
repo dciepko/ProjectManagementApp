@@ -1,6 +1,5 @@
 package com.pma.ProjectManagementApp.controllers;
 
-import com.pma.ProjectManagementApp.models.ProjectDto;
 import com.pma.ProjectManagementApp.modules.Workspace;
 import com.pma.ProjectManagementApp.services.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;

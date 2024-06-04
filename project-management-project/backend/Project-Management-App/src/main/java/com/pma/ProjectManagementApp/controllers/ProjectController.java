@@ -45,13 +45,11 @@ public class ProjectController {
 
     @PutMapping("/{tableID}/boards")
     public void editBoard(@PathVariable Integer tableID, @RequestBody StatusTable newTable) {
-        System.out.println("weszlo do controllera");
         tableService.editStatusTable(tableID, newTable);
     }
 
     @PostMapping("/{tableID}/boards")
     public void addBoard(@PathVariable Integer tableID, @RequestBody StatusTable newTable) {
-        System.out.println("weszlo do controllera");
         service.addNewTableAndUpdateProject(tableID, newTable);
     }
 

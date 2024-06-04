@@ -129,7 +129,7 @@ public class ProjectService {
         dto.setStartDate(project.getStartDate());
         dto.setEndDate(project.getEndDate());
         dto.setOwnerID(project.getOwnerID());
-        // Ustawienie ID użytkowników, ID aktywności, ID zespołu, ID statusu oraz ID tabeli
+
         dto.setUserIds(project.getUsers().stream().map(User::getUserID).collect(Collectors.toList()));
         dto.setActivityIds(project.getProjectActivities().stream().map(Activity::getActivityID).collect(Collectors.toList()));
         dto.setTables(project.getTables());

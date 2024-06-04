@@ -4,7 +4,6 @@ import info from "../../../assets/info-circle-icon.png";
 import wrapDown from "../../../assets/wrap-down-button.png";
 import wrapUp from "../../../assets/wrap-up-button.png";
 
-import DropIndicator from "../DropIndicator/DropIndicator";
 import { useRef, useState } from "react";
 import TaskModal from "../../Modals/TaskModal/TaskModal";
 
@@ -35,7 +34,6 @@ export default function Activity({ id, task, handleDragStart }) {
 
   return (
     <>
-      {/* <DropIndicator table={id} beforeId={task.id} /> */}
       <TaskModal ref={modal} task={task} checklist={task.checklist} />
       {viewType === "wrapped" && (
         <div
@@ -117,5 +115,3 @@ export default function Activity({ id, task, handleDragStart }) {
     </>
   );
 }
-
-//chyba najlepiej bedzie zrobic z elementu osobny komponent i zarzadzac jego stanem status

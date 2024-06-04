@@ -13,7 +13,6 @@ const userSlice = createSlice({
   },
 });
 
-//akcje
 export const fetchOneUser = () => async (dispatch) => {
   const users = await fetchUsers();
   const user = users[0];

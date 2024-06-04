@@ -18,7 +18,6 @@ export async function fetchUsers() {
 
 export async function fetchProjects() {
   const token = getAuthToken();
-  console.log(token);
 
   const response = await fetch("http://localhost:8080/projects", {
     headers: {
@@ -50,7 +49,6 @@ export async function fetchProjectsByID(workspaceID) {
     if (!response.ok) {
       throw new Error("Nie udało się załadować projektów");
     }
-    console.log(resData);
     return resData;
   } catch (error) {
     throw error;
@@ -90,7 +88,6 @@ export async function fetchTasks(projectId) {
   const token = getAuthToken();
 
   try {
-    console.log("Fetching tasks for projectId:", projectId);
     const response = await fetch(
       `http://localhost:8080/activities/${projectId}`,
       {
@@ -105,10 +102,8 @@ export async function fetchTasks(projectId) {
       throw new Error("Nie udało się załadować tasków");
     }
 
-    console.log("Fetched tasks data:", resData);
     return resData;
   } catch (error) {
-    console.error("Error fetching tasks:", error);
     throw error;
   }
 }
@@ -185,7 +180,6 @@ export async function addBoard(projectID, newBoard) {
 export async function updateBoard(board) {
   const token = getAuthToken();
 
-  console.log("http");
   const response = await fetch(
     `http://localhost:8080/projects/${board.tableID}/boards`,
     {
@@ -216,6 +210,5 @@ export async function fetchWorkspaces() {
   if (!response.ok) {
     throw new Error("Nie udało się załadować workspace'ów");
   }
-  console.log(resData);
   return resData;
 }

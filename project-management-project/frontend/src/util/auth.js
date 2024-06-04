@@ -10,7 +10,6 @@ export function getTokenDuration() {
 
 export function getAuthToken() {
   const token = localStorage.getItem("token");
-  console.log(token);
   if (!token) {
     return;
   }
@@ -25,7 +24,6 @@ export function getAuthToken() {
 }
 
 export function tokenLoader() {
-  console.log(getAuthToken());
   return getAuthToken();
 }
 

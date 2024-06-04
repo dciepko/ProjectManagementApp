@@ -5,7 +5,6 @@ import info from "../../../assets/info-icon.png";
 import change from "../../../assets/switch-icon.png";
 import wrap from "../../../assets/wrap-down2.png";
 import user1 from "../../../assets/user-placeholder.png";
-import user2 from "../../../assets/user-placeholder2.png";
 import TaskModal from "../../Modals/TaskModal/TaskModal";
 
 export default function StatusList({

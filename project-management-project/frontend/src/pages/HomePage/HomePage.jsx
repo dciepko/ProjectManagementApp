@@ -9,7 +9,6 @@ import { fetchWorkspacesAction } from "../../store/worskpace-slice";
 export default function HomePage() {
   const dispatch = useDispatch();
   const workspaces = useSelector((state) => state.workspaces.workspaces);
-  console.log(workspaces);
 
   const [currentWorkspaces, setCurrentWorkspaces] = useState([]);
 
@@ -22,16 +21,6 @@ export default function HomePage() {
       setCurrentWorkspaces(workspaces);
     }
   }, [workspaces]);
-
-  // function handleWorkspaceChoose(workspaceID) {
-  //   const chosenWorkspace = workspaces.find(
-  //     (workspace) => workspace.workspaceID === workspaceID
-  //   );
-  //   dispatch(chooseCurrentWorkspace(chosenWorkspace));
-  //   if (chosenWorkspace) {
-  //     setSelectedWorkspace(chosenWorkspace);
-  //   }
-  // }
 
   return (
     <>

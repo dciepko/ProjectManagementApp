@@ -27,7 +27,6 @@ export default function HeadMenu() {
     }
 
     const tokenDuration = getTokenDuration();
-    console.log(tokenDuration);
 
     setTimeout(() => {
       submit(null, { action: "/logout", method: "post" });
@@ -75,11 +74,6 @@ export default function HeadMenu() {
           <button className={classes.notificationImage}>
             <img src={bell} alt="notifications icon" />
           </button>
-          {/* <input
-            className={classes.searchBar}
-            type="search"
-            placeholder="Wyszukaj"
-          /> */}
         </span>
       </header>
       <Outlet />

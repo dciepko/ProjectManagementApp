@@ -7,7 +7,6 @@ import {
   updateBoard,
   fetchProjectsByID,
 } from "../util/http";
-import { useSelector } from "react-redux";
 
 const projectsSlice = createSlice({
   name: "projects",
@@ -33,7 +32,6 @@ export const fetchProjectsAction = () => async (dispatch) => {
   const fetchedProjects = await fetchProjects();
 
   dispatch(getProjects(fetchedProjects));
-  // dispatch(changeCurrentProject(fetchProjects[0]));
 };
 
 export const fetchProjectsByIDAction = (workspaceID) => async (dispatch) => {

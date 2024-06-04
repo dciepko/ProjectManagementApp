@@ -1,5 +1,4 @@
 import StatusList from "../../StatusList/StatusList";
-import classes from "./ProjectBoardLong.module.css";
 
 export default function ProjectBoardLong({
   activities,

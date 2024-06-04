@@ -16,10 +16,10 @@ public class ProjectDto {
     private Date startDate;
     private Date endDate;
     private Integer ownerID;
-    private List<Integer> userIds; // Lista ID użytkowników
-    private List<Integer> activityIds; // Lista ID aktywności
-    private List<Integer> teamIds; // ID zespołu
-    private Integer statusId; // ID statusu
-    private List<StatusTable> tables; // ID tabeli statusów
+    private List<Integer> userIds;
+    private List<Integer> activityIds;
+    private List<Integer> teamIds;
+    private Integer statusId;
+    private List<StatusTable> tables;
     private Integer workspaceID;
 }

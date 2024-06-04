@@ -7,7 +7,7 @@ import Input from "../Input/Input.jsx";
 
 import { useInput } from "../../../hooks/useInput.js";
 import classes from "./Signup.module.css";
-import { Link, json, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -51,14 +51,6 @@ export default function Signup() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(
-      firstNameValue,
-      lastNameValue,
-      emailValue,
-      nickValue,
-      passwordValue,
-      passwordRepeatValue
-    );
 
     if (
       firstNameHasError ||
@@ -105,7 +97,6 @@ export default function Signup() {
     if (response.ok) {
       const resData = await response.json();
       const token = resData.token;
-      console.log(token);
       localStorage.setItem("token", token);
       const expiration = new Date();
       expiration.setHours(expiration.getHours() + 24);
@@ -202,32 +193,3 @@ export default function Signup() {
     </div>
   );
 }
-
-// export async function action({ request }) {
-//   console.log("weszlo do akcji");
-//   const data = await request.formData();
-//   const authData = {
-//     firstName: data.get("firstNameValue"),
-//     lastName: data.get("lastNameValue"),
-//     email: data.get("emailValue"),
-//     nickName: data.get("nickValue"),
-//     password: data.get("passwordValue"),
-//   };
-
-//   const response = await fetch("http://localhost:8080/register", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(authData),
-//   });
-
-//   if (response.status === 422 || response.status === 401) {
-//     return response;
-//   }
-
-//   if (!response.ok) {
-//     throw json({ message: "Could not authenticate user." }, { status: 500 });
-//   }
-//   return redirect("/home");
-// }

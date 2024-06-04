@@ -1,7 +1,6 @@
 package com.pma.ProjectManagementApp.services;
 
 import com.pma.ProjectManagementApp.modules.Task;
-import com.pma.ProjectManagementApp.modules.User;
 import com.pma.ProjectManagementApp.repos.TaskRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

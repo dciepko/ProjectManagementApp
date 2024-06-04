@@ -47,16 +47,12 @@ public class AuthenticationService {
         );
 
         user = repository.save(user);
-        System.out.println("service");
         String token = jwtService.generateToken(user);
 
         return new AuthenticationResponse(token);
     }
 
     public AuthenticationResponse authenticate(User request) {
-        System.out.println("service");
-        System.out.println("Nickanme: " + request.getUserNickname());
-        System.out.println("Password: " + request.getUserPassword());
 
         try {
             authenticationManager.authenticate(
@@ -66,22 +62,16 @@ public class AuthenticationService {
                     )
             );
         } catch (Exception e) {
-            System.out.println("Authentication failed: " + e.getMessage());
-            // Możesz rzucić wyjątek lub zwrócić odpowiedni komunikat
+
             throw new RuntimeException("Authentication failed");
         }
 
         User user = repository.findByUserNickname(request.getUserNickname());
         if (user == null) {
-            System.out.println("User not found in database");
-            // Możesz rzucić wyjątek lub zwrócić odpowiedni komunikat
             throw new RuntimeException("User not found");
         }
 
-        System.out.println("User found: " + user);
-
         String token = jwtService.generateToken(user);
-        System.out.println("Generated token: " + token);
 
         return new AuthenticationResponse(token);
     }

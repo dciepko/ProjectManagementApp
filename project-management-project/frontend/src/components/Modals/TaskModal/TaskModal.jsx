@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import classes from "./TaskModal.module.css";
 import { createPortal } from "react-dom";
 import { deleteActivity } from "../../../store/activity-slice";

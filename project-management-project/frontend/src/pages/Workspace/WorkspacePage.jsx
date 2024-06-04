@@ -6,14 +6,12 @@ import { useState, useEffect } from "react";
 
 import {
   chooseCurrentProject,
-  fetchProjectsAction,
   fetchProjectsByIDAction,
 } from "../../store/projects-slice";
 import { useParams } from "react-router-dom";
 
 export default function WorkspacePage() {
   const { workspaceID } = useParams();
-  console.log(workspaceID);
 
   const dispatch = useDispatch();
   const projects = useSelector(

@@ -1,9 +1,7 @@
 package com.pma.ProjectManagementApp.controllers;
 
 import com.pma.ProjectManagementApp.models.ActivityDto;
-import com.pma.ProjectManagementApp.models.ProjectDto;
 import com.pma.ProjectManagementApp.modules.Activity;
-import com.pma.ProjectManagementApp.modules.Project;
 import com.pma.ProjectManagementApp.services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

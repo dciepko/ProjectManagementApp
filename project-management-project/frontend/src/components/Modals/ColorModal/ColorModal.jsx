@@ -1,7 +1,6 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 import classes from "./ColorModal.module.css";
 import { createPortal } from "react-dom";
-import { useDispatch } from "react-redux";
 
 const ColorModal = forwardRef(function ColorModal({ onColorSubmit }, ref) {
   const [color, setColor] = useState();

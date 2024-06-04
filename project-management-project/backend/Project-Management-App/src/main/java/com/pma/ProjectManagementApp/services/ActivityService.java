@@ -62,7 +62,6 @@ public class ActivityService {
 
         Activity updatedActivity = convertToActivity(updatedActivityDto);
 
-        // Update existing activity with data from updatedActivityDto
         existingActivity.setActivityName(updatedActivity.getActivityName());
         existingActivity.setActivityDescription(updatedActivity.getActivityDescription());
         existingActivity.setDueDate(updatedActivity.getDueDate());
@@ -77,7 +76,6 @@ public class ActivityService {
 
         activityRepo.save(existingActivity);
 
-        // Convert the updated activity to ActivityDto and return
         return convertToDTO(existingActivity);
     }
 
