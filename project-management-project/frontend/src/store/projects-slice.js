@@ -5,15 +5,23 @@ import {
   deleteProjectById,
   addBoard,
   updateBoard,
+  fetchProjectsByID,
 } from "../util/http";
 import { useSelector } from "react-redux";
 
 const projectsSlice = createSlice({
   name: "projects",
-  initialState: { projects: [], currentProject: {} },
+  initialState: {
+    projects: [],
+    currentWorkspaceProject: [],
+    currentProject: {},
+  },
   reducers: {
     getProjects(state, action) {
       state.projects = action.payload;
+    },
+    getCurrentWorkspaceProject(state, action) {
+      state.currentWorkspaceProject = action.payload;
     },
     changeCurrentProject(state, action) {
       state.currentProject = action.payload;
@@ -26,6 +34,12 @@ export const fetchProjectsAction = () => async (dispatch) => {
 
   dispatch(getProjects(fetchedProjects));
   // dispatch(changeCurrentProject(fetchProjects[0]));
+};
+
+export const fetchProjectsByIDAction = (workspaceID) => async (dispatch) => {
+  const fetchedProjects = await fetchProjectsByID(workspaceID);
+
+  dispatch(getCurrentWorkspaceProject(fetchedProjects));
 };
 
 export const addNewProject = (newProject) => async (dispatch) => {
@@ -56,6 +70,7 @@ export const editingTables = (updatedTable) => async (dispatch) => {
   }
 };
 
-export const { getProjects, changeCurrentProject } = projectsSlice.actions;
+export const { getProjects, getCurrentWorkspaceProject, changeCurrentProject } =
+  projectsSlice.actions;
 
 export default projectsSlice;

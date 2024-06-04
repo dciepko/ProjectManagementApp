@@ -34,6 +34,29 @@ export async function fetchProjects() {
   return resData;
 }
 
+export async function fetchProjectsByID(workspaceID) {
+  const token = getAuthToken();
+  try {
+    const response = await fetch(
+      `http://localhost:8080/projects/${workspaceID}`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    const resData = await response.json();
+
+    if (!response.ok) {
+      throw new Error("Nie udało się załadować projektów");
+    }
+    console.log(resData);
+    return resData;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function addProject(newProject) {
   const token = getAuthToken();
   fetch("http://localhost:8080/projects", {

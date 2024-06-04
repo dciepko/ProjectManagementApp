@@ -23,6 +23,11 @@ public class ProjectController {
         return service.getProjects();
     }
 
+    @GetMapping("/{workspaceID}")
+    public List<ProjectDto> getProjectsByWorkspaceID(@PathVariable Integer workspaceID){
+        return service.getProjectsByWorkspaces(workspaceID);
+    }
+
     @PostMapping
     public Project addProject(@RequestBody ProjectDto projectDto){
         return service.addProject(projectDto);

@@ -36,6 +36,13 @@ public class ProjectService {
                 .collect(Collectors.toList());
     }
 
+    public List<ProjectDto> getProjectsByWorkspaces(Integer id){
+        List<Project> projects = projectRepo.findByWorkspaceWorkspaceID(id);
+        return projects.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     public Project addProject(ProjectDto projectDto){
         Project project = convertToProject(projectDto);

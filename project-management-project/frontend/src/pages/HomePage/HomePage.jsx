@@ -41,7 +41,7 @@ export default function HomePage() {
             {currentWorkspaces.map((workspace) => {
               return (
                 <Link
-                  to={"#"}
+                  to={`/workspace/${workspace.workspaceID}`}
                   className={classes.navUpButton}
                   key={workspace.workspaceID}
                 >
@@ -49,6 +49,9 @@ export default function HomePage() {
                 </Link>
               );
             })}
+            <a href="#" className={classes.navUpButton}>
+              Nowy Workspace
+            </a>
           </div>
           <div className={classes.navDown}>
             <a href="#" className={classes.navDownButton}>

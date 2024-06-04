@@ -22,7 +22,7 @@ function App() {
       children: [
         { path: "/home", element: <HomePage />, loader: checkAuthLoader },
         {
-          path: "/workspace",
+          path: "/workspace/:workspaceID",
           element: <WorkspacePage />,
           loader: checkAuthLoader,
         },

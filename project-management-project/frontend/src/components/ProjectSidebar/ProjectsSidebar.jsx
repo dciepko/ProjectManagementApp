@@ -10,7 +10,7 @@ export default function ProjectsSidebar({ projectList, handleClick }) {
   function handleOpenModal() {
     modal.current.open();
   }
-
+  console.log(projectList);
   return (
     <>
       <AddingProject ref={modal} />
