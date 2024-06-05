@@ -30,19 +30,23 @@ public class Project {
     private List<Team> teams;
 
     @ManyToOne
-    @JoinColumn(name = "statusID")
+    @JoinColumn(name = "statusID", foreignKey = @ForeignKey(name = "FK_Status", foreignKeyDefinition = "FOREIGN KEY ('status_ID')\r\n"
+    +" REFERENCES 'cascade_test','status' ('projectID')\r\n"
+    +" ON DELETE SET NULL"))
     @JsonIgnore
     private Status status;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<StatusTable> tables;
 
     @ManyToOne
-    @JoinColumn(name = "workspaceID")
+    @JoinColumn(name = "workspaceID", foreignKey = @ForeignKey(name = "FK_Workspace", foreignKeyDefinition = "FOREIGN KEY ('workspace_ID')\r\n"
+            +" REFERENCES 'cascade_test','status' ('projectID')\r\n"
+            +" ON DELETE SET NULL"))
     private Workspace workspace;
 
-    @OneToMany(mappedBy = "activityProject")
+    @OneToMany(mappedBy = "activityProject", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Activity> projectActivities;
 }

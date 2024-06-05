@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export default function Starter() {
   return (
     <>
-      <header className={classes.header}>
+      {/* <header className={classes.header}>
         <div className={classes.logoContainer}>
           <img src={logo} alt="logo" className={classes.logoImg} />
         </div>
@@ -27,7 +27,7 @@ export default function Starter() {
             </li>
           </ul>
         </menu>
-      </header>
+      </header> */}
       <main className={classes.main}>
         <span className={classes.stain1}>
           <img src={stain1} alt="Stain shape" />
