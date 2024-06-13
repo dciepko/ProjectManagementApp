@@ -60,3 +60,48 @@
   background-color: lightgray;
   cursor: pointer;
 }
+
+@media (max-width: 320px) and (max-height: 510px) {
+  .section {
+    background-color: #4f40ce;
+    color: #ebedfa;
+    font-size: 2.4rem;
+    min-width: 50%;
+    margin: 3rem;
+    padding: 3rem 1.5rem 8rem 1.5rem;
+    border-radius: 15px;
+    height: 80%;
+    overflow: auto;
+  }
+
+  .h3 {
+    font-weight: 400;
+    font-size: 1.7rem;
+  }
+
+  .sideButton {
+    width: 15%;
+  }
+  .addTaskButton {
+    background-color: #ebedfa;
+    margin: 0.8rem 0;
+    padding: 1.2rem 0.5rem;
+    width: 100%;
+    text-align: center;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 1.8rem;
+  }
+  .sectionActive {
+    background-color: #4135ac;
+    color: #ebedfa;
+    height: auto;
+    font-size: 1.6rem;
+    min-width: 800vh;
+    margin: 3rem;
+    padding: 3rem 1.5rem 8rem 1.5rem;
+    border-radius: 15px;
+    height: 70%;
+    overflow: auto;
+  }
+}
