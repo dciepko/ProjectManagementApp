@@ -82,3 +82,28 @@
   background-color: #4135ac;
   cursor: pointer;
 }
+
+@media (max-width: 320px) and (max-height: 510px) {
+  .addingModal {
+    width: 80vw;
+    height: 80vh;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-70%, -55%);
+    border: none;
+    border-radius: 15px;
+    padding: 4rem 5rem;
+    background-color: #ebedfa;
+  }
+
+  .cancelButton {
+    background-color: #ebedfa;
+    color: #ff910a;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    border: none;
+    margin-right: 10px;
+  }
+}
