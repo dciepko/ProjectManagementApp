@@ -114,19 +114,20 @@
   .selectButton {
     background-color: #ff910a;
     border-radius: 15px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    padding: 0.05rem 0.1rem;
     border: none;
   }
 
   .optionButton {
-    padding: 0.1rem 0.2rem;
+    padding: 0.1rem 0.1rem;
     margin-left: 0.7rem;
     background: none;
     border: none;
   }
   .unwrapButton {
     float: right;
-    margin-right: 5.5rem;
+    margin-right: 7.5rem;
     margin-top: 1.2rem;
     padding: 0.1rem;
     border: none;

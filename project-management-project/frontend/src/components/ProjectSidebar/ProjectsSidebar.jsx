@@ -3,9 +3,11 @@ import classes from "./ProjectsSidebar.module.css";
 import wrapButton from "../../assets/wrap-right-button.png";
 import AddingProject from "../Modals/AddingProject/AddingProject";
 import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export default function ProjectsSidebar({ projectList, handleClick }) {
   const modal = useRef();
+  const isMobileScreen = useMediaQuery({ query: "(max-width:320px)" });
 
   function handleOpenModal() {
     modal.current.open();
@@ -18,7 +20,7 @@ export default function ProjectsSidebar({ projectList, handleClick }) {
         <header className={classes.asideHeader}>
           <h2 className={classes.h2}>Twoje Projekty</h2>
           <button className={classes.wrapButton}>
-            <img src={wrapButton} alt="Wrap button" />
+            {!isMobileScreen && <img src={wrapButton} alt="Wrap button" />}
           </button>
         </header>
 
