@@ -111,6 +111,7 @@ import classes from "./HeadMenu.module.css";
 import logo from "../../assets/logo.png";
 import user from "../../assets/user-placeholder.png";
 import bell from "../../assets/bell-icon.png";
+import menu from "../../assets/menu-icon.png";
 
 import {
   Link,
@@ -208,6 +209,13 @@ export default function HeadMenu() {
             >
               {!isMobileScreen && <img src={user} alt="user-avatar" />}
             </button>
+            <button
+              ref={buttonRef}
+              className={classes.menuImage}
+              onClick={toggleMenu}
+            ></button>
+            {isMobileScreen && <img src={menu} alt="menu-icon" />}
+
             {isOpen && (
               <div
                 style={{
