@@ -111,6 +111,7 @@ import classes from "./HeadMenu.module.css";
 import logo from "../../assets/logo.png";
 import user from "../../assets/user-placeholder.png";
 import bell from "../../assets/bell-icon.png";
+
 import {
   Link,
   Outlet,
@@ -120,8 +121,10 @@ import {
 } from "react-router-dom";
 import { getTokenDuration } from "../../util/auth";
 import { useEffect, useState, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export default function HeadMenu() {
+  const isMobileScreen = useMediaQuery({ query: "(max-width:320px)" });
   const navigate = useNavigate();
   const token = useLoaderData();
   const submit = useSubmit();
@@ -203,7 +206,7 @@ export default function HeadMenu() {
               className={classes.avatarImage}
               onClick={toggleMenu}
             >
-              <img src={user} alt="user-avatar" />
+              {!isMobileScreen && <img src={user} alt="user-avatar" />}
             </button>
             {isOpen && (
               <div
@@ -221,7 +224,7 @@ export default function HeadMenu() {
             )}
           </span>
           <button className={classes.notificationImage}>
-            <img src={bell} alt="notifications icon" />
+            {!isMobileScreen && <img src={bell} alt="notifications icon" />}
           </button>
         </span>
       </header>
