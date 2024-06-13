@@ -9,53 +9,33 @@ import { Link } from "react-router-dom";
 
 export default function Starter() {
   return (
-    <>
-      {/* <header className={classes.header}>
-        <div className={classes.logoContainer}>
-          <img src={logo} alt="logo" className={classes.logoImg} />
-        </div>
-        <menu className={classes.menu}>
-          <ul className={classes.ul}>
-            <li className={classes.li}>
-              <button className={classes.button}>Test Button</button>
-            </li>
-            <li className={classes.li}>
-              <button className={classes.button}>Test Button</button>
-            </li>
-            <li className={classes.li}>
-              <button className={classes.button}>Test Button</button>
-            </li>
-          </ul>
-        </menu>
-      </header> */}
-      <main className={classes.main}>
-        <span className={classes.stain1}>
-          <img src={stain1} alt="Stain shape" />
-        </span>
-        <span className={classes.stain2}>
-          <img src={stain2} alt="Stain shape" />
-        </span>
-        <span className={classes.stain3}>
-          <img src={stain3} alt="Stain shape" />
-        </span>
-        <span className={classes.stain4}>
-          <img src={stain4} alt="Stain shape" />
-        </span>
-        <div className={classes.middleElement}>
-          <h1 className={classes.h1}>Projekty w twoich rękach!</h1>
-          <h3 className={classes.h3}>Twoje cele, nasza pasja.</h3>
-          <h3 className={classes.h3}>Wspólnie tworzymy przyszłość!</h3>
-          <Link to="/login" className={classes.joinButton}>
-            Dołącz do nas!
-          </Link>
-        </div>
-        <div className={classes.videoContainer}>
-          <video className={classes.video} controls>
-            <source src="nazwa_pliku.mp4" type="video/mp4" />
-            Twoja przeglądarka nie obsługuje tagu video.
-          </video>
-        </div>
-      </main>
-    </>
+    <main className={classes.main}>
+      <span className={classes.stain1}>
+        <img src={stain1} alt="Stain shape" />
+      </span>
+      <span className={classes.stain2}>
+        <img src={stain2} alt="Stain shape" />
+      </span>
+      <span className={classes.stain3}>
+        <img src={stain3} alt="Stain shape" />
+      </span>
+      <span className={classes.stain4}>
+        <img src={stain4} alt="Stain shape" />
+      </span>
+      <div className={classes.middleElement}>
+        <h1 className={classes.h1}>Projekty w twoich rękach!</h1>
+        <h3 className={classes.h3}>Twoje cele, nasza pasja.</h3>
+        <h3 className={classes.h3}>Wspólnie tworzymy przyszłość!</h3>
+        <Link to="/login" className={classes.joinButton}>
+          Dołącz do nas!
+        </Link>
+      </div>
+      <div className={classes.videoContainer}>
+        <video className={classes.video} controls>
+          <source src="nazwa_pliku.mp4" type="video/mp4" />
+          Twoja przeglądarka nie obsługuje tagu video.
+        </video>
+      </div>
+    </main>
   );
 }

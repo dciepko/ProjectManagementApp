@@ -6,8 +6,10 @@ import { useInput } from "../../../hooks/useInput.js";
 
 import classes from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 export default function Login() {
+  const isMobileScreen = useMediaQuery({ query: "(max-width:320px)" });
   const navigate = useNavigate();
 
   const {
@@ -67,7 +69,7 @@ export default function Login() {
 
   return (
     <div className={classes.container}>
-      <div className={classes.imgContainer}></div>
+      {!isMobileScreen && <div className={classes.imgContainer}></div>}
       <div className={classes.formContainer}>
         <form onSubmit={handleSubmit} className={classes.form}>
           <h2 className={classes.h2}>Zaloguj się</h2>
