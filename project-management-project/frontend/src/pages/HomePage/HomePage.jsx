@@ -11,6 +11,8 @@ export default function HomePage() {
   const dispatch = useDispatch();
   const workspaces = useSelector((state) => state.workspaces.workspaces);
 
+  const currentUser = localStorage.getItem("currentUser");
+
   const [currentWorkspaces, setCurrentWorkspaces] = useState([]);
 
   const modal = useRef();
@@ -38,7 +40,7 @@ export default function HomePage() {
             {currentWorkspaces.map((workspace) => {
               return (
                 <Link
-                  to={`/workspace/${workspace.workspaceID}`}
+                  to={`/${currentUser}/workspace/${workspace.workspaceID}`}
                   className={classes.navUpButton}
                   key={workspace.workspaceID}
                 >

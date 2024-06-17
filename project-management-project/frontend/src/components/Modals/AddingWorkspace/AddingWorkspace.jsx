@@ -40,6 +40,9 @@ const AddingWorkspace = forwardRef(function Modal({}, ref) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const currentUser = localStorage.getItem("currentUser");
+    setNewWorkspace({ ...newWorkspace, ownerID: currentUser });
+
     dispatch(addNewWorkspace(newWorkspace));
 
     dialog.current.close();
