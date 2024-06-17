@@ -61,7 +61,7 @@ export default function Login() {
       expiration.setHours(expiration.getHours() + 24);
       localStorage.setItem("expiration", expiration.toISOString());
 
-      navigate("/home");
+      navigate(`/${nicknameValue}/home`);
     }
   }
 

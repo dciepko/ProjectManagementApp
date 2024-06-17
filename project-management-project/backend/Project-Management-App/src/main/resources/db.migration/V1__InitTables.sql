@@ -87,6 +87,10 @@
  INSERT INTO user_project (userid, projectid) VALUES (2, 2);
  INSERT INTO user_project (userid, projectid) VALUES (3, 3);
 
+  INSERT INTO user_workspace (userid, workspaceid) VALUES (1, 1);
+  INSERT INTO user_workspace (userid, workspaceid) VALUES (2, 2);
+  INSERT INTO user_workspace (userid, workspaceid) VALUES (3, 3);
+
  INSERT INTO user_team (userid, teamid) VALUES (1, 1);
  INSERT INTO user_team (userid, teamid) VALUES (2, 2);
  INSERT INTO user_team (userid, teamid) VALUES (3, 3);

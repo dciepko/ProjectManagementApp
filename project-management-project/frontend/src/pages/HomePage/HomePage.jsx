@@ -3,14 +3,21 @@ import classes from "./HomePage.module.css";
 import ActivityHomeElement from "../../components/ActivityHomeElement/ActivityHomeElement";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchWorkspacesAction } from "../../store/worskpace-slice";
+import AddingWorkspace from "../../components/Modals/AddingWorkspace/AddingWorkspace";
 
 export default function HomePage() {
   const dispatch = useDispatch();
   const workspaces = useSelector((state) => state.workspaces.workspaces);
 
   const [currentWorkspaces, setCurrentWorkspaces] = useState([]);
+
+  const modal = useRef();
+
+  function handleOpenModal() {
+    modal.current.open();
+  }
 
   useEffect(() => {
     dispatch(fetchWorkspacesAction());
@@ -24,6 +31,7 @@ export default function HomePage() {
 
   return (
     <>
+      <AddingWorkspace ref={modal} />
       <main className={classes.main}>
         <nav className={classes.nav}>
           <div className={classes.navUp}>
@@ -38,9 +46,9 @@ export default function HomePage() {
                 </Link>
               );
             })}
-            <a href="#" className={classes.navUpButton}>
+            <button onClick={handleOpenModal} className={classes.navUpButton}>
               Nowy Workspace
-            </a>
+            </button>
           </div>
           <div className={classes.navDown}>
             <a href="#" className={classes.navDownButton}>

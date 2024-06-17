@@ -22,4 +22,8 @@ public class Workspace {
     @OneToMany(mappedBy = "workspace")
     @JsonIgnore
     private List<Project> wsProjects;
+
+    @ManyToMany(mappedBy = "workspacesU")
+    @JsonIgnore
+    private List<User> users;
 }

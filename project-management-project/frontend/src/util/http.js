@@ -212,3 +212,16 @@ export async function fetchWorkspaces() {
   }
   return resData;
 }
+
+export async function addWorkspace(newWorkspace) {
+  const token = getAuthToken();
+
+  fetch(`http://localhost:8080/workspaces`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(newWorkspace),
+  });
+}

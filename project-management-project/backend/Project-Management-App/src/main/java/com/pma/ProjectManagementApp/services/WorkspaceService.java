@@ -15,4 +15,8 @@ public class WorkspaceService {
     public List<Workspace> getWorkspaces() {
         return repo.findAll();
     }
+
+    public void addWorkspace(Workspace newWorkspace) {
+        repo.save(newWorkspace);
+    }
 }

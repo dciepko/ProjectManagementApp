@@ -21,12 +21,19 @@
 
 .navUpButton {
   background-color: #ff910a;
+  font-size: 3rem;
   font-weight: 600;
   border-radius: 0 1.5rem 1.5rem 0;
   padding: 0.6rem 3rem 0.6rem 3rem;
   margin-top: 1.5rem;
   color: black;
   text-decoration: none;
+  border: none;
+  text-align: left;
+}
+
+.navUpButton:hover {
+  cursor: pointer;
 }
 
 .navDown {

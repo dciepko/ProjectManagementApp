@@ -48,6 +48,12 @@ public class User implements UserDetails {
     private List<Project> projectsU;
 
     @ManyToMany
+    @JoinTable(name = "user_workspace", joinColumns = {@JoinColumn(name = "userID")},
+            inverseJoinColumns ={@JoinColumn(name = "workspaceID")})
+    @JsonIgnore
+    private List<Workspace> workspacesU;
+
+    @ManyToMany
     @JoinTable(name = "user_activity", joinColumns = {@JoinColumn(name = "userID")},
             inverseJoinColumns ={@JoinColumn(name = "activityID")})
     @JsonIgnore

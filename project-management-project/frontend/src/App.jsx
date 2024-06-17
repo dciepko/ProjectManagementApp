@@ -20,13 +20,21 @@ function App() {
       loader: tokenLoader,
       id: "root",
       children: [
-        { path: "/home", element: <HomePage />, loader: checkAuthLoader },
         {
-          path: "/workspace/:workspaceID",
+          path: "/:userNickname/home",
+          element: <HomePage />,
+          loader: checkAuthLoader,
+        },
+        {
+          path: "/:userNickname/workspace/:workspaceID",
           element: <WorkspacePage />,
           loader: checkAuthLoader,
         },
-        { path: "/call", element: <CallPage />, loader: checkAuthLoader },
+        {
+          path: "/:userNickname/call",
+          element: <CallPage />,
+          loader: checkAuthLoader,
+        },
       ],
     },
   ]);
