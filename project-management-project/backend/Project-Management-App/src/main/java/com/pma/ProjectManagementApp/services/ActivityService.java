@@ -168,4 +168,46 @@ public class ActivityService {
                 .collect(Collectors.toList()));
         return activityDTO;
     }
+
+    public void deleteActivityById(Integer activityID){
+        Activity activity = activityRepo.findById(activityID).orElseThrow(()  -> new IllegalArgumentException("Activity with ID " + activityID + " does not exist"));
+
+        commentRepo.deleteByActivityC(activity);
+        attachementRepo.deleteByActivity(activity);
+
+        StatusTable tableA = activity.getTableA();
+        if (tableA != null){
+            tableA.getActivitiesTab().remove(activity);
+            tableRepo.save(tableA);
+        }
+        activityRepo.deleteById(activityID);
+
+        Label labelA = activity.getLabelA();
+        if (labelA != null){
+            labelA.getActivitiesLabel().remove(activity);
+            labelRepo.save(labelA);
+        }
+        activityRepo.deleteById(activityID);
+
+        Status activitiesStatus = activity.getActivitiesStatus();
+        if (activitiesStatus != null){
+            activitiesStatus.getActivities().remove(activity);
+            activitiesStatusRepo.save(activitiesStatus);
+        }
+        activityRepo.deleteById(activityID);
+
+//        User userActivity = activity.getUsersActivity();
+//        if (userActivity != null){
+//            userActivity.getActivitiesUser().remove(activity);
+//            userRepo.save(userActivity);
+//        }
+//        activityRepo.deleteById(activityID);
+
+        Project activityProject = activity.getActivityProject();
+        if (activityProject != null){
+            activityProject.getProjectActivities().remove(activity);
+            //activityRepo.save(activityProject);
+        }
+        activityRepo.deleteById(activityID);
+    }
 }
