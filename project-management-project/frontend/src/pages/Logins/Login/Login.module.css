@@ -31,6 +31,12 @@
   font-weight: 700;
 }
 
+.incorrectInputsContainer {
+  color: red;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
 .inputsContainer {
   margin: 2rem 0;
   display: flex;

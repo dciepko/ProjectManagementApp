@@ -6,9 +6,11 @@ import { useInput } from "../../../hooks/useInput.js";
 
 import classes from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [isNotAccurate, setIsNotAccurate] = useState(false);
 
   const {
     value: nicknameValue,
@@ -50,6 +52,7 @@ export default function Login() {
     }
 
     if (!response.ok) {
+      setIsNotAccurate(true);
       throw new Error("Could not authenticate user.");
     }
 
@@ -73,6 +76,11 @@ export default function Login() {
       <div className={classes.formContainer}>
         <form onSubmit={handleSubmit} className={classes.form}>
           <h2 className={classes.h2}>Zaloguj się</h2>
+          {isNotAccurate && (
+            <p className={classes.incorrectInputsContainer}>
+              Niepoprawny nick lub hasło!
+            </p>
+          )}
           <div className={classes.inputsContainer}>
             <Input
               label="Nick"
