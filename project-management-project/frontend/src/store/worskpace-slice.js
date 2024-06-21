@@ -15,8 +15,8 @@ const workspaceSlice = createSlice({
   },
 });
 
-export const fetchWorkspacesAction = () => async (dispatch) => {
-  const fetchedWorkspaces = await fetchWorkspaces();
+export const fetchWorkspacesAction = (userID) => async (dispatch) => {
+  const fetchedWorkspaces = await fetchWorkspaces(userID);
   dispatch(getWorkspaces(fetchedWorkspaces));
 };
 

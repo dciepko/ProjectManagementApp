@@ -197,10 +197,10 @@ export async function updateBoard(board) {
   }
 }
 
-export async function fetchWorkspaces() {
+export async function fetchWorkspaces(userID) {
   const token = getAuthToken();
 
-  const response = await fetch("http://localhost:8080/workspaces", {
+  const response = await fetch(`http://localhost:8080/workspaces/${userID}`, {
     headers: {
       Authorization: "Bearer " + token,
     },

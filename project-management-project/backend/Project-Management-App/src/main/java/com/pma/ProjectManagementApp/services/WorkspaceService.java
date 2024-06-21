@@ -12,8 +12,8 @@ public class WorkspaceService {
     @Autowired
     private WorkspaceRepo repo;
 
-    public List<Workspace> getWorkspaces() {
-        return repo.findAll();
+    public List<Workspace> getWorkspaces(Integer userID) {
+        return repo.findByOwnerID(userID);
     }
 
     public void addWorkspace(Workspace newWorkspace) {

@@ -21,17 +21,17 @@ function App() {
       id: "root",
       children: [
         {
-          path: "/:userNickname/home",
+          path: "/:loggedUserID/home",
           element: <HomePage />,
           loader: checkAuthLoader,
         },
         {
-          path: "/:userNickname/workspace/:workspaceID",
+          path: "/:loggedUserID/workspace/:workspaceID",
           element: <WorkspacePage />,
           loader: checkAuthLoader,
         },
         {
-          path: "/:userNickname/call",
+          path: "/:loggedUserID/call",
           element: <CallPage />,
           loader: checkAuthLoader,
         },

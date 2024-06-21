@@ -11,7 +11,7 @@ export default function HomePage() {
   const dispatch = useDispatch();
   const workspaces = useSelector((state) => state.workspaces.workspaces);
 
-  const currentUser = localStorage.getItem("currentUser");
+  const currentUser = localStorage.getItem("currentUserID");
 
   const [currentWorkspaces, setCurrentWorkspaces] = useState([]);
 
@@ -22,7 +22,7 @@ export default function HomePage() {
   }
 
   useEffect(() => {
-    dispatch(fetchWorkspacesAction());
+    dispatch(fetchWorkspacesAction(currentUser));
   }, [dispatch]);
 
   useEffect(() => {

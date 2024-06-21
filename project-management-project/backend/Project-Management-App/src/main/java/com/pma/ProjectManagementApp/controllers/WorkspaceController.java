@@ -3,10 +3,7 @@ package com.pma.ProjectManagementApp.controllers;
 import com.pma.ProjectManagementApp.modules.Workspace;
 import com.pma.ProjectManagementApp.services.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,9 +12,9 @@ public class WorkspaceController {
     @Autowired
     private WorkspaceService service;
 
-    @GetMapping("/workspaces")
-    public List<Workspace> getProjects(){
-        return service.getWorkspaces();
+    @GetMapping("/workspaces/{userID}")
+    public List<Workspace> getProjects(@PathVariable Integer userID){
+        return service.getWorkspaces(userID);
     }
     @PostMapping("/workspaces")
     public void addWorkspace(@RequestBody Workspace newWorkspace) {

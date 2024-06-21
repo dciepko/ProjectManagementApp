@@ -59,14 +59,15 @@ export default function Login() {
     if (response.ok) {
       const resData = await response.json();
       const token = resData.token;
+      const loggedUserId = resData.userID;
       localStorage.setItem("token", token);
       const expiration = new Date();
       expiration.setHours(expiration.getHours() + 24);
       localStorage.setItem("expiration", expiration.toISOString());
 
-      localStorage.setItem("currentUser", nicknameValue);
+      localStorage.setItem("currentUserID", loggedUserId);
 
-      navigate(`/${nicknameValue}/home`);
+      navigate(`/${loggedUserId}/home`);
     }
   }
 

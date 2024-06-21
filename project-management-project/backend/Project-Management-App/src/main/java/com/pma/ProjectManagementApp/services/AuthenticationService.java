@@ -49,7 +49,7 @@ public class AuthenticationService {
         user = repository.save(user);
         String token = jwtService.generateToken(user);
 
-        return new AuthenticationResponse(token);
+        return new AuthenticationResponse(token, user.getUserID());
     }
 
     public AuthenticationResponse authenticate(User request) {
@@ -73,6 +73,6 @@ public class AuthenticationService {
 
         String token = jwtService.generateToken(user);
 
-        return new AuthenticationResponse(token);
+        return new AuthenticationResponse(token, user.getUserID());
     }
 }

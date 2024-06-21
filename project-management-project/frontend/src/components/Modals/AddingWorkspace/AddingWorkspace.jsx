@@ -3,8 +3,6 @@ import classes from "./AddingWorkspace.module.css";
 import { createPortal } from "react-dom";
 import AddingInput from "../AddingInput/AddingInput";
 import { useDispatch } from "react-redux";
-import { addNewProject } from "../../../store/projects-slice";
-import { addWorkspace } from "../../../util/http";
 import { addNewWorkspace } from "../../../store/worskpace-slice";
 
 const AddingWorkspace = forwardRef(function Modal({}, ref) {
@@ -16,8 +14,6 @@ const AddingWorkspace = forwardRef(function Modal({}, ref) {
     workspaceName: "",
     wsDescription: "",
     logo: "",
-    wsProjects: [],
-    users: [],
   });
 
   function handleChange(event) {
@@ -40,9 +36,12 @@ const AddingWorkspace = forwardRef(function Modal({}, ref) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const currentUser = localStorage.getItem("currentUser");
-    setNewWorkspace({ ...newWorkspace, ownerID: currentUser });
-
+    const currentUser = localStorage.getItem("currentUserID");
+    console.log(currentUser);
+    setNewWorkspace((newWorkspace) => {
+      return { ...newWorkspace, ownerID: currentUser };
+    });
+    console.log(newWorkspace);
     dispatch(addNewWorkspace(newWorkspace));
 
     dialog.current.close();
@@ -66,7 +65,7 @@ const AddingWorkspace = forwardRef(function Modal({}, ref) {
             <AddingInput
               type="textarea"
               identifier="description"
-              name="workspaceDescription"
+              name="wsDescription"
               onChange={handleChange}
               value={newWorkspace.wsDescription}
             >

@@ -1,10 +1,3 @@
-/*
-light-purple: #bec9ff;
-main-blue: #4F40CE;
-main-hover: #4135ac;
-
-*/
-
 .header {
   display: flex;
   align-items: center;
@@ -99,4 +92,9 @@ main-hover: #4135ac;
 .avatarImage:hover {
   background-color: lightgray;
   cursor: pointer;
+}
+
+.logoutButton {
+  padding: 0.8rem;
+  font-size: 1.5rem;
 }

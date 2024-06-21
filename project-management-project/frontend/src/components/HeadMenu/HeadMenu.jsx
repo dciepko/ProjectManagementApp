@@ -17,7 +17,7 @@ export default function HeadMenu() {
   const token = useLoaderData();
   const submit = useSubmit();
 
-  const currentUser = localStorage.getItem("currentUser");
+  const currentUser = localStorage.getItem("currentUserID");
 
   const [isOpen, setIsOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState({
@@ -109,7 +109,9 @@ export default function HeadMenu() {
                   zIndex: 1,
                 }}
               >
-                <button onClick={handleLogout}>Wyloguj</button>
+                <button onClick={handleLogout} className={classes.logoutButton}>
+                  Wyloguj
+                </button>
               </div>
             )}
           </span>
