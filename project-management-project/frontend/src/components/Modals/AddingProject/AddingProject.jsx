@@ -5,6 +5,7 @@ import AddingInput from "../AddingInput/AddingInput";
 import { useDispatch } from "react-redux";
 import { addNewProject } from "../../../store/projects-slice";
 import { useParams } from "react-router-dom";
+import UserSelect from "../UserSelect/UserSelect";
 
 const AddingProject = forwardRef(function Modal({ onReload }, ref) {
   const { workspaceID } = useParams();
@@ -101,7 +102,7 @@ const AddingProject = forwardRef(function Modal({ onReload }, ref) {
             >
               Wybierz zespół
             </AddingInput>
-            <AddingInput
+            {/* <AddingInput
               type="text"
               identifier="team"
               name="userIds"
@@ -109,7 +110,8 @@ const AddingProject = forwardRef(function Modal({ onReload }, ref) {
               value={newProject.teamId}
             >
               Dodaj uczestników
-            </AddingInput>
+            </AddingInput> */}
+            <UserSelect />
           </div>
           <div className={classes.buttonContainer}>
             <button

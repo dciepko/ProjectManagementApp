@@ -8,6 +8,7 @@ export async function fetchUsers() {
     },
   });
   const resData = await response.json();
+  console.log(resData);
 
   if (!response.ok) {
     throw new Error("Nie udało się załadować użytkowników");
@@ -35,7 +36,6 @@ export async function fetchProjects() {
 
 export async function fetchProjectsByID(workspaceID) {
   const token = getAuthToken();
-  console.log(workspaceID);
   try {
     const response = await fetch(
       `http://localhost:8080/projects/${workspaceID}`,
@@ -46,8 +46,6 @@ export async function fetchProjectsByID(workspaceID) {
       }
     );
     const resData = await response.json();
-    console.log(resData);
-
     if (!response.ok) {
       throw new Error("Nie udało się załadować projektów");
     }
