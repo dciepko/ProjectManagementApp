@@ -4,11 +4,14 @@ import { fetchUsers } from "../util/http";
 
 const userSlice = createSlice({
   name: "user",
-  initialState: { name: "", email: "" },
+  initialState: { name: "", email: "", allUsers: [] },
   reducers: {
-    getUsers(state, action) {
+    getUser(state, action) {
       state.name = action.payload.userName;
       state.email = action.payload.userEmail;
+    },
+    getUsers(state, action) {
+      state.allUsers = action.payload;
     },
   },
 });
@@ -16,9 +19,14 @@ const userSlice = createSlice({
 export const fetchOneUser = () => async (dispatch) => {
   const users = await fetchUsers();
   const user = users[0];
-  dispatch(getUsers(user));
+  dispatch(getUser(user));
 };
 
-export const { getUsers } = userSlice.actions;
+export const fetchUsersAction = () => async (dispatch) => {
+  const users = await fetchUsers();
+  dispatch(getUsers(users));
+};
+
+export const { getUser, getUsers } = userSlice.actions;
 
 export default userSlice;

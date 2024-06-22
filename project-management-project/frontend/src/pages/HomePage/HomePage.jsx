@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { fetchWorkspacesAction } from "../../store/worskpace-slice";
 import AddingWorkspace from "../../components/Modals/AddingWorkspace/AddingWorkspace";
+import { fetchUsersAction } from "../../store/user-slice";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -21,6 +22,10 @@ export default function HomePage() {
   function handleOpenModal() {
     modal.current.open();
   }
+
+  useEffect(() => {
+    dispatch(fetchUsersAction());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchWorkspacesAction(currentUser));
