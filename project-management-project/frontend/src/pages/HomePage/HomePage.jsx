@@ -14,6 +14,7 @@ export default function HomePage() {
   const currentUser = localStorage.getItem("currentUserID");
 
   const [currentWorkspaces, setCurrentWorkspaces] = useState([]);
+  const [reload, setReload] = useState(false);
 
   const modal = useRef();
 
@@ -23,7 +24,7 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(fetchWorkspacesAction(currentUser));
-  }, [dispatch]);
+  }, [dispatch, reload]);
 
   useEffect(() => {
     if (workspaces.length > 0) {
@@ -31,9 +32,13 @@ export default function HomePage() {
     }
   }, [workspaces]);
 
+  function reloadPage() {
+    setReload((reload) => !reload);
+  }
+
   return (
     <>
-      <AddingWorkspace ref={modal} />
+      <AddingWorkspace ref={modal} onReload={reloadPage} />
       <main className={classes.main}>
         <nav className={classes.nav}>
           <div className={classes.navUp}>

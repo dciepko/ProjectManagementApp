@@ -4,7 +4,11 @@ import wrapButton from "../../assets/wrap-right-button.png";
 import AddingProject from "../Modals/AddingProject/AddingProject";
 import { useRef } from "react";
 
-export default function ProjectsSidebar({ projectList, handleClick }) {
+export default function ProjectsSidebar({
+  projectList,
+  handleClick,
+  onReload,
+}) {
   const modal = useRef();
 
   function handleOpenModal() {
@@ -13,7 +17,7 @@ export default function ProjectsSidebar({ projectList, handleClick }) {
 
   return (
     <>
-      <AddingProject ref={modal} />
+      <AddingProject ref={modal} onReload={onReload} />
       <aside className={classes.aside}>
         <header className={classes.asideHeader}>
           <h2 className={classes.h2}>Twoje Projekty</h2>

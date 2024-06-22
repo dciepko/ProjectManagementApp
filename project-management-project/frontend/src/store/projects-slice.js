@@ -36,13 +36,18 @@ export const fetchProjectsAction = () => async (dispatch) => {
 
 export const fetchProjectsByIDAction = (workspaceID) => async (dispatch) => {
   const fetchedProjects = await fetchProjectsByID(workspaceID);
-
+  console.log(fetchedProjects);
   dispatch(getCurrentWorkspaceProject(fetchedProjects));
 };
 
-export const addNewProject = (newProject) => async (dispatch) => {
-  addProject(newProject);
-  fetchProjectsAction();
+export const addNewProject = (newProject, workspaceID) => async (dispatch) => {
+  try {
+    await addProject(newProject);
+    console.log(workspaceID);
+    dispatch(fetchProjectsByIDAction(workspaceID));
+  } catch (error) {
+    console.error("Error adding project:", error);
+  }
 };
 
 export const deleteProject = (projectId) => async (dispatch) => {

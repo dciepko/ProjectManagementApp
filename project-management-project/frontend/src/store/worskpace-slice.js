@@ -20,9 +20,9 @@ export const fetchWorkspacesAction = (userID) => async (dispatch) => {
   dispatch(getWorkspaces(fetchedWorkspaces));
 };
 
-export const addNewWorkspace = (newWorkspace) => async (dispatch) => {
+export const addNewWorkspace = (newWorkspace, userID) => async (dispatch) => {
   addWorkspace(newWorkspace);
-  fetchWorkspacesAction();
+  fetchWorkspacesAction(userID);
 };
 
 export const { getWorkspaces, changeCurrentWorkspace } = workspaceSlice.actions;

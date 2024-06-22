@@ -5,12 +5,13 @@ import AddingInput from "../AddingInput/AddingInput";
 import { useDispatch } from "react-redux";
 import { addNewWorkspace } from "../../../store/worskpace-slice";
 
-const AddingWorkspace = forwardRef(function Modal({}, ref) {
+const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
   const dispatch = useDispatch();
   const dialog = useRef();
   const formRef = useRef();
+  const currentUser = localStorage.getItem("currentUserID");
   const [newWorkspace, setNewWorkspace] = useState({
-    ownerID: null,
+    ownerID: currentUser,
     workspaceName: "",
     wsDescription: "",
     logo: "",
@@ -36,14 +37,8 @@ const AddingWorkspace = forwardRef(function Modal({}, ref) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const currentUser = localStorage.getItem("currentUserID");
-    console.log(currentUser);
-    setNewWorkspace((newWorkspace) => {
-      return { ...newWorkspace, ownerID: currentUser };
-    });
-    console.log(newWorkspace);
-    dispatch(addNewWorkspace(newWorkspace));
-
+    dispatch(addNewWorkspace(newWorkspace, currentUser));
+    onReload();
     dialog.current.close();
   }
 
@@ -71,15 +66,6 @@ const AddingWorkspace = forwardRef(function Modal({}, ref) {
             >
               Opis workspace'a
             </AddingInput>
-            {/* <AddingInput
-              type="text"
-              identifier="team"
-              name="userIds"
-              onChange={handleChange}
-              value={newProject.teamId}
-            >
-              Dodaj uczestników
-            </AddingInput> */}
           </div>
           <div className={classes.buttonContainer}>
             <button

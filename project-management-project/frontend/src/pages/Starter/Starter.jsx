@@ -10,24 +10,6 @@ import { Link } from "react-router-dom";
 export default function Starter() {
   return (
     <>
-      {/* <header className={classes.header}>
-        <div className={classes.logoContainer}>
-          <img src={logo} alt="logo" className={classes.logoImg} />
-        </div>
-        <menu className={classes.menu}>
-          <ul className={classes.ul}>
-            <li className={classes.li}>
-              <button className={classes.button}>Test Button</button>
-            </li>
-            <li className={classes.li}>
-              <button className={classes.button}>Test Button</button>
-            </li>
-            <li className={classes.li}>
-              <button className={classes.button}>Test Button</button>
-            </li>
-          </ul>
-        </menu>
-      </header> */}
       <main className={classes.main}>
         <span className={classes.stain1}>
           <img src={stain1} alt="Stain shape" />

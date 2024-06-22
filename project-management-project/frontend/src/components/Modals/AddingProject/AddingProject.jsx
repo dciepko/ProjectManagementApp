@@ -4,22 +4,25 @@ import { createPortal } from "react-dom";
 import AddingInput from "../AddingInput/AddingInput";
 import { useDispatch } from "react-redux";
 import { addNewProject } from "../../../store/projects-slice";
+import { useParams } from "react-router-dom";
 
-const AddingProject = forwardRef(function Modal({}, ref) {
+const AddingProject = forwardRef(function Modal({ onReload }, ref) {
+  const { workspaceID } = useParams();
   const dispatch = useDispatch();
   const dialog = useRef();
   const formRef = useRef();
+  const currentUserID = localStorage.getItem("currentUserID");
   const [newProject, setNewProject] = useState({
     projectName: "",
     projectDescription: "",
     startDate: "",
     endDate: "",
-    ownerID: 1,
+    ownerID: currentUserID,
     userIds: [1],
     activityIds: [],
     teamIds: [1],
     statusId: 1,
-    workspaceID: 1,
+    workspaceID: workspaceID,
   });
 
   function handleChange(event) {
@@ -42,8 +45,8 @@ const AddingProject = forwardRef(function Modal({}, ref) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(addNewProject(newProject));
-
+    dispatch(addNewProject(newProject, workspaceID));
+    onReload();
     dialog.current.close();
   }
 
