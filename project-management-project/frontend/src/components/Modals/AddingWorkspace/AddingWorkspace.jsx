@@ -31,6 +31,11 @@ const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
     };
   });
 
+  function handleUserChoose(usersList) {
+    const idsList = usersList.map((user) => user.userID);
+    setNewWorkspace({ ...newWorkspace, userIds: idsList });
+  }
+
   function handleCloseButton() {
     formRef.current.reset();
     dialog.current.close();
@@ -67,7 +72,7 @@ const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
             >
               Opis workspace'a
             </AddingInput>
-            <UserSelect />
+            <UserSelect onUsersChoose={handleUserChoose} />
           </div>
           <div className={classes.buttonContainer}>
             <button

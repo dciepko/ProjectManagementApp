@@ -26,7 +26,7 @@ const AddingProject = forwardRef(function Modal({ onReload }, ref) {
     startDate: "",
     endDate: "",
     ownerID: currentUserID,
-    userIds: [1],
+    userIds: [],
     activityIds: [],
     teamIds: [1],
     statusId: 1,
@@ -39,6 +39,11 @@ const AddingProject = forwardRef(function Modal({ onReload }, ref) {
   function handleChange(event) {
     const { name, value } = event.target;
     setNewProject({ ...newProject, [name]: value });
+  }
+
+  function handleUserChoose(usersList) {
+    const idsList = usersList.map((user) => user.userID);
+    setNewProject({ ...newProject, userIds: idsList });
   }
 
   useImperativeHandle(ref, () => {
@@ -112,16 +117,7 @@ const AddingProject = forwardRef(function Modal({ onReload }, ref) {
             >
               Wybierz zespół
             </AddingInput>
-            {/* <AddingInput
-              type="text"
-              identifier="team"
-              name="userIds"
-              onChange={handleChange}
-              value={newProject.teamId}
-            >
-              Dodaj uczestników
-            </AddingInput> */}
-            <UserSelect />
+            <UserSelect onUsersChoose={handleUserChoose} />
           </div>
           <div className={classes.buttonContainer}>
             <button

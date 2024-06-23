@@ -5,7 +5,7 @@ import { fetchUsersAction } from "../../../store/user-slice";
 
 let firstClick = true;
 
-const UserSelect = () => {
+const UserSelect = ({ onUsersChoose }) => {
   const users = useSelector((state) => state.user.allUsers);
   const alfabeticalUsers = users.slice();
   alfabeticalUsers.sort((a, b) => a.userNickname.localeCompare(b.userNickname));
@@ -24,13 +24,20 @@ const UserSelect = () => {
 
   const handleUserClick = (user) => {
     if (!selectedUsers.includes(user)) {
-      setSelectedUsers([...selectedUsers, user]);
+      let newList = selectedUsers.slice();
+      newList.push(user);
+      setSelectedUsers(newList);
+      onUsersChoose(newList);
+
       setDropdownUsers(dropdownUsers.filter((u) => u.userID !== user.userID));
     }
   };
 
   const removeUser = (user) => {
-    setSelectedUsers(selectedUsers.filter((u) => u.userID !== user.userID));
+    let newList = selectedUsers.filter((u) => u.userID !== user.userID);
+    setSelectedUsers(newList);
+    onUsersChoose(newList);
+
     const alf = dropdownUsers.slice();
     alf.push(user);
     alf.sort((a, b) => a.userNickname.localeCompare(b.userNickname));
@@ -46,7 +53,9 @@ const UserSelect = () => {
             {selectedUsers.map((user) => (
               <div key={user.userID} className={classes.selectedUser}>
                 {user.userNickname}
-                <button onClick={() => removeUser(user)}>X</button>
+                <button onClick={() => removeUser(user)} type="button">
+                  X
+                </button>
               </div>
             ))}
           </div>

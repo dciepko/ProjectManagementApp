@@ -44,6 +44,11 @@ const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
     };
   });
 
+  function handleUserChoose(usersList) {
+    const idsList = usersList.map((user) => user.userID);
+    setNewProject({ ...newProject, userIds: idsList });
+  }
+
   function handleChange(event) {
     const { name, value } = event.target;
     setNewActivity({ ...newActivity, [name]: value });
@@ -128,7 +133,7 @@ const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
             >
               Priorytet
             </AddingInput>
-            <UserSelect />
+            <UserSelect onUsersChoose={handleUserChoose} />
           </div>
           <div className={classes.buttonContainer}>
             <button
