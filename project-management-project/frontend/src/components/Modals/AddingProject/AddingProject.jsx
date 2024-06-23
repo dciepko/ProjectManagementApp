@@ -1,4 +1,10 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import classes from "./AddingProject.module.css";
 import { createPortal } from "react-dom";
 import AddingInput from "../AddingInput/AddingInput";
@@ -6,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { addNewProject } from "../../../store/projects-slice";
 import { useParams } from "react-router-dom";
 import UserSelect from "../UserSelect/UserSelect";
+import { fetchUsersAction } from "../../../store/user-slice";
 
 const AddingProject = forwardRef(function Modal({ onReload }, ref) {
   const { workspaceID } = useParams();
@@ -25,6 +32,9 @@ const AddingProject = forwardRef(function Modal({ onReload }, ref) {
     statusId: 1,
     workspaceID: workspaceID,
   });
+  useEffect(() => {
+    dispatch(fetchUsersAction());
+  }, [dispatch]);
 
   function handleChange(event) {
     const { name, value } = event.target;

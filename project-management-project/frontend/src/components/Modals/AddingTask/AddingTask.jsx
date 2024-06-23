@@ -6,6 +6,7 @@ import { useImperativeHandle } from "react";
 import AddingInput from "../AddingInput/AddingInput";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewActivity } from "../../../store/activity-slice";
+import UserSelect from "../UserSelect/UserSelect";
 
 const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
   const dispatch = useDispatch();
@@ -127,9 +128,7 @@ const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
             >
               Priorytet
             </AddingInput>
-            <AddingInput type="text" identifier="users">
-              Dodaj uczestników
-            </AddingInput>
+            <UserSelect />
           </div>
           <div className={classes.buttonContainer}>
             <button

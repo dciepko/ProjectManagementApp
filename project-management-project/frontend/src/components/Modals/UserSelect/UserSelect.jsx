@@ -1,24 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./UserSelect.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsersAction } from "../../../store/user-slice";
+
+let firstClick = true;
 
 const UserSelect = () => {
+  const users = useSelector((state) => state.user.allUsers);
+  const alfabeticalUsers = users.slice();
+  alfabeticalUsers.sort((a, b) => a.userNickname.localeCompare(b.userNickname));
+
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const users = useSelector((state) => state.user.allUsers);
+  const [dropdownUsers, setDropdownUsers] = useState(alfabeticalUsers);
 
   const toggleDropdown = () => {
+    if (firstClick) {
+      setDropdownUsers(alfabeticalUsers);
+      firstClick = false;
+    }
     setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleUserClick = (user) => {
     if (!selectedUsers.includes(user)) {
       setSelectedUsers([...selectedUsers, user]);
+      setDropdownUsers(dropdownUsers.filter((u) => u.userID !== user.userID));
     }
   };
 
   const removeUser = (user) => {
     setSelectedUsers(selectedUsers.filter((u) => u.userID !== user.userID));
+    const alf = dropdownUsers.slice();
+    alf.push(user);
+    alf.sort((a, b) => a.userNickname.localeCompare(b.userNickname));
+    setDropdownUsers(alf);
   };
 
   return (
@@ -43,7 +59,7 @@ const UserSelect = () => {
         </div>
         {isDropdownOpen && (
           <div className={classes.dropdown}>
-            {users.map((user) => (
+            {dropdownUsers.map((user) => (
               <div
                 key={user.userID}
                 className={classes.dropdownItem}

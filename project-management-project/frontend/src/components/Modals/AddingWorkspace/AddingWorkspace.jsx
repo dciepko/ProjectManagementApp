@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import AddingInput from "../AddingInput/AddingInput";
 import { useDispatch } from "react-redux";
 import { addNewWorkspace } from "../../../store/worskpace-slice";
+import UserSelect from "../UserSelect/UserSelect";
 
 const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
   const dispatch = useDispatch();
@@ -66,6 +67,7 @@ const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
             >
               Opis workspace'a
             </AddingInput>
+            <UserSelect />
           </div>
           <div className={classes.buttonContainer}>
             <button

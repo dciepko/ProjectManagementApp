@@ -8,6 +8,7 @@ import {
   fetchProjectsByIDAction,
   addNewProject,
 } from "../../store/projects-slice";
+import { fetchUsersAction } from "../../store/user-slice.js";
 
 export default function WorkspacePage() {
   const { workspaceID } = useParams();
@@ -18,6 +19,10 @@ export default function WorkspacePage() {
 
   const [selectedProject, setSelectedProject] = useState(null);
   const [reload, setReload] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchUsersAction());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchProjectsByIDAction(workspaceID));

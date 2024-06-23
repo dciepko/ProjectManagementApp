@@ -24,6 +24,7 @@ export const fetchOneUser = () => async (dispatch) => {
 
 export const fetchUsersAction = () => async (dispatch) => {
   const users = await fetchUsers();
+
   dispatch(getUsers(users));
 };
 

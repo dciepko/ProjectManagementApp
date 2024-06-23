@@ -8,8 +8,6 @@ export async function fetchUsers() {
     },
   });
   const resData = await response.json();
-  console.log(resData);
-
   if (!response.ok) {
     throw new Error("Nie udało się załadować użytkowników");
   }
