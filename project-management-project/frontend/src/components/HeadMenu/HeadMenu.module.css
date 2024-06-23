@@ -25,7 +25,6 @@
   height: 100%;
   list-style: none;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
 }
 
@@ -94,6 +93,70 @@
   cursor: pointer;
 }
 
+@media (max-width: 320px) and (max-height: 510px) {
+  .notificationImage {
+    background-color: none;
+  }
+
+  .menu {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    margin: 1rem 1rem 1rem 0;
+    background-color: #4f40ce;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .li {
+    width: 35%;
+  }
+
+  .ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+
+    align-items: center;
+    text-align: center;
+  }
+
+  .logoContainer {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    width: 50px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    image-resolution: 1rem, 20px;
+  }
+
+  .logoImg {
+    padding: 0.2rem;
+    width: 3.5rem;
+    height: auto;
+  }
+
+  .notificationImage {
+    display: none;
+  }
+
+  .menuImage {
+    margin-right: auto;
+  }
 .logoutButton {
   padding: 0.8rem;
   font-size: 1.5rem;

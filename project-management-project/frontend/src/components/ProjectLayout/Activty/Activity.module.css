@@ -52,3 +52,30 @@
   margin: 0.5rem;
   padding: 0.5rem;
 }
+
+@media (max-width: 320px) and (max-height: 510px) {
+  .activityContainer {
+    background-color: #ebedfa;
+    font-size: 1.3rem;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: grab;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button {
+    /* margin: 0.8rem; */
+    margin-right: 0.5rem;
+    align-content: center;
+    background: none;
+    border: none;
+    padding: 0.1rem;
+    width: 90%;
+    height: 80%;
+  }
+}

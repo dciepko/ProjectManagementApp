@@ -8,8 +8,10 @@ import Input from "../Input/Input.jsx";
 import { useInput } from "../../../hooks/useInput.js";
 import classes from "./Signup.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 export default function Signup() {
+  const isMobileScreen = useMediaQuery({ query: "(max-width:320px)" });
   const navigate = useNavigate();
 
   const {
@@ -108,7 +110,7 @@ export default function Signup() {
 
   return (
     <div className={classes.container}>
-      <div className={classes.imgContainer}></div>
+      {!isMobileScreen && <div className={classes.imgContainer}></div>}
       <div className={classes.formContainer}>
         <form onSubmit={handleSubmit} className={classes.form}>
           <h2 className={classes.h2}>Zarejestruj się</h2>

@@ -24,3 +24,26 @@
   background-color: #4135ac;
   cursor: pointer;
 }
+
+@media (max-width: 320px) and (max-height: 510px) {
+  .tableContainer {
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+    background: url(../../../../assets/gridBcg.png);
+    background-size: cover;
+    overflow-x: auto;
+  }
+  .addTableButton {
+    background-color: #4f40ce;
+    min-width: 50%;
+    margin-top: 3rem;
+    padding: 1rem 0;
+    border-radius: 10px;
+    font-size: 5rem;
+    text-align: center;
+    height: 40%;
+    border: none;
+    color: #ebedfa;
+  }
+}
