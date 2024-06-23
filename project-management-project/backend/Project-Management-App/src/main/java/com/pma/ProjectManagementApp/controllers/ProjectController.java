@@ -40,7 +40,7 @@ public class ProjectController {
 
     @DeleteMapping
     public void deleteProject(@RequestParam Integer id){
-        service.deleteProject(id);
+        service.deleteProjectById(id);
     }
 
     @PutMapping("/{tableID}/boards")

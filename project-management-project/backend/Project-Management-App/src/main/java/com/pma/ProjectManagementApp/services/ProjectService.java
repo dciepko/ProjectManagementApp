@@ -28,6 +28,10 @@ public class ProjectService {
     private StatusTableRepo tableRepo;
     @Autowired
     private WorkspaceRepo workspaceRepo;
+    @Autowired
+    private StatusTableService statusTableService;
+    @Autowired
+    private ActivityService activityService;
 
     public List<ProjectDto> getProjects(){
         List<Project> projects = projectRepo.findAll();
@@ -186,30 +190,58 @@ public class ProjectService {
         return project;
     }
 
+    @Transactional
     public void deleteProjectById(Integer projectID){
-        Project project = projectRepo.findById(projectID).orElseThrow(()  -> new IllegalArgumentException("Project with ID " + projectID + " does not exist"));
-
-        tableRepo.deleteByProject(project);
-        activityRepo.deleteByActivityProject(project);
+        Project project = projectRepo.findByProjectID(projectID);
 
         Status status = project.getStatus();
         if (status != null){
             status.getProjects().remove(project);
-            //statusRepo.save(project);
+            statusRepo.save(status);
         }
-        projectRepo.deleteById(projectID);
 
         Workspace workspace = project.getWorkspace();
         if (workspace != null){
             workspace.getWsProjects().remove(project);
-            //workspaceRepo.save(project);
+            workspaceRepo.save(workspace);
         }
-        projectRepo.deleteById(projectID);
+
+        List<StatusTable> tables = project.getTables();
+
+        if (tables != null && !tables.isEmpty()) {
+            List<StatusTable> tablesCopy = new ArrayList<>(tables);
+            for (StatusTable table : tablesCopy) {
+                statusTableService.deleteStatusTableById(table.getTableID());
+            }
+        }
+
+        List<Activity> activities = project.getProjectActivities();
+
+        if (activities != null && !activities.isEmpty()) {
+            List<Activity> activitiesCopy = new ArrayList<>(activities);
+            for (Activity activity : activitiesCopy) {
+                activityService.deleteActivityById(activity.getActivityID());
+            }
+        }
 
         List<User> users = project.getUsers();
-        if (users != null){
-            //users.
-            //userRepo.save(project);
+        if (users != null && !users.isEmpty()) {
+            for (User user : users) {
+                user.getProjectsU().remove(project);
+                userRepo.save(user);
+            }
+            project.getUsers().clear();
+            projectRepo.save(project);
+        }
+
+        List<Team> teams = project.getTeams();
+        if (teams != null && !teams.isEmpty()) {
+            for (Team team : teams) {
+                team.getProjectsTeam().remove(project);
+                teamRepo.save(team);
+            }
+            project.getUsers().clear();
+            projectRepo.save(project);
         }
     }
 }

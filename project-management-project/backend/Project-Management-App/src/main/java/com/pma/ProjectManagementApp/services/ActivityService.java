@@ -171,9 +171,6 @@ public class ActivityService {
     public void deleteActivityById(Integer activityID){
         Activity activity = activityRepo.findById(activityID).orElseThrow(()  -> new IllegalArgumentException("Activity with ID " + activityID + " does not exist"));
 
-        commentRepo.deleteByActivityC(activity);
-        attachementRepo.deleteByActivity(activity);
-
         StatusTable tableA = activity.getTableA();
         if (tableA != null){
             tableA.getActivitiesTab().remove(activity);
@@ -206,6 +203,9 @@ public class ActivityService {
             activityProject.getProjectActivities().remove(activity);
             projectRepo.save(activityProject);
         }
+
+        commentRepo.deleteByActivityC(activity);
+        attachementRepo.deleteByActivity(activity);
 
         System.out.println("przed usunieciem");
         activityRepo.deleteById(activityID);
