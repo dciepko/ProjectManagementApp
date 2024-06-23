@@ -10,7 +10,6 @@ import { fetchUsersAction } from "../../store/user-slice";
 
 export default function HomePage() {
   const dispatch = useDispatch();
-  const workspaces = useSelector((state) => state.workspaces.workspaces);
 
   const currentUser = localStorage.getItem("currentUserID");
 
@@ -30,6 +29,8 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(fetchWorkspacesAction(currentUser));
   }, [dispatch, reload]);
+
+  const workspaces = useSelector((state) => state.workspaces.workspaces);
 
   useEffect(() => {
     if (workspaces.length > 0) {

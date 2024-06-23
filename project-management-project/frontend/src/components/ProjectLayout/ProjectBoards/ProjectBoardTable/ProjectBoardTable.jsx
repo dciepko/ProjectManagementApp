@@ -10,6 +10,7 @@ export default function ProjectBoardTable({
   activitiesListChange,
   tablesList,
   currentProjectID,
+  onReload,
 }) {
   const [currentBoards, setCurrentBoards] = useState([]);
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ export default function ProjectBoardTable({
     });
 
     dispatch(addNewTable(currentProjectID, newBoard));
+    onReload();
   }
 
   return (
@@ -42,6 +44,7 @@ export default function ProjectBoardTable({
             tasks={activities}
             onReload={activitiesListChange}
             color={table.tableColor}
+            onRefresh={onReload}
           />
         );
       })}

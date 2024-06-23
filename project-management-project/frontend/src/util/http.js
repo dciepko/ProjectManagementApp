@@ -213,6 +213,7 @@ export async function fetchWorkspaces(userID) {
 
 export async function addWorkspace(newWorkspace) {
   const token = getAuthToken();
+  console.log(JSON.stringify(newWorkspace));
 
   fetch(`http://localhost:8080/workspaces`, {
     method: "POST",

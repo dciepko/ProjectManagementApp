@@ -16,6 +16,7 @@ import { fetchUsersAction } from "../../../store/user-slice";
 
 const AddingProject = forwardRef(function Modal({ onReload }, ref) {
   const { workspaceID } = useParams();
+  const workspaceIDNumber = Number(workspaceID);
   const dispatch = useDispatch();
   const dialog = useRef();
   const formRef = useRef();

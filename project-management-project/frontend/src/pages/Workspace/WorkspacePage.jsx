@@ -13,13 +13,9 @@ import { fetchUsersAction } from "../../store/user-slice.js";
 export default function WorkspacePage() {
   const { workspaceID } = useParams();
   const dispatch = useDispatch();
-  const projects = useSelector(
-    (state) => state.projects.currentWorkspaceProject
-  );
 
   const [selectedProject, setSelectedProject] = useState(null);
   const [reload, setReload] = useState(false);
-
   useEffect(() => {
     dispatch(fetchUsersAction());
   }, [dispatch]);
@@ -27,6 +23,11 @@ export default function WorkspacePage() {
   useEffect(() => {
     dispatch(fetchProjectsByIDAction(workspaceID));
   }, [dispatch, workspaceID, reload]);
+
+  const projects = useSelector(
+    (state) => state.projects.currentWorkspaceProject
+  );
+  console.log(projects);
 
   useEffect(() => {
     if (projects.length > 0) {
@@ -47,6 +48,7 @@ export default function WorkspacePage() {
 
   function handleReload() {
     setReload((prevReload) => !prevReload);
+    console.log("reload");
   }
 
   function handleAddNewProject(newProject) {
@@ -61,7 +63,12 @@ export default function WorkspacePage() {
         onReload={handleReload}
         onAddNewProject={handleAddNewProject}
       />
-      {selectedProject && <SelectedProject currentProject={selectedProject} />}
+      {selectedProject && (
+        <SelectedProject
+          currentProject={selectedProject}
+          onReload={handleReload}
+        />
+      )}
     </section>
   );
 }

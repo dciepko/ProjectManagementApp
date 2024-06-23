@@ -11,11 +11,14 @@ const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
   const dialog = useRef();
   const formRef = useRef();
   const currentUser = localStorage.getItem("currentUserID");
+  const currentUserNumber = Number(currentUser);
   const [newWorkspace, setNewWorkspace] = useState({
-    ownerID: currentUser,
+    ownerID: currentUserNumber,
     workspaceName: "",
-    wsDescription: "",
+    workspaceDescription: "",
     logo: "",
+    projectsIDs: [],
+    userIDs: [],
   });
 
   function handleChange(event) {
@@ -33,7 +36,7 @@ const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
 
   function handleUserChoose(usersList) {
     const idsList = usersList.map((user) => user.userID);
-    setNewWorkspace({ ...newWorkspace, userIds: idsList });
+    setNewWorkspace({ ...newWorkspace, userIDs: idsList });
   }
 
   function handleCloseButton() {
@@ -43,6 +46,7 @@ const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log(newWorkspace);
     dispatch(addNewWorkspace(newWorkspace, currentUser));
     onReload();
     dialog.current.close();
@@ -66,9 +70,9 @@ const AddingWorkspace = forwardRef(function Modal({ onReload }, ref) {
             <AddingInput
               type="textarea"
               identifier="description"
-              name="wsDescription"
+              name="workspaceDescription"
               onChange={handleChange}
-              value={newWorkspace.wsDescription}
+              value={newWorkspace.workspaceDescription}
             >
               Opis workspace'a
             </AddingInput>

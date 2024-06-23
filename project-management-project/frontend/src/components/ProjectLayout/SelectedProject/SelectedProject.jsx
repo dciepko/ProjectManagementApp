@@ -8,11 +8,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentProjectTasks } from "../../../store/activity-slice";
 
-export default function SelectedProject({ currentProject }) {
+export default function SelectedProject({ currentProject, onReload }) {
   const dispatch = useDispatch();
-  const currentProjectActivities = useSelector(
-    (state) => state.activities.activities
-  );
 
   const [selectedLayout, setSelectedLayout] = useState("table");
 
@@ -21,6 +18,10 @@ export default function SelectedProject({ currentProject }) {
       dispatch(fetchCurrentProjectTasks(currentProject.projectID));
     }
   }, [dispatch, currentProject]);
+
+  const currentProjectActivities = useSelector(
+    (state) => state.activities.activities
+  );
 
   function activitiesListChange() {
     if (currentProject?.projectID) {
@@ -45,6 +46,7 @@ export default function SelectedProject({ currentProject }) {
           activitiesListChange={activitiesListChange}
           tablesList={currentProject.tables}
           currentProjectID={currentProject.projectID}
+          onReload={onReload}
         />
       )}
       {selectedLayout === "long" && (

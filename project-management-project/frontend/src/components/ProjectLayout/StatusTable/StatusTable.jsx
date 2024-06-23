@@ -7,7 +7,14 @@ import { editingActivity } from "../../../store/activity-slice.js";
 import { useDispatch } from "react-redux";
 import { editingTables } from "../../../store/projects-slice.js";
 
-export default function TimeTable({ title, id, tasks, onReload, color }) {
+export default function TimeTable({
+  title,
+  id,
+  tasks,
+  onReload,
+  color,
+  onRefresh,
+}) {
   const [isActive, setIsActive] = useState(false);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -111,6 +118,7 @@ export default function TimeTable({ title, id, tasks, onReload, color }) {
         tableColor: newColor,
       })
     );
+    onRefresh();
   }
 
   return (
