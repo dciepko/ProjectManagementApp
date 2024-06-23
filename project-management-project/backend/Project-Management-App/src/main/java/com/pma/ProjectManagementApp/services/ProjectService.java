@@ -186,4 +186,30 @@ public class ProjectService {
         return project;
     }
 
+    public void deleteProjectById(Integer projectID){
+        Project project = projectRepo.findById(projectID).orElseThrow(()  -> new IllegalArgumentException("Project with ID " + projectID + " does not exist"));
+
+        tableRepo.deleteByProject(project);
+        activityRepo.deleteByActivityProject(project);
+
+        Status status = project.getStatus();
+        if (status != null){
+            status.getProjects().remove(project);
+            //statusRepo.save(project);
+        }
+        projectRepo.deleteById(projectID);
+
+        Workspace workspace = project.getWorkspace();
+        if (workspace != null){
+            workspace.getWsProjects().remove(project);
+            //workspaceRepo.save(project);
+        }
+        projectRepo.deleteById(projectID);
+
+        List<User> users = project.getUsers();
+        if (users != null){
+            //users.
+            //userRepo.save(project);
+        }
+    }
 }

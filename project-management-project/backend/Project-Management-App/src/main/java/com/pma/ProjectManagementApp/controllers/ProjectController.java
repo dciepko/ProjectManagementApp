@@ -53,4 +53,9 @@ public class ProjectController {
         service.addNewTableAndUpdateProject(tableID, newTable);
     }
 
+    @DeleteMapping("/{tableID}/boards")
+    public void deleteBoard(@PathVariable Integer id) {
+        tableService.deleteStatusTableById(id);
+    }
+
 }

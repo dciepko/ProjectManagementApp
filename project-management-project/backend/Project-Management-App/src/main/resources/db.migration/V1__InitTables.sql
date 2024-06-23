@@ -1,31 +1,6 @@
- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (1, 'Marianna', 'Nowakowska', 'Mariankan', 'marianna@example.com', 'password123', '10-18', FALSE, 0);
- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (2, 'Franciszek', 'Adamski', 'Adams', 'adams@example.com', 'password123', '8-16', TRUE, 1);
- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (3, 'Gabriel', 'Wilk', 'Wilkor', 'gwilk@example.com', 'password123', '6-16', FALSE, 1);
-
- INSERT INTO status (statusid, status_name) VALUES (1, 'To do');
- INSERT INTO status (statusid, status_name) VALUES (2, 'In progress');
- INSERT INTO status (statusid, status_name) VALUES (3, 'Testing');
- INSERT INTO status (statusid, status_name) VALUES (4, 'Ended');
-
- INSERT INTO label (labelid, label_color) VALUES(1, 'green');
- INSERT INTO label (labelid, label_color) VALUES(2, 'blue');
- INSERT INTO label (labelid, label_color) VALUES(3, 'pink');
-
- INSERT INTO avatar (avatarid, avatar_url, userid) VALUES (1, 'exampleurl.com', 1);
- INSERT INTO avatar (avatarid, avatar_url, userid) VALUES (2, 'exampleurl.com', 2);
- INSERT INTO avatar (avatarid, avatar_url, userid) VALUES (3, 'exampleurl.com', 3);
-
- INSERT INTO checklist (checklistid, is_done) VALUES (1, FALSE);
- INSERT INTO checklist (checklistid, is_done) VALUES (2, FALSE);
- INSERT INTO checklist (checklistid, is_done) VALUES (3, FALSE);
-
- INSERT INTO checklist_element (checklist_elementid, element_name, is_done, checklistid) VALUES (1, 'create new project', FALSE, 1);
- INSERT INTO checklist_element (checklist_elementid, element_name, is_done, checklistid) VALUES (2, 'add all objects', FALSE, 2);
- INSERT INTO checklist_element (checklist_elementid, element_name, is_done, checklistid) VALUES (3, 'create methods', FALSE, 2);
-
---  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (1, 20, 1);
---  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (2, 20, 2);
---  INSERT INTO meeting (meetingid, pred_dur_min, activityid) VALUES (3, 20, 3);
+-- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (1, 'Marianna', 'Nowakowska', 'Mariankan', 'marianna@example.com', 'password123', '10-18', FALSE, 0);
+-- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (2, 'Franciszek', 'Adamski', 'Adams', 'adams@example.com', 'password123', '8-16', TRUE, 1);
+-- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (3, 'Gabriel', 'Wilk', 'Wilkor', 'gwilk@example.com', 'password123', '6-16', FALSE, 1);
 --
 --  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(1, '2024-03-21', 1);
 --  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(2, '2024-03-21', 2);

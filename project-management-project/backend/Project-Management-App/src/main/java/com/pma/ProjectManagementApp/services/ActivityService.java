@@ -174,4 +174,47 @@ public class ActivityService {
                 .collect(Collectors.toList()));
         return activityDTO;
     }
+
+    public void deleteActivityById(Integer activityID){
+        Activity activity = activityRepo.findById(activityID).orElseThrow(()  -> new IllegalArgumentException("Activity with ID " + activityID + " does not exist"));
+
+        commentRepo.deleteByActivityC(activity);
+        attachementRepo.deleteByActivity(activity);
+
+        StatusTable tableA = activity.getTableA();
+        if (tableA != null){
+            tableA.getActivitiesTab().remove(activity);
+            tableRepo.save(tableA);
+        }
+
+        Label labelA = activity.getLabelA();
+        if (labelA != null){
+            labelA.getActivitiesLabel().remove(activity);
+            labelRepo.save(labelA);
+        }
+
+        Status activitiesStatus = activity.getActivitiesStatus();
+        if (activitiesStatus != null){
+            activitiesStatus.getActivities().remove(activity);
+            activitiesStatusRepo.save(activitiesStatus);
+        }
+
+
+        List<User> usersActivity = activity.getUsersActivity();
+        if (usersActivity != null && !usersActivity.isEmpty()) {
+            for (User user : usersActivity) {
+                user.getActivitiesUser().remove(activity);
+                userRepo.save(user);
+            }
+        }
+
+        Project activityProject = activity.getActivityProject();
+        if (activityProject != null){
+            activityProject.getProjectActivities().remove(activity);
+            projectRepo.save(activityProject);
+        }
+
+
+        activityRepo.deleteById(activityID);
+    }
 }
