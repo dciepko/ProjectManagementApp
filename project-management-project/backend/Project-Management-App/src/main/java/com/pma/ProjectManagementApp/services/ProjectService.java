@@ -47,30 +47,45 @@ public class ProjectService {
     public Project addProject(ProjectDto projectDto){
         Project project = convertToProject(projectDto);
 
+        Project savedProject = projectRepo.save(project);
+
+        List<User> users = userRepo.findAllById(projectDto.getUserIds());
+
+        for(User user : users) {
+            user.getProjectsU().add(savedProject);
+            userRepo.save(user);
+        }
+
         StatusTable table1 = new StatusTable();
         table1.setTableName("Do zrobienia");
         table1.setTableColor("blue");
-        table1.setProject(project);
-        tableRepo.save(table1);
+        table1.setProject(savedProject);
+
         StatusTable table2 = new StatusTable();
         table2.setTableName("W trakcie");
         table2.setTableColor("blue");
-        table2.setProject(project);
-        tableRepo.save(table2);
+        table2.setProject(savedProject);
+
         StatusTable table3 = new StatusTable();
         table3.setTableName("Zakończone");
         table3.setTableColor("blue");
-        table3.setProject(project);
-        tableRepo.save(table3);
+        table3.setProject(savedProject);
+
         List<StatusTable> projectTables = new ArrayList<>();
         projectTables.add(table1);
         projectTables.add(table2);
         projectTables.add(table3);
-        project.setTables(projectTables);
 
-        Project addedProject = projectRepo.save(project);
-        return addedProject;
+        // Zapisz tabele statusów po przypisaniu projektu
+        tableRepo.saveAll(projectTables);
+
+        // Przypisz zapisane tabele statusów do projektu
+        savedProject.setTables(projectTables);
+
+        // Ponownie zapisz projekt z przypisanymi tabelami
+        return projectRepo.save(savedProject);
     }
+
 
     @Transactional
     public void addNewTableAndUpdateProject(Integer projectID, StatusTable newTable) {

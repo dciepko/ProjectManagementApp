@@ -1,5 +1,6 @@
 package com.pma.ProjectManagementApp.controllers;
 
+import com.pma.ProjectManagementApp.models.WorkspaceDto;
 import com.pma.ProjectManagementApp.modules.Workspace;
 import com.pma.ProjectManagementApp.services.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,11 @@ public class WorkspaceController {
     private WorkspaceService service;
 
     @GetMapping("/workspaces/{userID}")
-    public List<Workspace> getProjects(@PathVariable Integer userID){
+    public List<WorkspaceDto> getProjects(@PathVariable Integer userID){
         return service.getWorkspaces(userID);
     }
     @PostMapping("/workspaces")
-    public void addWorkspace(@RequestBody Workspace newWorkspace) {
+    public void addWorkspace(@RequestBody WorkspaceDto newWorkspace) {
         service.addWorkspace(newWorkspace);
     }
 }

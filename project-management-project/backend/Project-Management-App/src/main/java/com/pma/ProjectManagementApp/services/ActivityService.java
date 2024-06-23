@@ -53,6 +53,12 @@ public class ActivityService {
     public Activity addActivity(ActivityDto activityDto){
         Activity activity = convertToActivity(activityDto);
         Activity addedActivity = activityRepo.save(activity);
+        List<User> users = userRepo.findAllById(activityDto.getUserIDs());
+
+        for(User user : users) {
+            user.getActivitiesUser().add(activity);
+            userRepo.save(user);
+        }
         return addedActivity;
     }
 
