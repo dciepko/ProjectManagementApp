@@ -3,6 +3,8 @@ package com.pma.ProjectManagementApp.modules;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pma.ProjectManagementApp.models.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,8 +23,11 @@ public class User implements UserDetails {
     private Integer userID;
     private String userFirstName;
     private String userSurename;
+    @NotBlank(message = "Username is mandatory")
+    @Size(min=4, max=15)
     private String userNickname;
     private String userEmail;
+    @NotBlank
     private String userPassword;
     private String workingHours;
     private Boolean isOwner;

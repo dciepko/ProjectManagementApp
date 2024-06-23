@@ -17,10 +17,10 @@ public interface ProjectRepo extends JpaRepository<Project, Integer> {
 //    @Query(value = "SELECT * FROM projects WHERE workspace_id = :workspaceId", nativeQuery = true)
 //    List<Project> findByWorkspaceWorkspaceID(@Param("workspaceId") Integer workspaceId);
 
-//    @Query(value = "SELECT * FROM project WHERE project_id = :projectId", nativeQuery = true)
-//    List<Project> getProjectById(@Param("projectId") Integer projectId);
-//
-//    @Query("SELECT p FROM Project p WHERE p.project_id = :projectId")
-//    List<Project> getProjectByIdJpql(@Param("projectId") Integer projectId);
+    @Query(value = "SELECT * FROM project WHERE projectid = :projectId", nativeQuery = true)
+    List<Project> getProjectById(@Param("projectId") Integer projectId);
+
+    @Query("SELECT p FROM Project p WHERE p.projectID = :projectId")
+    List<Project> getProjectByIdJpql(@Param("projectId") Integer projectId);
     Project findByProjectID(Integer id);
 }

@@ -6,10 +6,12 @@ import com.pma.ProjectManagementApp.modules.*;
 import com.pma.ProjectManagementApp.repos.ProjectRepo;
 import com.pma.ProjectManagementApp.repos.UserRepo;
 import com.pma.ProjectManagementApp.repos.WorkspaceRepo;
+import jakarta.transaction.Transactional;
 import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -22,6 +24,8 @@ public class WorkspaceService {
     private UserRepo userRepo;
     @Autowired
     private ProjectRepo projectRepo;
+    @Autowired
+    private ProjectService projectService;
 
     public List<WorkspaceDto> getWorkspaces(Integer userID) {
         List<Workspace> workspaces =  repo.findByOwnerID(userID);
@@ -44,6 +48,28 @@ public class WorkspaceService {
             userRepo.save(user);
         }
         repo.save(savedWorkspace);
+    }
+
+    @Transactional
+    public void deleteWorkspaceById(Integer workspaceID) {
+        Workspace workspace = repo.findById(workspaceID).orElseThrow(() -> new IllegalArgumentException("StatusTable with ID " + workspaceID + " does not exist"));
+
+        List<Project> projects = workspace.getWsProjects();
+
+        if (projects != null && !projects.isEmpty()) {
+            List<Project> projectsCopy = new ArrayList<>(projects);
+            for (Project project : projectsCopy) {
+                activityService.deleteActivityById(activity.getActivityID());
+            }
+        }
+
+        User project = statusTable.getProject();
+        if (project != null){
+            project.getTables().remove(statusTable);
+            projectRepo.save(project);
+        }
+
+        repo.deleteById(tableID);
     }
 
     private WorkspaceDto convertToDto(Workspace workspace) {

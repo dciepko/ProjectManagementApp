@@ -26,7 +26,7 @@ public class Activity {
     @JoinColumn(name = "tableID")
     private StatusTable tableA;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "labelID")
     @JsonIgnore
     private Label labelA;
@@ -40,11 +40,11 @@ public class Activity {
     @JsonIgnore
     private List<User> usersActivity;
 
-    @OneToMany(mappedBy = "activityC")
+    @OneToMany(mappedBy = "activityC", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "activity")
+    @OneToMany(mappedBy = "activity", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Attachement> attachements;
 
