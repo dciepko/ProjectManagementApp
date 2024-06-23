@@ -20,7 +20,7 @@ public class ActivityController {
 
     @DeleteMapping("/activities")
     public void deleteActivity(@RequestParam Integer id){
-        service.deleteActivity(id);
+        service.deleteActivityById(id);
     }
     @PostMapping("/activities")
     public Activity addActivity(@RequestBody ActivityDto activityDto){

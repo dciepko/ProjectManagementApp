@@ -180,34 +180,35 @@ public class ActivityService {
             tableA.getActivitiesTab().remove(activity);
             tableRepo.save(tableA);
         }
-        activityRepo.deleteById(activityID);
 
         Label labelA = activity.getLabelA();
         if (labelA != null){
             labelA.getActivitiesLabel().remove(activity);
             labelRepo.save(labelA);
         }
-        activityRepo.deleteById(activityID);
 
         Status activitiesStatus = activity.getActivitiesStatus();
         if (activitiesStatus != null){
             activitiesStatus.getActivities().remove(activity);
             activitiesStatusRepo.save(activitiesStatus);
         }
-        activityRepo.deleteById(activityID);
 
-//        User userActivity = activity.getUsersActivity();
-//        if (userActivity != null){
-//            userActivity.getActivitiesUser().remove(activity);
-//            userRepo.save(userActivity);
-//        }
-//        activityRepo.deleteById(activityID);
+
+        List<User> usersActivity = activity.getUsersActivity();
+        if (usersActivity != null && !usersActivity.isEmpty()) {
+            for (User user : usersActivity) {
+                user.getActivitiesUser().remove(activity);
+                userRepo.save(user);
+            }
+        }
 
         Project activityProject = activity.getActivityProject();
         if (activityProject != null){
             activityProject.getProjectActivities().remove(activity);
-            //activityRepo.save(activityProject);
+            projectRepo.save(activityProject);
         }
+
+
         activityRepo.deleteById(activityID);
     }
 }
