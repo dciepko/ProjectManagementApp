@@ -59,17 +59,19 @@ public class WorkspaceService {
         if (projects != null && !projects.isEmpty()) {
             List<Project> projectsCopy = new ArrayList<>(projects);
             for (Project project : projectsCopy) {
-                activityService.deleteActivityById(activity.getActivityID());
+                projectService.deleteProjectById(project.getProjectID());
             }
         }
 
-        User project = statusTable.getProject();
-        if (project != null){
-            project.getTables().remove(statusTable);
-            projectRepo.save(project);
+        List<User> users = workspace.getUsers();
+        if (users != null && !users.isEmpty()) {
+            for (User user : users) {
+                user.getWorkspacesU().remove(workspace);
+                userRepo.save(user);
+            }
         }
 
-        repo.deleteById(tableID);
+        repo.deleteById(workspaceID);
     }
 
     private WorkspaceDto convertToDto(Workspace workspace) {

@@ -243,5 +243,7 @@ public class ProjectService {
             project.getUsers().clear();
             projectRepo.save(project);
         }
+
+        projectRepo.deleteById(projectID);
     }
 }
