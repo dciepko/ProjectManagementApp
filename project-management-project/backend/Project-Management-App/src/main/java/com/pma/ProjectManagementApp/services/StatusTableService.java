@@ -1,12 +1,18 @@
 package com.pma.ProjectManagementApp.services;
 
+import com.pma.ProjectManagementApp.modules.Activity;
 import com.pma.ProjectManagementApp.modules.Project;
 import com.pma.ProjectManagementApp.modules.StatusTable;
+import com.pma.ProjectManagementApp.modules.User;
 import com.pma.ProjectManagementApp.repos.ActivityRepo;
 import com.pma.ProjectManagementApp.repos.ProjectRepo;
 import com.pma.ProjectManagementApp.repos.StatusTableRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class StatusTableService {
@@ -15,7 +21,7 @@ public class StatusTableService {
     @Autowired
     ProjectRepo projectRepo;
     @Autowired
-    ActivityRepo activityRepo;
+    ActivityService activityService;
 
     public void editStatusTable(Integer id, StatusTable newStatusTable) {
         StatusTable editedStatusTable = repo.findById(id).get();
@@ -26,13 +32,21 @@ public class StatusTableService {
         }
     }
 
+    @Transactional
     public void deleteStatusTableById(Integer tableID) {
         StatusTable statusTable = repo.findById(tableID).orElseThrow(() -> new IllegalArgumentException("StatusTable with ID " + tableID + " does not exist"));
 
-        activityRepo.deleteByTableA(statusTable);  // usuwam aktywnosci bo nie beda potrzebne jak nie ma boarda do ktorego byly przypisane
+        List<Activity> activities = statusTable.getActivitiesTab();
 
-        Project project = statusTable.getProject();  // nie usuwam projektu ale biore z jego listy tablic te konkretna tablice i ja usuwam
-        if (project != null) {
+        if (activities != null && !activities.isEmpty()) {
+            List<Activity> activitiesCopy = new ArrayList<>(activities);
+            for (Activity activity : activitiesCopy) {
+                activityService.deleteActivityById(activity.getActivityID());
+            }
+        }
+
+        Project project = statusTable.getProject();
+        if (project != null){
             project.getTables().remove(statusTable);
             projectRepo.save(project);
         }

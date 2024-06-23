@@ -3,6 +3,7 @@ package com.pma.ProjectManagementApp.services;
 import com.pma.ProjectManagementApp.models.ActivityDto;
 import com.pma.ProjectManagementApp.modules.*;
 import com.pma.ProjectManagementApp.repos.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -85,15 +86,6 @@ public class ActivityService {
         return convertToDTO(existingActivity);
     }
 
-    public void deleteActivity(Integer id)
-    {
-        if(!activityRepo.findById(id).isEmpty()){
-            activityRepo.deleteById(id);
-        }
-        else {
-            System.out.println("Not found");
-        }
-    }
 
     private Activity convertToActivity(ActivityDto activityDto) {
         Activity activity = new Activity();
@@ -175,6 +167,7 @@ public class ActivityService {
         return activityDTO;
     }
 
+    @Transactional
     public void deleteActivityById(Integer activityID){
         Activity activity = activityRepo.findById(activityID).orElseThrow(()  -> new IllegalArgumentException("Activity with ID " + activityID + " does not exist"));
 
@@ -214,7 +207,7 @@ public class ActivityService {
             projectRepo.save(activityProject);
         }
 
-
+        System.out.println("przed usunieciem");
         activityRepo.deleteById(activityID);
     }
 }

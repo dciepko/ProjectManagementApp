@@ -54,8 +54,8 @@ public class ProjectController {
     }
 
     @DeleteMapping("/{tableID}/boards")
-    public void deleteBoard(@PathVariable Integer id) {
-        tableService.deleteStatusTableById(id);
+    public void deleteBoard(@PathVariable Integer tableID) {
+        tableService.deleteStatusTableById(tableID);
     }
 
 }

@@ -13,4 +13,5 @@ public interface ActivityRepo extends JpaRepository<Activity, Integer> {
     List<Activity> findByActivityProjectProjectID(Integer id);
     void deleteByTableA(StatusTable statusTable);
     void deleteByActivityProject(Project project);
+    void deleteByActivityID(Integer id);
 }
