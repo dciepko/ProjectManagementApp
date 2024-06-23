@@ -1,6 +1,6 @@
--- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (1, 'Marianna', 'Nowakowska', 'Mariankan', 'marianna@example.com', 'password123', '10-18', FALSE, 0);
--- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (2, 'Franciszek', 'Adamski', 'Adams', 'adams@example.com', 'password123', '8-16', TRUE, 1);
--- INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (3, 'Gabriel', 'Wilk', 'Wilkor', 'gwilk@example.com', 'password123', '6-16', FALSE, 1);
+INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (1, 'Marianna', 'Nowakowska', 'Mariankan', 'marianna@example.com', 'password123', '10-18', FALSE, 0);
+INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (2, 'Franciszek', 'Adamski', 'Adams', 'adams@example.com', 'password123', '8-16', TRUE, 1);
+INSERT INTO user (userid, user_first_name, user_surename, user_nickname, user_email, user_password, working_hours, is_owner, role) VALUES (3, 'Gabriel', 'Wilk', 'Wilkor', 'gwilk@example.com', 'password123', '6-16', FALSE, 1);
 --
 --  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(1, '2024-03-21', 1);
 --  INSERT INTO milestone (milestoneid, actual_date, activityid) VALUES(2, '2024-03-21', 2);

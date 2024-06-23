@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface AttachementRepo extends JpaRepository<Attachement, Integer> {
-    List<Activity> findByActivityAttachementAttachementID(Integer id);
+    //List<Activity> findByActivityAttachementAttachementID(Integer id);
     void deleteByActivity(Activity activity);
 }
