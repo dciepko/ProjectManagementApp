@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CommentRepo extends JpaRepository<Comment, Integer> {
-    List<Activity> findByActivityStatusTableTableID(Integer id);
+    List<Activity> findByActivityCTableATableID(Integer id);
     void deleteByActivityC(Activity activity);
 }

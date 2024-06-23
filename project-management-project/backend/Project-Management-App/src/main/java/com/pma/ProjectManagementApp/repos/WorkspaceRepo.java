@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface WorkspaceRepo extends JpaRepository<Workspace, Integer> {
-    void deleteByWsProject(Project project);
+    //void deleteByWsProject(Project project);
 
     List<Workspace> findByOwnerID(Integer id);
 }
