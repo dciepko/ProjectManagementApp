@@ -71,9 +71,9 @@
  INSERT INTO attachement (attachementid, attachement_name, attachement_type, attachement_url, date, activityid, userid) VALUES (2, 'Database project', 'url', 'example.com', '2024-03-21', 2, 2);
  INSERT INTO attachement (attachementid, attachement_name, attachement_type, attachement_url, date, activityid, userid) VALUES (3, 'Ideas for icons', 'url', 'example.com', '2024-03-21', 3, 3);
 
- INSERT INTO notification (notificationid, notification_content, notification_date, userid) VALUES (1, 'You have been added to the project', '2024-03-21', 1);
- INSERT INTO notification (notificationid, notification_content, notification_date, userid) VALUES (2, 'You have been assigned a task', '2024-03-21', 3);
- INSERT INTO notification (notificationid, notification_content, notification_date, userid) VALUES (3, 'You have been added to the project', '2024-03-25', 2);
+ INSERT INTO notification (notificationid, notification_content, notification_date, is_read, userid) VALUES (1, 'You have been added to the project', '2024-03-21', true, 1);
+ INSERT INTO notification (notificationid, notification_content, notification_date, is_read, userid) VALUES (2, 'You have been assigned a task', '2024-03-21', false, 3);
+ INSERT INTO notification (notificationid, notification_content, notification_date, is_read, userid) VALUES (3, 'You have been added to the project', '2024-03-25', false, 2);
 
 -- INSERT INTO task (taskid, activityid, chechlistid) VALUES (1, 1, 1);
 -- INSERT INTO task (taskid, activityid, chechlistid) VALUES (1, 2, 2);

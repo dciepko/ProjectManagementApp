@@ -15,6 +15,7 @@ public class Notification {
     private Integer notificationID;
     private String notificationContent;
     private Date notificationDate;
+    private Boolean isRead;
 
     @ManyToOne
     @JoinColumn(name = "userID")
