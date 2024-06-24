@@ -4,6 +4,7 @@ import com.pma.ProjectManagementApp.filters.JwtAuthenticationFilter;
 import com.pma.ProjectManagementApp.services.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,7 +36,9 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        req -> req.requestMatchers("/login/**", "/register/**")
+                        req -> req.requestMatchers(HttpMethod.GET, "/avatars").hasAnyRole("ADMIN")
+                                .requestMatchers(HttpMethod.PUT, "/attachements").hasAnyRole("ADMIN")
+                                .requestMatchers("/login/**", "/register/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
