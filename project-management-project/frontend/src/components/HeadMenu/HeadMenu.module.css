@@ -157,7 +157,8 @@
   .menuImage {
     margin-right: auto;
   }
-.logoutButton {
-  padding: 0.8rem;
-  font-size: 1.5rem;
+  .logoutButton {
+    padding: 0.8rem;
+    font-size: 1.5rem;
+  }
 }
