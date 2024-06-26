@@ -224,3 +224,22 @@ export async function addWorkspace(newWorkspace) {
     body: JSON.stringify(newWorkspace),
   });
 }
+
+export async function fetchNotifications(userID) {
+  const token = getAuthToken();
+
+  const response = await fetch(
+    `http://localhost:8080/notifications/${userID}`,
+    {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const resData = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Nie udało się załadować powiadomień");
+  }
+  return resData;
+}

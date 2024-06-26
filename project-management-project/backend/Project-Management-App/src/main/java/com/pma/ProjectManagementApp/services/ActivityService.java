@@ -36,6 +36,9 @@ public class ActivityService {
     @Autowired
     private AttachementRepo attachementRepo;
 
+    @Autowired
+    private NotificationRepo notificationRepo;
+
 
     public List<ActivityDto> getActivity(){
         List<Activity> activities = activityRepo.findAll();
@@ -55,11 +58,23 @@ public class ActivityService {
         Activity activity = convertToActivity(activityDto);
         Activity addedActivity = activityRepo.save(activity);
         List<User> users = userRepo.findAllById(activityDto.getUserIDs());
+        Project project = projectRepo.findByProjectID(activityDto.getProjectID());
 
         for(User user : users) {
             user.getActivitiesUser().add(activity);
             userRepo.save(user);
+
+            Notification newNotification = new Notification();
+            newNotification.setNotificationDate(activity.getDueDate());
+            newNotification.setUserNotification(user);
+            newNotification.setNotificationContent("Zostałeś dodany do aktywności '" + activity.getActivityName() +
+                    "' w projekcie '" + project.getProjectName() + "'");
+            newNotification.setIsRead(false);
+            notificationRepo.save(newNotification);
         }
+
+
+
         return addedActivity;
     }
 

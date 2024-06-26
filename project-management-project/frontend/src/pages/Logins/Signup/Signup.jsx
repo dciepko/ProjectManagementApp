@@ -99,12 +99,15 @@ export default function Signup() {
     if (response.ok) {
       const resData = await response.json();
       const token = resData.token;
+      const loggedUserId = resData.userID;
       localStorage.setItem("token", token);
       const expiration = new Date();
       expiration.setHours(expiration.getHours() + 24);
       localStorage.setItem("expiration", expiration.toISOString());
 
-      navigate("/home");
+      localStorage.setItem("currentUserID", loggedUserId);
+
+      navigate(`/${loggedUserId}/home`);
     }
   }
 

@@ -78,8 +78,6 @@ export default function HomePage() {
             <h1 className={classes.h1}>Twoje najnowsze powiadomienia:</h1>
             <div>
               <ActivityHomeElement />
-              <ActivityHomeElement />
-              <ActivityHomeElement />
             </div>
           </div>
           <aside className={classes.aside}>
