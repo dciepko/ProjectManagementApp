@@ -146,8 +146,10 @@ export async function updateActivity(activity) {
 export async function deleteActivityById(activityID) {
   const token = getAuthToken();
 
+  console.log(activityID);
+
   const response = await fetch(
-    `http://localhost:8080/projects?id=${activityID}`,
+    `http://localhost:8080/activities?id=${activityID}`,
     {
       method: "DELETE",
       headers: {
