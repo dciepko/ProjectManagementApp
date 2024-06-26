@@ -102,11 +102,7 @@ export default function HeadMenu() {
             >
               {!isMobileScreen && <img src={user} alt="user-avatar" />}
             </button>
-            <button
-              ref={buttonRef}
-              className={classes.menuImage}
-              onClick={toggleMenu}
-            ></button>
+
             {isMobileScreen && <img src={menu} alt="menu-icon" />}
 
             {isOpen && (
@@ -118,9 +114,21 @@ export default function HeadMenu() {
                   backgroundColor: "white",
                   boxShadow: "0px 8px 16px rgba(0,0,0,0.2)",
                   zIndex: 1,
+                  float: "right",
+                  borderRadius: "1rem",
+                  border: "none",
                 }}
               >
-                <button onClick={handleLogout} className={classes.logoutButton}>
+                <button
+                  onClick={handleLogout}
+                  className={classes.logoutButton}
+                  style={{
+                    fontSize: "2rem",
+                    padding: "1rem",
+                    borderRadius: "1rem",
+                    border: "none",
+                  }}
+                >
                   Wyloguj
                 </button>
               </div>
