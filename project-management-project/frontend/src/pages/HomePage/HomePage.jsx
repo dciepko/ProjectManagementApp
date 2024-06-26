@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { fetchWorkspacesAction } from "../../store/worskpace-slice";
 import AddingWorkspace from "../../components/Modals/AddingWorkspace/AddingWorkspace";
 import { fetchUsersAction } from "../../store/user-slice";
+import { fetchNotificationsAction } from "../../store/notification-slice";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -30,7 +31,16 @@ export default function HomePage() {
     dispatch(fetchWorkspacesAction(currentUser));
   }, [dispatch, reload]);
 
+  useEffect(() => {
+    dispatch(fetchNotificationsAction(currentUser));
+  }, [dispatch]);
+
   const workspaces = useSelector((state) => state.workspaces.workspaces);
+
+  const notifications = useSelector((state) => {
+    console.log(state); // Sprawdź, co jest w state
+    return state.notifications.notifications;
+  });
 
   useEffect(() => {
     if (workspaces.length > 0) {
@@ -77,7 +87,14 @@ export default function HomePage() {
           <div className={classes.centralPart}>
             <h1 className={classes.h1}>Twoje najnowsze powiadomienia:</h1>
             <div>
-              <ActivityHomeElement />
+              {notifications &&
+                notifications.map((notification) => {
+                  return (
+                    <ActivityHomeElement
+                      activityText={notification.notificationContent}
+                    />
+                  );
+                })}
             </div>
           </div>
           <aside className={classes.aside}>

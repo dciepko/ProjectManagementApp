@@ -2,7 +2,7 @@ import classes from "./ActivityHomeElement.module.css";
 
 import check from "../../assets/check.png";
 
-export default function ActivityHomeElement() {
+export default function ActivityHomeElement({ activityText }) {
   return (
     // <div className={classes.container}>
     //   <div className={classes.mainPart}>
@@ -15,7 +15,7 @@ export default function ActivityHomeElement() {
     // </div>
     <div className={classes.container}>
       <div className={classes.mainPart}>
-        <div className={classes.namePart}>Task1</div>
+        <div className={classes.namePart}>{activityText}</div>
       </div>
       <div className={classes.descriptionPart}>
         <button className={classes.okButton}>

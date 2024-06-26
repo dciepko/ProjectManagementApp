@@ -46,7 +46,8 @@ const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
 
   function handleUserChoose(usersList) {
     const idsList = usersList.map((user) => user.userID);
-    setNewProject({ ...newProject, userIds: idsList });
+    console.log(idsList);
+    setNewActivity({ ...newActivity, userIDs: idsList });
   }
 
   function handleChange(event) {
@@ -60,6 +61,8 @@ const AddingTask = forwardRef(function AddingTask({ tableID, handleAdd }, ref) {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    console.log(newActivity);
 
     dispatch(addNewActivity(newActivity, currentProject.projectID));
     handleAdd();

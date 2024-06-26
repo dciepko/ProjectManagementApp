@@ -1,28 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchNotifications } from "../util/http";
 
 const notificationSlice = createSlice({
-  name: "workspace",
+  name: "notifications",
   initialState: { notifications: [] },
   reducers: {
-    getWorkspaces(state, action) {
-      state.workspaces = action.payload;
-    },
-    changeCurrentWorkspace(state, action) {
-      state.currentWorkspace = action.payload;
+    setNotifications(state, action) {
+      state.notifications = action.payload;
     },
   },
 });
 
-export const fetchWorkspacesAction = (userID) => async (dispatch) => {
-  const fetchedWorkspaces = await fetchWorkspaces(userID);
-  dispatch(getWorkspaces(fetchedWorkspaces));
+export const { setNotifications } = notificationSlice.actions;
+
+export const fetchNotificationsAction = (userID) => async (dispatch) => {
+  const fetchedNotifications = await fetchNotifications(userID);
+  dispatch(setNotifications(fetchedNotifications));
 };
 
-export const addNewWorkspace = (newWorkspace, userID) => async (dispatch) => {
-  addWorkspace(newWorkspace);
-  fetchWorkspacesAction(userID);
-};
-
-export const { getWorkspaces, changeCurrentWorkspace } = workspaceSlice.actions;
-
-export default notificationSlice;
+export default notificationSlice.reducer;

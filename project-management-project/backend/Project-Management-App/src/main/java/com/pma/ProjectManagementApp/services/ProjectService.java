@@ -33,6 +33,9 @@ public class ProjectService {
     @Autowired
     private ActivityService activityService;
 
+    @Autowired
+    private NotificationRepo notificationRepo;
+
     public List<ProjectDto> getProjects(){
         List<Project> projects = projectRepo.findAll();
         return projects.stream()
@@ -58,6 +61,13 @@ public class ProjectService {
         for(User user : users) {
             user.getProjectsU().add(savedProject);
             userRepo.save(user);
+
+            Notification newNotification = new Notification();
+            newNotification.setNotificationDate(project.getEndDate());
+            newNotification.setUserNotification(user);
+            newNotification.setNotificationContent("Zostałeś dodany do projektu '" + project.getProjectName() + "'");
+            newNotification.setIsRead(false);
+            notificationRepo.save(newNotification);
         }
 
         StatusTable table1 = new StatusTable();

@@ -4,6 +4,7 @@ import userSlice from "./user-slice";
 import projectsSlice from "./projects-slice";
 import activityReducer from "./activity-slice";
 import workspaceSlice from "./worskpace-slice";
+import notificationReducer from "./notification-slice";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     projects: projectsSlice.reducer,
     activities: activityReducer,
     workspaces: workspaceSlice.reducer,
+    notifications: notificationReducer,
   },
 });
 

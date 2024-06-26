@@ -17,10 +17,10 @@ public class NotificationService {
         List<Notification> notifications = repo.findAll();
 
         List<Notification> filteredNotifications = notifications.stream()
-                .filter(notification -> notification.getNotificationID().equals(id) && !notification.getIsRead())
+                .filter(notification -> notification.getUserNotification().getUserID().equals(id) && !notification.getIsRead())
                 .collect(Collectors.toList());
 
-        return notifications;
+        return filteredNotifications;
     }
 
     public List<Notification> getAllNotifications() {
