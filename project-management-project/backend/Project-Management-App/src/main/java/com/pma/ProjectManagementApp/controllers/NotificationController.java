@@ -5,6 +5,7 @@ import com.pma.ProjectManagementApp.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,5 +22,10 @@ public class NotificationController {
     @GetMapping("/notificatioons")
     public List<Notification> getAllNotifications() {
         return service.getAllNotifications();
+    }
+
+    @PutMapping("/notifications/{notificationID}")
+    public void updateNotification(@PathVariable Integer notificationID) {
+        service.editNotification(notificationID);
     }
 }

@@ -245,3 +245,24 @@ export async function fetchNotifications(userID) {
   }
   return resData;
 }
+
+export async function updateNotification(notificationID) {
+  const token = getAuthToken();
+  console.log(notificationID);
+  const response = await fetch(
+    `http://localhost:8080/notifications/${notificationID}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const resData = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Nie udało się");
+  }
+  return resData;
+}

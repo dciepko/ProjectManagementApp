@@ -8,6 +8,7 @@ import { fetchWorkspacesAction } from "../../store/worskpace-slice";
 import AddingWorkspace from "../../components/Modals/AddingWorkspace/AddingWorkspace";
 import { fetchUsersAction } from "../../store/user-slice";
 import { fetchNotificationsAction } from "../../store/notification-slice";
+import { updateNotification } from "../../util/http";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export default function HomePage() {
   const currentUser = localStorage.getItem("currentUserID");
 
   const [currentWorkspaces, setCurrentWorkspaces] = useState([]);
+  const [notList, setNotList] = useState([]);
   const [reload, setReload] = useState(false);
 
   const modal = useRef();
@@ -38,7 +40,6 @@ export default function HomePage() {
   const workspaces = useSelector((state) => state.workspaces.workspaces);
 
   const notifications = useSelector((state) => {
-    console.log(state); // Sprawdź, co jest w state
     return state.notifications.notifications;
   });
 
@@ -48,8 +49,23 @@ export default function HomePage() {
     }
   }, [workspaces]);
 
+  useEffect(() => {
+    if (notifications.length > 0) {
+      setNotList(notifications);
+    }
+  }, [notifications]);
+
   function reloadPage() {
     setReload((reload) => !reload);
+  }
+
+  function handleDeleteNotification(id) {
+    const newList = notList.filter(
+      (notification) => notification.notificationID !== id
+    );
+    setNotList(newList);
+
+    updateNotification(id);
   }
 
   return (
@@ -88,10 +104,12 @@ export default function HomePage() {
             <h1 className={classes.h1}>Twoje najnowsze powiadomienia:</h1>
             <div>
               {notifications &&
-                notifications.map((notification) => {
+                notList.map((notification) => {
                   return (
                     <ActivityHomeElement
                       activityText={notification.notificationContent}
+                      onClick={handleDeleteNotification}
+                      notId={notification.notificationID}
                     />
                   );
                 })}
