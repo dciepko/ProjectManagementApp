@@ -52,4 +52,9 @@ public class Activity {
     @JoinColumn(name = "projectID")
     @JsonIgnore
     private Project activityProject;
+
+    @OneToOne
+    @JoinColumn(name = "chechlistID")
+    @JsonIgnore
+    private Checklist checklist;
 }

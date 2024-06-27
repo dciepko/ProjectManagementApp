@@ -47,4 +47,8 @@ public class Project {
     @OneToMany(mappedBy = "activityProject")
     @JsonIgnore
     private List<Activity> projectActivities;
+
+    @OneToMany(mappedBy = "project")
+    @JsonIgnore
+    private List<Milestone> milestones;
 }

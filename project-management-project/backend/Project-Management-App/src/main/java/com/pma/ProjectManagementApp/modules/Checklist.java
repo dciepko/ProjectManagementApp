@@ -21,5 +21,5 @@ public class Checklist {
 
     @JsonIgnore
     @OneToOne(mappedBy = "checklist")
-    private Task task;
+    private Activity activity;
 }
