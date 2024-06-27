@@ -4,6 +4,8 @@ import { createPortal } from "react-dom";
 import { deleteActivity } from "../../../store/activity-slice";
 import { useDispatch } from "react-redux";
 
+import bin from "../../../assets/trash.png";
+
 const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
   const dialog = useRef();
 
@@ -58,7 +60,9 @@ const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
           <button className={classes.closeButton} onClick={handleCloseButton}>
             Zamknij
           </button>
-          <button onClick={handleDeleteButton}>kosz</button>
+          <button onClick={handleDeleteButton} className={classes.deleteButton}>
+            <img src={bin} alt="binIcon" />
+          </button>
         </div>
       </div>
     </dialog>,

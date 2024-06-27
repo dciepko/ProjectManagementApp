@@ -38,6 +38,14 @@
   padding: 0.5rem;
   border: none;
   background: none;
+  width: 3rem;
+  height: 3rem;
+}
+
+.deleteButton img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .deleteButton:hover {

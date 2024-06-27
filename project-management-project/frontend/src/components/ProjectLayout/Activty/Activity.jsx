@@ -55,11 +55,11 @@ export default function Activity({ id, task, handleDragStart }) {
             <button className={classes.button} onClick={handleOpenModal}>
               <img src={info} alt="Information button" />
             </button>
-            {task.type === "task" && (
-              <button className={classes.button} onClick={handleWrapButton}>
-                <img src={wrapDown} alt="wrap button" />
-              </button>
-            )}
+            {/* {task.type === "task" && ( */}
+            <button className={classes.button} onClick={handleWrapButton}>
+              <img src={wrapDown} alt="wrap button" />
+            </button>
+            {/* )} */}
           </div>
         </div>
       )}

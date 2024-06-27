@@ -5,6 +5,7 @@ import group from "../../../assets/group-icon.png";
 import plus from "../../../assets/plus-icon.png";
 import wrap from "../../../assets/wrap-down-button.png";
 import wrapUp from "../../../assets/wrap-up-button.png";
+import bin from "../../../assets/trash.png";
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -49,7 +50,7 @@ export default function ProjectHeader({
       </button>
       {viewType === "unwrapped" && (
         <button className={classes.deleteButton} onClick={handleDeleteButton}>
-          kosz
+          <img src={bin} alt="binIcon" />
         </button>
       )}
       {viewType === "unwrapped" && (

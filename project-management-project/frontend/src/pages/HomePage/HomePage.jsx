@@ -74,6 +74,13 @@ export default function HomePage() {
       <main className={classes.main}>
         <nav className={classes.nav}>
           <div className={classes.navUp}>
+            <Link
+              to={`/${currentUser}/workspace/`}
+              className={classes.navUpButton}
+            >
+              Przykład
+            </Link>
+
             {currentWorkspaces.map((workspace) => {
               return (
                 <Link

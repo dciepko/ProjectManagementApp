@@ -31,6 +31,11 @@ function App() {
           loader: checkAuthLoader,
         },
         {
+          path: "/:loggedUserID/workspace",
+          element: <WorkspacePage />,
+          loader: checkAuthLoader,
+        },
+        {
           path: "/:loggedUserID/call",
           element: <CallPage />,
           loader: checkAuthLoader,
