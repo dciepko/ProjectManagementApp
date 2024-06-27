@@ -266,3 +266,20 @@ export async function updateNotification(notificationID) {
   }
   return resData;
 }
+
+export async function deleteBoardById(boardID) {
+  const token = getAuthToken();
+
+  console.log(boardID);
+
+  const response = await fetch(`http://localhost:8080/${boardID}/boards`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Nie udało się usunąć tablicy");
+  }
+}

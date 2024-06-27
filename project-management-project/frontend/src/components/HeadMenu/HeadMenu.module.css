@@ -93,6 +93,13 @@
   cursor: pointer;
 }
 
+.createOptionButton {
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
+}
+
 @media (max-width: 320px) and (max-height: 510px) {
   .notificationImage {
     background-color: none;

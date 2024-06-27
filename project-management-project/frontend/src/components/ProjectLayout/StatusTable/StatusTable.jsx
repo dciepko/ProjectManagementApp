@@ -103,7 +103,6 @@ export default function TimeTable({
 
   function handleSelectChange(event) {
     if (event.target.value === "delete") {
-      console.log("Usuwanie");
     }
     if (event.target.value === "color") {
       colorModal.current.open();

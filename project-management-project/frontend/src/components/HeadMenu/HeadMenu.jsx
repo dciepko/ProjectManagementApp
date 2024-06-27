@@ -37,8 +37,10 @@ export default function HeadMenu() {
     left: 0,
   });
   const buttonRef = useRef(null);
+  const createButtonRef = useRef(null);
 
   const [isCreateMenuOpen, setIsCreateMenuOpen] = useState(false);
+
   const toggleCreateMenu = () => {
     setIsCreateMenuOpen(!isCreateMenuOpen);
   };
@@ -46,6 +48,26 @@ export default function HeadMenu() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleClickOutside = (event) => {
+    if (buttonRef.current && !buttonRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+
+    if (
+      createButtonRef.current &&
+      !createButtonRef.current.contains(event.target)
+    ) {
+      setIsCreateMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     if (!token) {
@@ -72,6 +94,16 @@ export default function HeadMenu() {
       });
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (isCreateMenuOpen && createButtonRef.current) {
+      const rect = createButtonRef.current.getBoundingClientRect();
+      setMenuPosition({
+        top: rect.bottom,
+        left: rect.left,
+      });
+    }
+  }, [isCreateMenuOpen]);
 
   function handleLogout() {
     localStorage.removeItem("token");
@@ -115,12 +147,19 @@ export default function HeadMenu() {
               </Link>
             </li>
             <li className={classes.li}>
-              <button onClick={toggleCreateMenu} className={classes.button}>
+              <button
+                ref={createButtonRef}
+                onClick={toggleCreateMenu}
+                className={classes.button}
+              >
                 Utwórz
               </button>
               {isCreateMenuOpen && (
                 <div
                   style={{
+                    position: "absolute",
+                    top: `${menuPosition.top}px`,
+                    left: `${menuPosition.left}px`,
                     backgroundColor: "white",
                     boxShadow: "0px 8px 16px rgba(0,0,0,0.2)",
                     zIndex: 1,
@@ -130,9 +169,24 @@ export default function HeadMenu() {
                     flexDirection: "column",
                   }}
                 >
-                  <button onClick={handleOpenWorkspace}>Workspace</button>
-                  <button onClick={handleOpenProject}>Project</button>
-                  <button onClick={handleOpenTask}>Activity</button>
+                  <button
+                    onClick={handleOpenWorkspace}
+                    className={classes.createOptionButton}
+                  >
+                    Workspace
+                  </button>
+                  <button
+                    onClick={handleOpenProject}
+                    className={classes.createOptionButton}
+                  >
+                    Project
+                  </button>
+                  <button
+                    onClick={handleOpenTask}
+                    className={classes.createOptionButton}
+                  >
+                    Activity
+                  </button>
                 </div>
               )}
             </li>
