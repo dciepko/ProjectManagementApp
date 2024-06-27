@@ -47,6 +47,7 @@ export default function WorkspacePage() {
   }
 
   function handleReload() {
+    dispatch(fetchProjectsByIDAction(workspaceID));
     setReload((prevReload) => !prevReload);
     console.log("reload");
   }

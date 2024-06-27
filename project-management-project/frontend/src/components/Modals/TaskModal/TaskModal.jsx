@@ -21,7 +21,6 @@ const TaskModal = forwardRef(function TaskModal({ task, checklist }, ref) {
     const result = confirm("Czy na pewno chcesz usunąć tę aktywność?");
     if (result) {
       dispatch(deleteActivity(task.activityID, task.projectID));
-      console.log(task.activityID);
     }
   }
 

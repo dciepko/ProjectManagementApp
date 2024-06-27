@@ -272,12 +272,15 @@ export async function deleteBoardById(boardID) {
 
   console.log(boardID);
 
-  const response = await fetch(`http://localhost:8080/${boardID}/boards`, {
-    method: "DELETE",
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
+  const response = await fetch(
+    `http://localhost:8080/projects/${boardID}/boards`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
 
   if (!response.ok) {
     throw new Error("Nie udało się usunąć tablicy");

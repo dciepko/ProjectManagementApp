@@ -6,6 +6,7 @@ import Activity from "../Activty/Activity.jsx";
 import { editingActivity } from "../../../store/activity-slice.js";
 import { useDispatch } from "react-redux";
 import { editingTables } from "../../../store/projects-slice.js";
+import { deleteBoardById } from "../../../util/http.js";
 
 export default function TimeTable({
   title,
@@ -103,6 +104,11 @@ export default function TimeTable({
 
   function handleSelectChange(event) {
     if (event.target.value === "delete") {
+      const result = confirm("Czy na pewno chcesz usunąć tę tablicę?");
+      if (result) {
+        deleteBoardById(id);
+        console.log(id);
+      }
     }
     if (event.target.value === "color") {
       colorModal.current.open();
