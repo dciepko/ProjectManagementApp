@@ -8,13 +8,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Controller class for handling HTTP requests related to attachments.
+ */
 @RestController
 public class AttachementController {
     @Autowired
     private AttachementService service;
 
-    @GetMapping("/attachements")
-    private List<Attachement> getAttachements() {
+    /**
+     * Endpoint to retrieve all attachments.
+     *
+     * @return List of Attachement objects representing attachments
+     */
+    @GetMapping("/attachments")
+    private List<Attachement> getAttachments() {
         return service.getAll();
     }
 }

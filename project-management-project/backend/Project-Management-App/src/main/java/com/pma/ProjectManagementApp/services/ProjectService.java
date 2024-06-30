@@ -12,30 +12,47 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * Service class that handles business logic related to projects.
+ */
 @Service
 public class ProjectService {
+
     @Autowired
     private ProjectRepo projectRepo;
+
     @Autowired
     private UserRepo userRepo;
+
     @Autowired
     private TeamRepo teamRepo;
+
     @Autowired
     private ActivityRepo activityRepo;
+
     @Autowired
     private StatusRepo statusRepo;
+
     @Autowired
     private StatusTableRepo tableRepo;
+
     @Autowired
     private WorkspaceRepo workspaceRepo;
+
     @Autowired
     private StatusTableService statusTableService;
+
     @Autowired
     private ActivityService activityService;
 
     @Autowired
     private NotificationRepo notificationRepo;
 
+    /**
+     * Retrieves all projects.
+     *
+     * @return List of ProjectDto objects representing all projects
+     */
     public List<ProjectDto> getProjects(){
         List<Project> projects = projectRepo.findAll();
         return projects.stream()
@@ -43,6 +60,12 @@ public class ProjectService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Retrieves projects associated with a specific workspace.
+     *
+     * @param id ID of the workspace
+     * @return List of ProjectDto objects representing projects in the specified workspace
+     */
     public List<ProjectDto> getProjectsByWorkspaces(Integer id){
         List<Project> projects = projectRepo.findByWorkspaceWorkspaceID(id);
         return projects.stream()
@@ -50,6 +73,12 @@ public class ProjectService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Adds a new project.
+     *
+     * @param projectDto ProjectDto object containing project details
+     * @return Project object representing the newly added project
+     */
     @Transactional
     public Project addProject(ProjectDto projectDto){
         Project project = convertToProject(projectDto);
@@ -90,17 +119,22 @@ public class ProjectService {
         projectTables.add(table2);
         projectTables.add(table3);
 
-        // Zapisz tabele statusów po przypisaniu projektu
+        // Save status tables after assigning them to the project
         tableRepo.saveAll(projectTables);
 
-        // Przypisz zapisane tabele statusów do projektu
+        // Assign saved status tables to the project
         savedProject.setTables(projectTables);
 
-        // Ponownie zapisz projekt z przypisanymi tabelami
+        // Save project again with assigned tables
         return projectRepo.save(savedProject);
     }
 
-
+    /**
+     * Adds a new status table to a project and updates the project.
+     *
+     * @param projectID ID of the project to which the new status table will be added
+     * @param newTable StatusTable object representing the new table to be added
+     */
     @Transactional
     public void addNewTableAndUpdateProject(Integer projectID, StatusTable newTable) {
         Project project = projectRepo.findById(projectID).get();
@@ -118,7 +152,13 @@ public class ProjectService {
         projectRepo.save(project);
     }
 
-
+    /**
+     * Edits an existing project.
+     *
+     * @param id ID of the project to be edited
+     * @param newProject Project object containing updated project details
+     * @return Project object representing the edited project
+     */
     public Project editProject(Integer id, Project newProject){
         Project editedProject = projectRepo.findById(id).get();
         if(editedProject != null){
@@ -141,6 +181,11 @@ public class ProjectService {
         return null;
     }
 
+    /**
+     * Deletes a project by its ID.
+     *
+     * @param id ID of the project to be deleted
+     */
     public void deleteProject(Integer id){
         if(!projectRepo.findById(id).isEmpty()){
             projectRepo.deleteById(id);
@@ -150,6 +195,12 @@ public class ProjectService {
         }
     }
 
+    /**
+     * Converts a Project entity to ProjectDto.
+     *
+     * @param project Project entity to be converted
+     * @return ProjectDto object representing the converted project
+     */
     private ProjectDto convertToDto(Project project) {
         ProjectDto dto = new ProjectDto();
         dto.setProjectID(project.getProjectID());
@@ -168,7 +219,13 @@ public class ProjectService {
         return dto;
     }
 
-    private Project convertToProject(ProjectDto projectDto) {
+    /**
+     * Converts ProjectDto to Project entity.
+     *
+     * @param projectDto ProjectDto object to be converted
+     * @return Project entity representing the converted project
+     */
+    public Project convertToProject(ProjectDto projectDto) {
         Project project = new Project();
         project.setProjectName(projectDto.getProjectName());
         project.setProjectDescription(projectDto.getProjectDescription());
@@ -200,6 +257,13 @@ public class ProjectService {
         return project;
     }
 
+    /**
+     * Deletes a project by its ID, handling associated entities.
+     * This method performs cascading deletion of associated entities such as status tables, activities, users, teams,
+     * and updates corresponding repositories.
+     *
+     * @param projectID ID of the project to be deleted
+     */
     @Transactional
     public void deleteProjectById(Integer projectID){
         Project project = projectRepo.findByProjectID(projectID);

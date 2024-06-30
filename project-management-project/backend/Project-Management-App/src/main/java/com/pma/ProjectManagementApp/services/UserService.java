@@ -12,11 +12,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service class that handles business logic related to users.
+ */
 @Service
 public class UserService implements UserDetailsService {
-    @Autowired
-    UserRepo repo;
 
+    @Autowired
+    private UserRepo repo;
+
+    /**
+     * Retrieves all users.
+     *
+     * @return List of all users
+     */
     public List<UserDto> getUsers(){
         List<User> users = repo.findAll();
         return users.stream()
@@ -24,7 +33,13 @@ public class UserService implements UserDetailsService {
                 .collect(Collectors.toList());
     }
 
-    private UserDto convertToDTO(User user) {
+    /**
+     * Converts a User entity to UserDto.
+     *
+     * @param user User entity to convert
+     * @return UserDto representation of the user
+     */
+    public UserDto convertToDTO(User user) {
         UserDto userDTO = new UserDto();
         userDTO.setUserID(user.getUserID());
         userDTO.setUserName(user.getUserFirstName());
@@ -44,13 +59,24 @@ public class UserService implements UserDetailsService {
         return userDTO;
     }
 
+    /**
+     * Adds a new user.
+     *
+     * @param newUser User object to be added
+     */
     public void addUser(User newUser) {
         repo.save(newUser);
     }
 
+    /**
+     * Edits an existing user.
+     *
+     * @param id ID of the user to edit
+     * @param newUser Updated User object
+     */
     public void editUser(Integer id, User newUser) {
         User editedUser = repo.findById(id).get();
-        if(editedUser!=null) {
+        if(editedUser != null) {
             editedUser.setUserID(newUser.getUserID());
             editedUser.setUserFirstName(newUser.getUserFirstName());
             editedUser.setUserSurename(newUser.getUserSurename());
@@ -70,16 +96,33 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    /**
+     * Deletes a user by ID.
+     *
+     * @param id ID of the user to delete
+     */
     public void deleteUser(Integer id) {
         repo.deleteById(id);
     }
 
+    /**
+     * Loads a user by username (nickname).
+     *
+     * @param username Username (nickname) of the user
+     * @return UserDetails object representing the user
+     * @throws UsernameNotFoundException if the user is not found
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return repo.findByUserNickname(username);
     }
 
-    public void saveUser (User user) {
+    /**
+     * Saves a user.
+     *
+     * @param user User object to save
+     */
+    public void saveUser(User user) {
         repo.save(user);
     }
 }
