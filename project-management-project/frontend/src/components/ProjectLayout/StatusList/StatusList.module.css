@@ -1,0 +1,49 @@
+.statusLine {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  color: white;
+  background-color: #4f40ce;
+  padding: 2rem 1rem;
+  font-size: 2rem;
+}
+
+.activityLine {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: 1.5rem 1rem;
+  font-size: 1.7rem;
+}
+
+.wrapButton {
+  padding: 0px 11.3rem;
+  background: none;
+  border: none;
+}
+
+.wrapButton:hover {
+  cursor: pointer;
+}
+
+.optionButton {
+  padding: 0px 1rem;
+  background: none;
+  border: none;
+}
+
+.optionButton:hover {
+  cursor: pointer;
+}
+
+.avatarImage {
+  display: inline;
+  float: right;
+  border-radius: 10px;
+  margin-right: 25.5rem;
+  border: none;
+}
+
+.avatarImage:hover {
+  cursor: pointer;
+}

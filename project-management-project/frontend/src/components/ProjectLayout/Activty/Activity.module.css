@@ -1,0 +1,81 @@
+.activityContainer {
+  background-color: #ebedfa;
+  font-size: 2rem;
+  margin: 0.8rem 0;
+  padding: 1.5rem 0.5rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 1.5rem;
+  cursor: grab;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.activityContainer:hover {
+  background-color: lightgray;
+}
+
+.titleProgress {
+  width: 80%;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.button {
+  margin: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  width: 80%;
+  height: 80%;
+}
+
+.progressBar {
+  width: 90%;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.singleInputContainer {
+  margin-top: 0.5rem;
+}
+
+.checkbox {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+@media (max-width: 320px) and (max-height: 510px) {
+  .activityContainer {
+    background-color: #ebedfa;
+    font-size: 1.3rem;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: grab;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .button {
+    /* margin: 0.8rem; */
+    margin-right: 0.5rem;
+    align-content: center;
+    background: none;
+    border: none;
+    padding: 0.1rem;
+    width: 90%;
+    height: 80%;
+  }
+}

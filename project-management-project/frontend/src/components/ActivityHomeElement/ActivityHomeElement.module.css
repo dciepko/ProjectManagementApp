@@ -1,0 +1,64 @@
+.container {
+  border: #000 solid 1px;
+  width: 36rem;
+  height: 14rem;
+  background-color: #4f40ce;
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+}
+
+.mainP {
+  display: block;
+  text-align: left;
+  width: 96%;
+  font-size: 1.8rem;
+  padding-top: 0.7rem;
+}
+
+.mainPart {
+  color: #fff;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.namePart {
+  background-color: #d9d9d9;
+  color: #000;
+  border-radius: 1rem;
+  width: 96%;
+  font-size: 2.4rem;
+  padding: 0.3rem;
+  height: 60%;
+}
+
+.descriptionPart {
+  background-color: #d9d9d9;
+  height: 30%;
+  border-radius: 0 0 1rem 1rem;
+  font-weight: 600;
+  padding: 0.2rem;
+  font-size: 1.5rem;
+}
+
+.okButton {
+  height: 3rem;
+  width: 3rem;
+  border: none;
+  border-radius: 0.4rem;
+  float: right;
+  margin-right: 1.5rem;
+  margin-top: 0.2rem;
+}
+
+.okButton:hover {
+  cursor: pointer;
+}
+
+.okButton img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,117 @@
+import classes from "./Activity.module.css";
+
+import info from "../../../assets/info-circle-icon.png";
+import wrapDown from "../../../assets/wrap-down-button.png";
+import wrapUp from "../../../assets/wrap-up-button.png";
+
+import { useRef, useState } from "react";
+import TaskModal from "../../Modals/TaskModal/TaskModal";
+
+export default function Activity({ id, task, handleDragStart }) {
+  const [viewType, setViewType] = useState("wrapped");
+  const [progress, setProgress] = useState(0);
+
+  const modal = useRef();
+
+  function handleOpenModal() {
+    modal.current.open();
+  }
+
+  function handleWrapButton() {
+    {
+      viewType === "wrapped"
+        ? setViewType("unwrapped")
+        : setViewType("wrapped");
+    }
+  }
+
+  function handleCheckboxChange() {
+    const checkedCount = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    ).length;
+    setProgress(checkedCount);
+  }
+
+  return (
+    <>
+      <TaskModal ref={modal} task={task} checklist={task.checklist} />
+      {viewType === "wrapped" && (
+        <div
+          draggable
+          className={classes.activityContainer}
+          onDragStart={(event) => handleDragStart(event, task)}
+        >
+          <div className={classes.titleProgress}>
+            <p>{task.activityName}</p>
+            {task.type == "task" && (
+              <progress
+                max={task.checklist.length}
+                value={progress}
+                className={classes.progressBar}
+              />
+            )}
+          </div>
+          <div className={classes.buttonContainer}>
+            <button className={classes.button} onClick={handleOpenModal}>
+              <img src={info} alt="Information button" />
+            </button>
+            {/* {task.type === "task" && ( */}
+            <button className={classes.button} onClick={handleWrapButton}>
+              <img src={wrapDown} alt="wrap button" />
+            </button>
+            {/* )} */}
+          </div>
+        </div>
+      )}
+
+      {viewType === "unwrapped" && (
+        <div
+          draggable
+          className={classes.activityContainer}
+          onDragStart={(event) => handleDragStart(event, task)}
+        >
+          <div className={classes.titleProgress}>
+            <p>{task.activityName}</p>
+            {task.type == "task" && (
+              <progress
+                max={task.checklist.length}
+                value={progress}
+                className={classes.progressBar}
+              />
+            )}
+            {task.type == "task" && (
+              <div>
+                {task.checklist.map((element) => {
+                  return (
+                    <div
+                      className={classes.singleInputContainer}
+                      key={element.id}
+                    >
+                      {" "}
+                      <input
+                        className={classes.checkbox}
+                        type="checkbox"
+                        id={element.id}
+                        name="subtasks"
+                        onChange={handleCheckboxChange}
+                      />
+                      <label htmlFor={element.id}>{element.name}</label>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          <div className={classes.buttonContainer}>
+            <button className={classes.button} onClick={handleOpenModal}>
+              <img src={info} alt="" />
+            </button>
+            <button className={classes.button} onClick={handleWrapButton}>
+              <img src={wrapUp} alt="wrap button" />
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

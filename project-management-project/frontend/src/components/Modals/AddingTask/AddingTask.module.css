@@ -1,0 +1,109 @@
+.addingModal {
+  width: 40vw;
+  height: 80vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 15px;
+  padding: 4rem 5rem;
+  background-color: #ebedfa;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: right;
+}
+
+.addingModal[open] {
+  animation: slide-in-from-top 0.35s ease-out;
+}
+
+.addingModal::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.h2 {
+  font-size: 3em;
+  margin-bottom: 2rem;
+  width: 80%;
+}
+
+.inputContainer {
+  width: 100%;
+}
+
+.radioContainer {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.radioLabel {
+  font-size: 20px;
+  margin-left: 8px;
+  margin-right: 20px;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  margin-top: 2em;
+}
+
+.cancelButton {
+  background-color: #ebedfa;
+  color: #ff910a;
+  font-size: 24px;
+  border-radius: 15px;
+  padding: 5px 15px;
+  border: none;
+  margin-right: 20px;
+}
+
+.cancelButton:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.createButton {
+  background-color: #4f40ce;
+  color: white;
+  font-size: 24px;
+  border-radius: 15px;
+  padding: 5px 15px;
+}
+
+.createButton:hover {
+  background-color: #4135ac;
+  cursor: pointer;
+}
+
+@media (max-width: 320px) and (max-height: 510px) {
+  .addingModal {
+    width: 80vw;
+    height: 80vh;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-70%, -55%);
+    border: none;
+    border-radius: 15px;
+    padding: 4rem 5rem;
+    background-color: #ebedfa;
+  }
+
+  .cancelButton {
+    background-color: #ebedfa;
+    color: #ff910a;
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    border: none;
+    margin-right: 10px;
+  }
+}

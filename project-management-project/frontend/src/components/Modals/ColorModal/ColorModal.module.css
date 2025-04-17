@@ -1,0 +1,74 @@
+.addingModal {
+  width: 20vw;
+  height: 25vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 15px;
+  padding: 2rem 2.5rem;
+  background-color: #ebedfa;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: right;
+  width: 100%;
+  height: 100%;
+}
+
+.addingModal[open] {
+  animation: slide-in-from-top 0.35s ease-out;
+}
+
+.addingModal::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.inputContainer {
+  height: 50%;
+}
+
+.colorInput {
+  width: 100%;
+  height: 100%;
+}
+
+.buttonContainer {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancelButton {
+  background-color: #ebedfa;
+  color: #ff910a;
+  font-size: 2rem;
+  border-radius: 15px;
+  padding: 0.4rem 0.8rem;
+  margin: 1rem;
+  border: none;
+}
+
+.cancelButton:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.saveButton {
+  background-color: #4f40ce;
+  color: white;
+  font-size: 2rem;
+  border-radius: 15px;
+  padding: 0.4rem 0.8rem;
+  margin: 1rem;
+}
+
+.saveButton:hover {
+  background-color: #4135ac;
+  cursor: pointer;
+}

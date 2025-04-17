@@ -1,0 +1,17 @@
+.statusLine {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  color: white;
+  background-color: #4f40ce;
+  padding: 2rem 0;
+  font-size: 2rem;
+}
+
+.activityLine {
+  width: 100%;
+  display: grid;
+  background-color: red;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  font-size: 2rem;
+}
